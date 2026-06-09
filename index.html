@@ -185,6 +185,17 @@
     return Number(n).toLocaleString('es-AR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
   }
 
+  function fmtPrice(n) {
+    if (n === null || n === undefined || !isFinite(n)) return '—';
+    if (n === 0) return '0';
+    if (n < 0.00001)  return Number(n).toFixed(10).replace(/\.?0+$/, '');
+    if (n < 0.01)     return Number(n).toFixed(8).replace(/0+$/, '');
+    if (n < 1)        return Number(n).toFixed(6).replace(/0+$/, '');
+    if (n < 10)       return Number(n).toFixed(4);
+    if (n < 10000)    return Number(n).toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return Number(n).toLocaleString('es-AR', { maximumFractionDigits: 0 });
+  }
+
   function fmtPct(n) {
     if (n === null || n === undefined || !isFinite(n)) return '—';
     var cls = n > 0 ? 'pos' : n < 0 ? 'neg' : 'neu';
@@ -262,7 +273,7 @@
     rows.forEach(function(r) {
       html += '<tr>';
       html += '<td class="sym">' + sym(r.symbol) + '</td>';
-      html += '<td>' + fmt(r.price, r.price > 100 ? 2 : 4) + '</td>';
+      html += '<td>' + fmtPrice(r.price) + '</td>';
       html += '<td>' + fmtPct(r.change_5m_pct) + '</td>';
       html += '<td>' + fmtPct(r.change_15m_pct) + '</td>';
       html += '<td>' + fmtPct(r.change_60m_pct) + '</td>';
@@ -321,7 +332,7 @@
       html += '<td style="text-align:left" class="tf">' + r.timeframe + '</td>';
       html += '<td style="text-align:left">' + dir + '</td>';
       html += '<td>' + fmtPct(r.change_pct) + '</td>';
-      html += '<td>' + fmt(r.price, r.price > 100 ? 2 : 4) + '</td>';
+      html += '<td>' + fmtPrice(r.price) + '</td>';
       html += '</tr>';
     });
     html += '</tbody></table>';
