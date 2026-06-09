@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>💵 Trading LAN — Panel Público</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💵</text></svg>">
+  <style>
+    :root { color-scheme: dark; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+      font-size: 15px;
+    }
+    a { color: #58a6ff; }
+    header {
+      background: rgba(13,17,23,0.95);
+      border-bottom: 1px solid #21262d;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand { font-size: 18px; font-weight: 700; letter-spacing: .2px; }
+    .brand span { color: #8b949e; font-size: 13px; font-weight: 400; margin-left: 10px; }
+    .badge {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #1a4731;
+      background: #0d2818;
+      color: #3fb950;
+      white-space: nowrap;
+    }
+    .updated {
+      font-size: 12px;
+      color: #8b949e;
+    }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    section { margin-bottom: 36px; }
+    h2 {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #8b949e;
+      margin: 0 0 14px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card-label { font-size: 12px; color: #8b949e; margin-bottom: 8px; }
+    .card-value { font-size: 22px; font-weight: 700; word-break: break-word; line-height: 1.2; }
+    .pos { color: #3fb950; }
+    .neg { color: #f85149; }
+    .neu { color: #e6edf3; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th {
+      background: #0d1117;
+      color: #8b949e;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: 10px 14px;
+      text-align: right;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid #21262d;
+    }
+    th:first-child { text-align: left; }
+    th:hover { color: #e6edf3; background: #1c2128; }
+    th.sorted { color: #58a6ff; }
+    td {
+      padding: 10px 14px;
+      text-align: right;
+      border-bottom: 1px solid #21262d;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    td:first-child { text-align: left; font-weight: 500; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1c2128; }
+    .sym { font-family: monospace; font-size: 13px; }
+    .tf { font-size: 12px; color: #8b949e; }
+    .up-arrow { color: #3fb950; }
+    .dn-arrow { color: #f85149; }
+    .sort-indicator { font-size: 10px; margin-left: 4px; opacity: .7; }
+    .loading { color: #8b949e; padding: 20px 0; font-style: italic; }
+    .error-msg { color: #f85149; padding: 20px 0; }
+    footer {
+      text-align: center;
+      color: #484f58;
+      font-size: 12px;
+      padding: 32px 24px;
+      border-top: 1px solid #21262d;
+    }
+    @media (max-width: 600px) {
+      main { padding: 14px; }
+      .card-value { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="brand">💵 Trading LAN<span>Panel público · Datos simulados</span></div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <span class="badge">Sin operaciones reales</span>
+      <span class="updated" id="updated">Cargando...</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="paper-section">
+    <h2>Paper Trading (Simulado)</h2>
+    <div class="grid" id="paper-grid">
+      <div class="card"><div class="card-label">Balance simulado</div><div class="card-value" id="p-balance">—</div></div>
+      <div class="card"><div class="card-label">Ganancia / pérdida</div><div class="card-value" id="p-pnl">—</div></div>
+      <div class="card"><div class="card-label">Rendimiento</div><div class="card-value" id="p-pct">—</div></div>
+      <div class="card"><div class="card-label">Fees acumulados</div><div class="card-value" id="p-fees">—</div></div>
+      <div class="card"><div class="card-label">Trades</div><div class="card-value" id="p-trades">—</div></div>
+      <div class="card"><div class="card-label">Posiciones abiertas</div><div class="card-value" id="p-open">—</div></div>
+    </div>
+  </section>
+
+  <section id="market-section">
+    <h2>Mercado — click en columna para ordenar</h2>
+    <div id="market-wrap"><p class="loading">Cargando mercado...</p></div>
+  </section>
+
+  <section id="signals-section">
+    <h2>Señales recientes</h2>
+    <div id="signals-wrap"><p class="loading">Cargando señales...</p></div>
+  </section>
+
+</main>
+
+<footer>
+  Datos generados por Trading LAN (simulación local). Sin operaciones ni dinero real involucrado.
+  Se actualiza cada 5 minutos aprox.
+</footer>
+
+<script>
+  var snapshot = null;
+  var marketSort = { col: 'price', dir: -1 };
+  var sigSort = { col: 'ts', dir: -1 };
+
+  function fmt(n, dec) {
+    if (n === null || n === undefined || !isFinite(n)) return '—';
+    return Number(n).toLocaleString('es-AR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  }
+
+  function fmtPct(n) {
+    if (n === null || n === undefined || !isFinite(n)) return '—';
+    var cls = n > 0 ? 'pos' : n < 0 ? 'neg' : 'neu';
+    var sign = n > 0 ? '+' : '';
+    return '<span class="' + cls + '">' + sign + fmt(n, 3) + '%</span>';
+  }
+
+  function fmtMoney(n, dec) {
+    dec = dec || 2;
+    return fmt(n, dec) + ' USDT';
+  }
+
+  function sym(s) {
+    return (s || '').replace(/USDT$/i, '');
+  }
+
+  function relTime(isoStr) {
+    var d = new Date(isoStr);
+    if (isNaN(d)) return isoStr;
+    var diff = Math.floor((Date.now() - d) / 1000);
+    if (diff < 60) return 'hace ' + diff + 's';
+    if (diff < 3600) return 'hace ' + Math.floor(diff/60) + 'm';
+    if (diff < 86400) return 'hace ' + Math.floor(diff/3600) + 'h';
+    return d.toLocaleDateString('es-AR');
+  }
+
+  function absTime(isoStr) {
+    var d = new Date(isoStr);
+    if (isNaN(d)) return isoStr;
+    return d.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+  }
+
+  // --- Paper ---
+  function renderPaper(p) {
+    var pnlCls = p.pnl_usdt >= 0 ? 'pos' : 'neg';
+    var sign = p.pnl_usdt >= 0 ? '+' : '';
+    document.getElementById('p-balance').innerHTML = '<span class="neu">' + fmtMoney(p.balance_usdt) + '</span>';
+    document.getElementById('p-pnl').innerHTML = '<span class="' + pnlCls + '">' + sign + fmtMoney(p.pnl_usdt) + '</span>';
+    document.getElementById('p-pct').innerHTML = '<span class="' + pnlCls + '">' + sign + fmt(p.pnl_pct, 4) + '%</span>';
+    document.getElementById('p-fees').textContent = fmtMoney(p.fees_usdt, 4);
+    document.getElementById('p-trades').textContent = p.trades;
+    document.getElementById('p-open').textContent = p.open_positions;
+  }
+
+  // --- Market ---
+  var mktCols = [
+    { key: 'symbol',        label: 'Símbolo',  align: 'left'  },
+    { key: 'price',         label: 'Precio',   align: 'right' },
+    { key: 'change_5m_pct', label: '5m',       align: 'right' },
+    { key: 'change_15m_pct',label: '15m',      align: 'right' },
+    { key: 'change_60m_pct',label: '60m',      align: 'right' },
+  ];
+
+  function sortIndicator(col) {
+    if (marketSort.col !== col) return '';
+    return '<span class="sort-indicator">' + (marketSort.dir > 0 ? '▲' : '▼') + '</span>';
+  }
+
+  function renderMarket() {
+    if (!snapshot || !snapshot.market) return;
+    var rows = snapshot.market.slice().sort(function(a, b) {
+      var va = a[marketSort.col], vb = b[marketSort.col];
+      if (va === null || va === undefined) return 1;
+      if (vb === null || vb === undefined) return -1;
+      if (va < vb) return -marketSort.dir;
+      if (va > vb) return marketSort.dir;
+      return 0;
+    });
+    var html = '<table><thead><tr>';
+    mktCols.forEach(function(c) {
+      var sc = marketSort.col === c.key ? ' sorted' : '';
+      html += '<th class="' + sc + '" onclick="mktSortBy(\'' + c.key + '\')">' + c.label + sortIndicator(c.key) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(r) {
+      html += '<tr>';
+      html += '<td class="sym">' + sym(r.symbol) + '</td>';
+      html += '<td>' + fmt(r.price, r.price > 100 ? 2 : 4) + '</td>';
+      html += '<td>' + fmtPct(r.change_5m_pct) + '</td>';
+      html += '<td>' + fmtPct(r.change_15m_pct) + '</td>';
+      html += '<td>' + fmtPct(r.change_60m_pct) + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('market-wrap').innerHTML = html;
+  }
+
+  function mktSortBy(col) {
+    if (marketSort.col === col) marketSort.dir = -marketSort.dir;
+    else { marketSort.col = col; marketSort.dir = col === 'symbol' ? 1 : -1; }
+    renderMarket();
+  }
+
+  // --- Signals ---
+  var sigCols = [
+    { key: 'ts',         label: 'Hora'      },
+    { key: 'symbol',     label: 'Símbolo'   },
+    { key: 'timeframe',  label: 'Timeframe' },
+    { key: 'direction',  label: 'Dirección' },
+    { key: 'change_pct', label: 'Cambio'    },
+    { key: 'price',      label: 'Precio'    },
+  ];
+
+  function sigSortIndicator(col) {
+    if (sigSort.col !== col) return '';
+    return '<span class="sort-indicator">' + (sigSort.dir > 0 ? '▲' : '▼') + '</span>';
+  }
+
+  function renderSignals() {
+    if (!snapshot || !snapshot.signals) return;
+    if (!snapshot.signals.length) {
+      document.getElementById('signals-wrap').innerHTML = '<p class="loading">Sin señales recientes.</p>';
+      return;
+    }
+    var rows = snapshot.signals.slice().sort(function(a, b) {
+      var va = a[sigSort.col], vb = b[sigSort.col];
+      if (va < vb) return -sigSort.dir;
+      if (va > vb) return sigSort.dir;
+      return 0;
+    });
+    var html = '<table><thead><tr>';
+    sigCols.forEach(function(c) {
+      var sc = sigSort.col === c.key ? ' sorted' : '';
+      html += '<th class="' + sc + '" onclick="sigSortBy(\'' + c.key + '\')" style="text-align:' + (c.key === 'symbol' || c.key === 'direction' || c.key === 'timeframe' || c.key === 'ts' ? 'left' : 'right') + '">' + c.label + sigSortIndicator(c.key) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(r) {
+      var dir = r.direction === 'up'
+        ? '<span class="up-arrow">▲</span> Alcista'
+        : '<span class="dn-arrow">▼</span> Bajista';
+      html += '<tr>';
+      html += '<td style="text-align:left" class="tf">' + absTime(r.ts) + '</td>';
+      html += '<td style="text-align:left" class="sym">' + sym(r.symbol) + '</td>';
+      html += '<td style="text-align:left" class="tf">' + r.timeframe + '</td>';
+      html += '<td style="text-align:left">' + dir + '</td>';
+      html += '<td>' + fmtPct(r.change_pct) + '</td>';
+      html += '<td>' + fmt(r.price, r.price > 100 ? 2 : 4) + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('signals-wrap').innerHTML = html;
+  }
+
+  function sigSortBy(col) {
+    if (sigSort.col === col) sigSort.dir = -sigSort.dir;
+    else { sigSort.col = col; sigSort.dir = col === 'ts' ? -1 : 1; }
+    renderSignals();
+  }
+
+  // --- Load snapshot ---
+  function load() {
+    fetch('./snapshot.json?t=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        snapshot = data;
+        renderPaper(data.paper);
+        renderMarket();
+        renderSignals();
+        document.getElementById('updated').textContent =
+          'Actualizado ' + relTime(data.generated_at);
+      })
+      .catch(function(err) {
+        document.getElementById('updated').textContent = 'Error al cargar datos';
+        ['market-wrap', 'signals-wrap'].forEach(function(id) {
+          document.getElementById(id).innerHTML = '<p class="error-msg">No se pudo cargar snapshot.json</p>';
+        });
+      });
+  }
+
+  load();
+  setInterval(load, 60000);
+</script>
+</body>
+</html>
