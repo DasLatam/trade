@@ -36,19 +36,7 @@
     }
     .brand { font-size: 18px; font-weight: 700; letter-spacing: .2px; }
     .brand span { color: #8b949e; font-size: 13px; font-weight: 400; margin-left: 10px; }
-    .badge {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #1a4731;
-      background: #0d2818;
-      color: #3fb950;
-      white-space: nowrap;
-    }
-    .updated {
-      font-size: 12px;
-      color: #8b949e;
-    }
+    .updated { font-size: 12px; color: #8b949e; }
     main { max-width: 1100px; margin: 0 auto; padding: 24px; }
     section { margin-bottom: 36px; }
     h2 {
@@ -75,6 +63,68 @@
     .pos { color: #3fb950; }
     .neg { color: #f85149; }
     .neu { color: #e6edf3; }
+
+    /* Hot opportunities */
+    .hot-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .hot-card {
+      background: #161b22;
+      border: 1px solid #3d2a00;
+      border-radius: 14px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hot-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,165,0,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hot-rank {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 11px;
+      color: #9e6a03;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .hot-sym {
+      font-size: 26px;
+      font-weight: 800;
+      font-family: monospace;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hot-price {
+      font-size: 13px;
+      color: #8b949e;
+      margin-bottom: 14px;
+    }
+    .hot-tfs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .hot-tf {
+      background: #0d1117;
+      border: 1px solid #21262d;
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+      min-width: 52px;
+    }
+    .hot-tf-label { font-size: 10px; color: #8b949e; }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -127,6 +177,7 @@
     @media (max-width: 600px) {
       main { padding: 14px; }
       .card-value { font-size: 18px; }
+      .hot-sym { font-size: 20px; }
     }
   </style>
 </head>
@@ -134,22 +185,22 @@
 
 <header>
   <div class="header-inner">
-    <div>
-      <div class="brand">💵 Trading LAN<span>Panel público · Datos simulados</span></div>
-    </div>
-    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-      <span class="badge">Sin operaciones reales</span>
-      <span class="updated" id="updated">Cargando...</span>
-    </div>
+    <div class="brand">💵 Trading LAN<span>Panel público</span></div>
+    <span class="updated" id="updated">Cargando...</span>
   </div>
 </header>
 
 <main>
 
+  <section id="hot-section">
+    <h2>🔥 Top 3 Oportunidades</h2>
+    <div class="hot-grid" id="hot-grid"><p class="loading">Cargando...</p></div>
+  </section>
+
   <section id="paper-section">
-    <h2>Paper Trading (Simulado)</h2>
+    <h2>Paper Trading</h2>
     <div class="grid" id="paper-grid">
-      <div class="card"><div class="card-label">Balance simulado</div><div class="card-value" id="p-balance">—</div></div>
+      <div class="card"><div class="card-label">Balance</div><div class="card-value" id="p-balance">—</div></div>
       <div class="card"><div class="card-label">Ganancia / pérdida</div><div class="card-value" id="p-pnl">—</div></div>
       <div class="card"><div class="card-label">Rendimiento</div><div class="card-value" id="p-pct">—</div></div>
       <div class="card"><div class="card-label">Fees acumulados</div><div class="card-value" id="p-fees">—</div></div>
@@ -171,7 +222,6 @@
 </main>
 
 <footer>
-  Datos generados por Trading LAN (simulación local). Sin operaciones ni dinero real involucrado.
   Se actualiza cada 5 minutos aprox.
 </footer>
 
@@ -228,6 +278,48 @@
     return d.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
   }
 
+  function hotScore(r) {
+    var s5  = r.change_5m_pct  || 0;
+    var s15 = r.change_15m_pct || 0;
+    var s60 = r.change_60m_pct || 0;
+    var score = Math.abs(s5) * 2 + Math.abs(s15) + Math.abs(s60) * 0.5;
+    if (Math.sign(s5) === Math.sign(s15) && s5 !== 0 && s15 !== 0) score *= 1.4;
+    if (Math.sign(s5) === Math.sign(s15) && Math.sign(s15) === Math.sign(s60) && s5 !== 0) score *= 1.2;
+    return score;
+  }
+
+  // --- Hot opportunities ---
+  function renderHot() {
+    if (!snapshot || !snapshot.market) return;
+    var ranked = snapshot.market.slice()
+      .map(function(r) { return { r: r, score: hotScore(r) }; })
+      .sort(function(a, b) { return b.score - a.score; })
+      .slice(0, 3);
+
+    var medals = ['🥇', '🥈', '🥉'];
+    var html = '';
+    ranked.forEach(function(item, i) {
+      var r = item.r;
+      var s5  = r.change_5m_pct  || 0;
+      var s15 = r.change_15m_pct || 0;
+      var s60 = r.change_60m_pct || 0;
+      var dominant = s5 !== 0 ? s5 : s15;
+      var dirCls  = dominant >= 0 ? 'pos' : 'neg';
+      var dirArrow = dominant >= 0 ? '▲' : '▼';
+      html += '<div class="hot-card">';
+      html += '<div class="hot-rank">' + medals[i] + '</div>';
+      html += '<div class="hot-sym"><span class="' + dirCls + '">' + dirArrow + '</span> ' + sym(r.symbol) + '</div>';
+      html += '<div class="hot-price">' + fmtPrice(r.price) + ' USDT</div>';
+      html += '<div class="hot-tfs">';
+      html += '<div class="hot-tf"><span class="hot-tf-label">5m</span>' + fmtPct(s5) + '</div>';
+      html += '<div class="hot-tf"><span class="hot-tf-label">15m</span>' + fmtPct(s15) + '</div>';
+      html += '<div class="hot-tf"><span class="hot-tf-label">60m</span>' + fmtPct(s60) + '</div>';
+      html += '</div>';
+      html += '</div>';
+    });
+    document.getElementById('hot-grid').innerHTML = html || '<p class="loading">Sin datos aún.</p>';
+  }
+
   // --- Paper ---
   function renderPaper(p) {
     var pnlCls = p.pnl_usdt >= 0 ? 'pos' : 'neg';
@@ -242,11 +334,11 @@
 
   // --- Market ---
   var mktCols = [
-    { key: 'symbol',        label: 'Símbolo',  align: 'left'  },
-    { key: 'price',         label: 'Precio',   align: 'right' },
-    { key: 'change_5m_pct', label: '5m',       align: 'right' },
-    { key: 'change_15m_pct',label: '15m',      align: 'right' },
-    { key: 'change_60m_pct',label: '60m',      align: 'right' },
+    { key: 'symbol',         label: 'Símbolo', align: 'left'  },
+    { key: 'price',          label: 'Precio',  align: 'right' },
+    { key: 'change_5m_pct',  label: '5m',      align: 'right' },
+    { key: 'change_15m_pct', label: '15m',     align: 'right' },
+    { key: 'change_60m_pct', label: '60m',     align: 'right' },
   ];
 
   function sortIndicator(col) {
@@ -319,7 +411,8 @@
     var html = '<table><thead><tr>';
     sigCols.forEach(function(c) {
       var sc = sigSort.col === c.key ? ' sorted' : '';
-      html += '<th class="' + sc + '" onclick="sigSortBy(\'' + c.key + '\')" style="text-align:' + (c.key === 'symbol' || c.key === 'direction' || c.key === 'timeframe' || c.key === 'ts' ? 'left' : 'right') + '">' + c.label + sigSortIndicator(c.key) + '</th>';
+      var align = (c.key === 'change_pct' || c.key === 'price') ? 'right' : 'left';
+      html += '<th class="' + sc + '" onclick="sigSortBy(\'' + c.key + '\')" style="text-align:' + align + '">' + c.label + sigSortIndicator(c.key) + '</th>';
     });
     html += '</tr></thead><tbody>';
     rows.forEach(function(r) {
@@ -345,22 +438,23 @@
     renderSignals();
   }
 
-  // --- Load snapshot ---
+  // --- Load ---
   function load() {
     fetch('./snapshot.json?t=' + Date.now())
       .then(function(r) { return r.json(); })
       .then(function(data) {
         snapshot = data;
+        renderHot();
         renderPaper(data.paper);
         renderMarket();
         renderSignals();
-        document.getElementById('updated').textContent =
-          'Actualizado ' + relTime(data.generated_at);
+        document.getElementById('updated').textContent = 'Actualizado ' + relTime(data.generated_at);
       })
-      .catch(function(err) {
+      .catch(function() {
         document.getElementById('updated').textContent = 'Error al cargar datos';
-        ['market-wrap', 'signals-wrap'].forEach(function(id) {
-          document.getElementById(id).innerHTML = '<p class="error-msg">No se pudo cargar snapshot.json</p>';
+        ['hot-grid', 'market-wrap', 'signals-wrap'].forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) el.innerHTML = '<p class="error-msg">No se pudo cargar snapshot.json</p>';
         });
       });
   }
