@@ -448,7 +448,14 @@
         renderPaper(data.paper);
         renderMarket();
         renderSignals();
-        document.getElementById('updated').textContent = 'Actualizado ' + relTime(data.generated_at);
+        var updParts = [];
+        if (data.paper && data.paper.activity_start_date) {
+          var startD = new Date(data.paper.activity_start_date + 'T00:00:00');
+          var days = Math.floor((Date.now() - startD.getTime()) / 86400000);
+          updParts.push('Activo hace ' + days + ' día' + (days === 1 ? '' : 's'));
+        }
+        updParts.push('Actualizado ' + relTime(data.generated_at));
+        document.getElementById('updated').textContent = updParts.join(' · ');
       })
       .catch(function() {
         document.getElementById('updated').textContent = 'Error al cargar datos';
