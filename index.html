@@ -60,6 +60,7 @@
     }
     .card-label { font-size: 12px; color: #8b949e; margin-bottom: 8px; }
     .card-value { font-size: 22px; font-weight: 700; word-break: break-word; line-height: 1.2; }
+    .card-cmp { font-size: 12px; margin-top: 6px; color: #8b949e; }
     .pos { color: #3fb950; }
     .neg { color: #f85149; }
     .neu { color: #e6edf3; }
@@ -203,10 +204,16 @@
       <div class="card"><div class="card-label">Balance</div><div class="card-value" id="p-balance">—</div></div>
       <div class="card"><div class="card-label">Ganancia / pérdida</div><div class="card-value" id="p-pnl">—</div></div>
       <div class="card"><div class="card-label">Rendimiento</div><div class="card-value" id="p-pct">—</div></div>
+      <div class="card"><div class="card-label">Rendimiento de hoy</div><div class="card-value" id="p-today">—</div><div class="card-cmp" id="p-today-cmp"></div></div>
       <div class="card"><div class="card-label">Fees acumulados</div><div class="card-value" id="p-fees">—</div></div>
       <div class="card"><div class="card-label">Trades</div><div class="card-value" id="p-trades">—</div></div>
       <div class="card"><div class="card-label">Posiciones abiertas</div><div class="card-value" id="p-open">—</div></div>
     </div>
+  </section>
+
+  <section id="positions-section">
+    <h2>Posiciones abiertas</h2>
+    <div id="positions-wrap"><p class="loading">Cargando posiciones...</p></div>
   </section>
 
   <section id="market-section">
@@ -330,6 +337,66 @@
     document.getElementById('p-fees').textContent = fmtMoney(p.fees_usdt, 4);
     document.getElementById('p-trades').textContent = p.trades;
     document.getElementById('p-open').textContent = p.open_positions;
+
+    // Rendimiento de hoy vs día previo (a partir de daily_stats)
+    var stats = (p.daily_stats || []).slice().sort(function(a, b) {
+      return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+    });
+    var todayStr = new Date().toISOString().slice(0, 10);
+    var todayEntry = stats.filter(function(d) { return d.date === todayStr; })[0];
+    var todayPnl = todayEntry ? todayEntry.net_pnl : 0;
+    var prior = stats.filter(function(d) { return d.date < todayStr; });
+    var prevPnl = prior.length ? prior[prior.length - 1].net_pnl : null;
+
+    var tCls = todayPnl > 0 ? 'pos' : todayPnl < 0 ? 'neg' : 'neu';
+    var tSign = todayPnl > 0 ? '+' : '';
+    document.getElementById('p-today').innerHTML =
+      '<span class="' + tCls + '">' + tSign + fmtMoney(todayPnl) + '</span>';
+
+    var cmpEl = document.getElementById('p-today-cmp');
+    if (prevPnl === null) {
+      cmpEl.innerHTML = 'sin día previo para comparar';
+    } else {
+      var diff = todayPnl - prevPnl;
+      var arrow, cls, txt;
+      if (diff > 0.005)       { arrow = '▲'; cls = 'pos'; txt = 'mejor'; }
+      else if (diff < -0.005) { arrow = '▼'; cls = 'neg'; txt = 'peor';  }
+      else                    { arrow = '='; cls = 'neu'; txt = 'igual'; }
+      cmpEl.innerHTML = '<span class="' + cls + '">' + arrow + ' ' + txt + '</span>' +
+        ' vs día previo (' + fmtMoney(prevPnl) + ')';
+    }
+  }
+
+  // --- Posiciones abiertas ---
+  function stratLabel(s) {
+    if (s === 'MO') return 'Momentum';
+    if (s === 'MR') return 'Reversión';
+    return '—';
+  }
+
+  function renderPositions() {
+    if (!snapshot || !snapshot.paper) return;
+    var pos = snapshot.paper.positions || [];
+    if (!pos.length) {
+      document.getElementById('positions-wrap').innerHTML = '<p class="loading">Sin posiciones abiertas.</p>';
+      return;
+    }
+    var html = '<table><thead><tr>';
+    html += '<th style="text-align:left">Símbolo</th>';
+    html += '<th style="text-align:left">Motor</th>';
+    html += '<th>Valor</th>';
+    html += '<th>PnL no realizado</th>';
+    html += '</tr></thead><tbody>';
+    pos.forEach(function(r) {
+      html += '<tr>';
+      html += '<td class="sym">' + sym(r.symbol) + '</td>';
+      html += '<td style="text-align:left" class="tf">' + stratLabel(r.strategy) + '</td>';
+      html += '<td>' + fmtMoney(r.value_usdt) + '</td>';
+      html += '<td>' + (r.pnl_pct === null ? '—' : fmtPct(r.pnl_pct)) + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    document.getElementById('positions-wrap').innerHTML = html;
   }
 
   // --- Market ---
@@ -446,6 +513,7 @@
         snapshot = data;
         renderHot();
         renderPaper(data.paper);
+        renderPositions();
         renderMarket();
         renderSignals();
         var updParts = [];
@@ -459,7 +527,7 @@
       })
       .catch(function() {
         document.getElementById('updated').textContent = 'Error al cargar datos';
-        ['hot-grid', 'market-wrap', 'signals-wrap'].forEach(function(id) {
+        ['hot-grid', 'positions-wrap', 'market-wrap', 'signals-wrap'].forEach(function(id) {
           var el = document.getElementById(id);
           if (el) el.innerHTML = '<p class="error-msg">No se pudo cargar snapshot.json</p>';
         });
