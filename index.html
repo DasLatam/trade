@@ -126,6 +126,30 @@
     }
     .hot-tf-label { font-size: 10px; color: #8b949e; }
 
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .strategy-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .strategy-name { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .strategy-sub { font-size: 11px; color: #8b949e; margin-bottom: 12px; }
+    .strategy-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      padding: 5px 0;
+      border-bottom: 1px solid #21262d;
+    }
+    .strategy-row:last-child { border-bottom: none; }
+    .strategy-row .k { color: #8b949e; }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -209,6 +233,11 @@
       <div class="card"><div class="card-label">Trades</div><div class="card-value" id="p-trades">—</div></div>
       <div class="card"><div class="card-label">Posiciones abiertas</div><div class="card-value" id="p-open">—</div></div>
     </div>
+  </section>
+
+  <section id="strategies-section">
+    <h2>Estrategias — comparativa</h2>
+    <div class="strategy-grid" id="strategy-grid"><p class="loading">Cargando...</p></div>
   </section>
 
   <section id="positions-section">
@@ -372,7 +401,47 @@
   function stratLabel(s) {
     if (s === 'MO') return 'Momentum';
     if (s === 'MR') return 'Reversión';
+    if (s === 'DT') return 'Trailing dinámico';
     return '—';
+  }
+
+  // --- Estrategias ---
+  var STRAT_META = {
+    MR: { name: 'Reversión a la media (MR)', sub: 'compra caídas 5m, vende subas 5m' },
+    MO: { name: 'Momentum (MO)', sub: 'rupturas confirmadas, trailing fijo' },
+    DT: { name: 'Trailing dinámico (DT)', sub: 'rupturas confirmadas, trailing escalonado' },
+  };
+  var STRAT_ORDER = ['MR', 'MO', 'DT'];
+
+  function renderStrategies() {
+    if (!snapshot || !snapshot.paper) return;
+    var list = (snapshot.paper.by_strategy || []).slice().sort(function(a, b) {
+      return STRAT_ORDER.indexOf(a.strategy) - STRAT_ORDER.indexOf(b.strategy);
+    });
+    if (!list.length) {
+      document.getElementById('strategy-grid').innerHTML = '<p class="loading">Sin datos aún.</p>';
+      return;
+    }
+    var html = '';
+    list.forEach(function(s) {
+      var meta = STRAT_META[s.strategy] || { name: s.strategy, sub: '' };
+      var pnl = s.realized_pnl_usdt || 0;
+      var pnlCls = pnl > 0 ? 'pos' : pnl < 0 ? 'neg' : 'neu';
+      var pnlSign = pnl > 0 ? '+' : '';
+      html += '<div class="strategy-card">';
+      html += '<div class="strategy-name">' + meta.name + '</div>';
+      html += '<div class="strategy-sub">' + meta.sub + '</div>';
+      html += '<div class="strategy-row"><span class="k">PnL realizado</span><span class="' + pnlCls + '">' + pnlSign + fmtMoney(pnl) + '</span></div>';
+      html += '<div class="strategy-row"><span class="k">Win rate</span><span>' +
+        (s.win_rate_pct === null ? '—' : fmt(s.win_rate_pct, 1) + '%') +
+        ' (' + s.wins + '/' + s.exits + ')</span></div>';
+      html += '<div class="strategy-row"><span class="k">PnL prom. / salida</span><span>' +
+        (s.avg_pnl_per_exit_usdt === null ? '—' : fmtMoney(s.avg_pnl_per_exit_usdt, 4)) + '</span></div>';
+      html += '<div class="strategy-row"><span class="k">Posiciones abiertas</span><span>' +
+        s.open_positions + ' (' + fmtMoney(s.open_value_usdt) + ')</span></div>';
+      html += '</div>';
+    });
+    document.getElementById('strategy-grid').innerHTML = html;
   }
 
   function renderPositions() {
@@ -514,6 +583,7 @@
         snapshot = data;
         renderHot();
         renderPaper(data.paper);
+        renderStrategies();
         renderPositions();
         renderMarket();
         renderSignals();
