@@ -199,10 +199,52 @@
       padding: 32px 24px;
       border-top: 1px solid #21262d;
     }
+    /* --- Tabs / vistas --- */
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tab {
+      background: #161b22; border: 1px solid #21262d; color: #8b949e;
+      border-radius: 8px; padding: 7px 13px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+    }
+    .tab:hover { color: #e6edf3; background: #1c2128; }
+    .tab.active { color: #fff; background: #1f6feb; border-color: #1f6feb; }
+    .view[hidden] { display: none; }
+
+    /* --- Gráfico evolución --- */
+    .chart-wrap { background: #161b22; border: 1px solid #21262d; border-radius: 12px; padding: 16px; overflow-x: auto; }
+    .chart-wrap svg { width: 100%; min-width: 680px; height: auto; display: block; }
+    .chart-title { fill: #8b949e; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; }
+    .axis-lbl { fill: #6e7681; font-size: 11px; }
+    .grid-line { stroke: #21262d; stroke-width: 1; }
+    .zero-line { stroke: #484f58; stroke-width: 1; stroke-dasharray: 3 3; }
+    .ms-line { stroke: #6e7681; stroke-width: 1; stroke-dasharray: 4 4; opacity: .5; }
+    .ms-num { fill: #d29922; font-size: 11px; font-weight: 700; }
+    .legend { display: flex; flex-wrap: wrap; gap: 12px 16px; margin-top: 14px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #c9d1d9; }
+    .legend-sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+    .ms-list { margin-top: 18px; display: grid; gap: 7px; }
+    .ms-item { font-size: 12.5px; color: #c9d1d9; display: flex; gap: 10px; align-items: baseline; }
+    .ms-item .ms-badge { color: #d29922; font-weight: 700; min-width: 16px; }
+    .ms-item .ms-date { color: #8b949e; min-width: 82px; flex: none; }
+    .chart-caption { font-size: 12.5px; color: #8b949e; margin-top: 12px; line-height: 1.55; }
+
+    /* --- Informe --- */
+    .report { max-width: 820px; }
+    .report h3 { font-size: 18px; margin: 30px 0 10px; color: #e6edf3; }
+    .report h3:first-child { margin-top: 0; }
+    .report p { line-height: 1.65; color: #c9d1d9; margin: 0 0 12px; }
+    .report ul { line-height: 1.7; color: #c9d1d9; padding-left: 20px; margin: 0 0 12px; }
+    .report .lead { font-size: 16px; color: #e6edf3; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; vertical-align: middle; }
+    .badge-off { background: rgba(248,81,73,.15); color: #ff7b72; }
+    .badge-on { background: rgba(63,185,80,.15); color: #3fb950; }
+    .callout { background: #161b22; border: 1px solid #21262d; border-left: 3px solid #d29922; border-radius: 8px; padding: 14px 16px; margin: 16px 0; line-height: 1.6; }
+
     @media (max-width: 600px) {
       main { padding: 14px; }
       .card-value { font-size: 18px; }
       .hot-sym { font-size: 20px; }
+      .brand span { display: none; }
     }
   </style>
 </head>
@@ -211,11 +253,18 @@
 <header>
   <div class="header-inner">
     <div class="brand">💵 Trading LAN<span>Panel público</span></div>
+    <nav class="tabs">
+      <button class="tab active" data-view="panel" onclick="showView('panel')">📊 Panel</button>
+      <button class="tab" data-view="evolucion" onclick="showView('evolucion')">📈 Evolución</button>
+      <button class="tab" data-view="informe" onclick="showView('informe')">📄 Informe</button>
+    </nav>
     <span class="updated" id="updated">Cargando...</span>
   </div>
 </header>
 
 <main>
+
+  <div class="view" id="view-panel">
 
   <section id="hot-section">
     <h2>🔥 Top 3 Oportunidades</h2>
@@ -254,6 +303,25 @@
     <h2>Mercado — click en columna para ordenar</h2>
     <div id="market-wrap"><p class="loading">Cargando mercado...</p></div>
   </section>
+
+  </div><!-- /view-panel -->
+
+  <div class="view" id="view-evolucion" hidden>
+    <section>
+      <h2>Evolución desde el día 1</h2>
+      <div class="chart-wrap" id="evo-chart"><p class="loading">Cargando gráfico...</p></div>
+      <p class="chart-caption" id="evo-caption"></p>
+      <div class="legend" id="evo-legend"></div>
+      <div class="ms-list" id="evo-milestones"></div>
+    </section>
+  </div><!-- /view-evolucion -->
+
+  <div class="view" id="view-informe" hidden>
+    <section>
+      <h2>El informe — qué aprendimos</h2>
+      <div class="report" id="report-body"><p class="loading">Cargando...</p></div>
+    </section>
+  </div><!-- /view-informe -->
 
 </main>
 
@@ -399,19 +467,26 @@
 
   // --- Posiciones abiertas ---
   function stratLabel(s) {
-    if (s === 'MO') return 'Momentum';
-    if (s === 'MR') return 'Reversión';
-    if (s === 'DT') return 'Trailing dinámico';
-    return '—';
+    var m = { MR: 'Reversión', MO: 'Momentum', DT: 'Trailing din.', VB: 'Entrada estricta',
+      SH: 'Short', ZS: 'Z-score', ZSS: 'Z-score short', XS: 'Cross-sectional' };
+    return m[s] || s || '—';
   }
 
-  // --- Estrategias ---
-  var STRAT_META = {
-    MR: { name: 'Reversión a la media (MR)', sub: 'compra caídas 5m, vende subas 5m' },
-    MO: { name: 'Momentum (MO)', sub: 'rupturas confirmadas, trailing fijo' },
-    DT: { name: 'Trailing dinámico (DT)', sub: 'rupturas confirmadas, trailing escalonado' },
+  // --- Estrategias (color + nombre, compartido por gráfico, informe y cards) ---
+  var ALL_STRAT = {
+    MR:  { color: '#58a6ff', name: 'MR — reversión a la media',   sub: 'compra caídas 5m, vende subas' },
+    MO:  { color: '#f0883e', name: 'MO — momentum',               sub: 'rupturas, trailing fijo' },
+    DT:  { color: '#a371f7', name: 'DT — trailing dinámico',      sub: 'rupturas, trailing escalonado' },
+    VB:  { color: '#2dd4bf', name: 'VB — entrada estricta',       sub: 'como DT, más volumen' },
+    SH:  { color: '#ff7b9c', name: 'SH — short momentum',         sub: 'apuesta a la baja' },
+    ZS:  { color: '#3fb950', name: 'ZS — z-score long',           sub: 'compra barato estadístico, vuelve a la media' },
+    ZSS: { color: '#e3b341', name: 'ZSS — z-score short',         sub: 'shortea caro estadístico' },
+    XS:  { color: '#f778ba', name: 'XS — cross-sectional',        sub: 'compra los más caídos del ranking' },
   };
-  var STRAT_ORDER = ['MR', 'MO', 'DT'];
+  // Orden cronológico (para el gráfico) y de relevancia (activas primero, para cards)
+  var STRAT_SEQ = ['MR', 'MO', 'DT', 'VB', 'SH', 'ZS', 'ZSS', 'XS'];
+  var STRAT_META = ALL_STRAT;
+  var STRAT_ORDER = ['ZS', 'ZSS', 'XS', 'SH', 'DT', 'MO', 'VB', 'MR'];
 
   function renderStrategies() {
     if (!snapshot || !snapshot.paper) return;
@@ -575,6 +650,197 @@
     renderSignals();
   }
 
+  // --- Vistas (tabs) ---
+  function showView(name) {
+    ['panel', 'evolucion', 'informe'].forEach(function(v) {
+      var el = document.getElementById('view-' + v);
+      if (el) el.hidden = (v !== name);
+    });
+    var tabs = document.querySelectorAll('.tab');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.toggle('active', tabs[i].getAttribute('data-view') === name);
+    }
+    if (name === 'evolucion') renderEvolution();
+    if (name === 'informe') renderInforme();
+    window.scrollTo(0, 0);
+  }
+
+  // --- Serie temporal desde el día 1 ---
+  function dateRange(startStr, endStr) {
+    var out = [];
+    var d = new Date(startStr + 'T00:00:00Z');
+    var end = new Date(endStr + 'T00:00:00Z');
+    var guard = 0;
+    while (d <= end && guard < 4000) { out.push(d.toISOString().slice(0, 10)); d.setUTCDate(d.getUTCDate() + 1); guard++; }
+    return out;
+  }
+
+  function buildTimeline(p) {
+    var start = p.activity_start_date || (p.daily_stats && p.daily_stats.length ? p.daily_stats[0].date : null);
+    if (!start) return null;
+    var today = new Date().toISOString().slice(0, 10);
+    var dates = dateRange(start, today);
+    var startUsdt = p.start_usdt || 10000;
+
+    var totalByDate = {};
+    (p.daily_stats || []).forEach(function(d) {
+      totalByDate[d.date] = (d.realized_pnl !== undefined && d.realized_pnl !== null) ? d.realized_pnl : d.net_pnl;
+    });
+    var stratByDate = {};
+    (p.daily_by_strategy || []).forEach(function(r) {
+      if (!stratByDate[r.strategy]) stratByDate[r.strategy] = {};
+      stratByDate[r.strategy][r.date] = r.realized_pnl;
+    });
+
+    var balance = [], cum = 0;
+    dates.forEach(function(dt) { cum += (totalByDate[dt] || 0); balance.push(startUsdt + cum); });
+    // El último punto = balance actual real (incluye no-realizado de posiciones abiertas),
+    // así la curva termina exactamente en el número del panel.
+    if (balance.length && typeof p.balance_usdt === 'number') balance[balance.length - 1] = p.balance_usdt;
+
+    var perStrategy = {};
+    Object.keys(stratByDate).forEach(function(s) {
+      var c = 0;
+      perStrategy[s] = dates.map(function(dt) { c += (stratByDate[s][dt] || 0); return c; });
+    });
+    return { dates: dates, balance: balance, perStrategy: perStrategy };
+  }
+
+  function niceTicks(min, max, count) {
+    var t = [];
+    for (var i = 0; i < count; i++) t.push(min + (max - min) * i / (count - 1));
+    return t;
+  }
+
+  function pathFor(vals, xf, yf) {
+    var pts = [];
+    for (var i = 0; i < vals.length; i++) pts.push((i === 0 ? 'M' : 'L') + xf(i).toFixed(1) + ' ' + yf(vals[i]).toFixed(1));
+    return pts.join(' ');
+  }
+
+  // --- Gráfico de evolución (SVG inline, sin librerías) ---
+  function renderEvolution() {
+    var host = document.getElementById('evo-chart');
+    if (!snapshot || !snapshot.paper) return;
+    var p = snapshot.paper;
+    var tl = buildTimeline(p);
+    if (!tl || tl.dates.length < 2) { host.innerHTML = '<p class="loading">Aún no hay suficientes días.</p>'; return; }
+    var dates = tl.dates, n = dates.length;
+
+    var W = 1000, padL = 60, padR = 18, padTop = 30, gap = 56, hA = 205, hB = 205;
+    var plotW = W - padL - padR;
+    var y0A = padTop, y1A = padTop + hA, y0B = y1A + gap, y1B = y0B + hB, H = y1B + 40;
+    var xf = function(i) { return padL + plotW * (n === 1 ? 0 : i / (n - 1)); };
+
+    var bmin = Math.min.apply(null, tl.balance), bmax = Math.max.apply(null, tl.balance);
+    var bpad = (bmax - bmin) * 0.08 || 10; bmin -= bpad; bmax += bpad;
+    var yA = function(v) { return y1A - (v - bmin) / (bmax - bmin) * hA; };
+
+    var seq = STRAT_SEQ.filter(function(s) { return tl.perStrategy[s]; });
+    var allv = [0];
+    seq.forEach(function(s) { tl.perStrategy[s].forEach(function(v) { allv.push(v); }); });
+    var smin = Math.min.apply(null, allv), smax = Math.max.apply(null, allv);
+    var spad = (smax - smin) * 0.08 || 5; smin -= spad; smax += spad;
+    var yB = function(v) { return y1B - (v - smin) / (smax - smin) * hB; };
+
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Evolución del balance y ganancia acumulada por estrategia">';
+    s += '<text x="' + padL + '" y="16" class="chart-title">Balance simulado — USDT</text>';
+    s += '<text x="' + padL + '" y="' + (y0B - 12) + '" class="chart-title">Ganancia acumulada por estrategia — USDT</text>';
+
+    var i, t, ty, tks;
+    tks = niceTicks(bmin, bmax, 4);
+    for (i = 0; i < tks.length; i++) { t = tks[i]; ty = yA(t); s += '<line class="grid-line" x1="' + padL + '" y1="' + ty.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + ty.toFixed(1) + '"/>'; s += '<text class="axis-lbl" x="' + (padL - 8) + '" y="' + (ty + 3).toFixed(1) + '" text-anchor="end">' + Math.round(t).toLocaleString('es-AR') + '</text>'; }
+    tks = niceTicks(smin, smax, 4);
+    for (i = 0; i < tks.length; i++) { t = tks[i]; ty = yB(t); s += '<line class="grid-line" x1="' + padL + '" y1="' + ty.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + ty.toFixed(1) + '"/>'; s += '<text class="axis-lbl" x="' + (padL - 8) + '" y="' + (ty + 3).toFixed(1) + '" text-anchor="end">' + Math.round(t).toLocaleString('es-AR') + '</text>'; }
+    if (smin < 0 && smax > 0) { var yz = yB(0); s += '<line class="zero-line" x1="' + padL + '" y1="' + yz.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yz.toFixed(1) + '"/>'; }
+
+    var ms = (p.strategy_milestones || []);
+    ms.forEach(function(m, idx) {
+      var mi = dates.indexOf(m.date); if (mi < 0) return;
+      var mx = xf(mi);
+      s += '<line class="ms-line" x1="' + mx.toFixed(1) + '" y1="' + y0A + '" x2="' + mx.toFixed(1) + '" y2="' + y1B + '"/>';
+      s += '<circle cx="' + mx.toFixed(1) + '" cy="' + y0A + '" r="8" fill="#161b22" stroke="#d29922"/>';
+      s += '<text class="ms-num" x="' + mx.toFixed(1) + '" y="' + (y0A + 4) + '" text-anchor="middle">' + (idx + 1) + '</text>';
+    });
+
+    var yStart = yA(p.start_usdt || 10000);
+    if (yStart >= y0A && yStart <= y1A) s += '<line x1="' + padL + '" y1="' + yStart.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yStart.toFixed(1) + '" stroke="#484f58" stroke-width="1" stroke-dasharray="2 4"/>';
+    s += '<path d="' + pathFor(tl.balance, xf, yA) + '" fill="none" stroke="#e6edf3" stroke-width="2.2"/>';
+
+    seq.forEach(function(k) {
+      var c = (ALL_STRAT[k] || {}).color || '#888';
+      s += '<path d="' + pathFor(tl.perStrategy[k], xf, yB) + '" fill="none" stroke="' + c + '" stroke-width="1.8" opacity="0.95"/>';
+    });
+
+    var xt = [0, Math.round((n - 1) / 3), Math.round(2 * (n - 1) / 3), n - 1].filter(function(v, ix, a) { return a.indexOf(v) === ix; });
+    xt.forEach(function(ix) { s += '<text class="axis-lbl" x="' + xf(ix).toFixed(1) + '" y="' + (y1B + 22) + '" text-anchor="middle">' + dates[ix].slice(5) + '</text>'; });
+    s += '</svg>';
+    host.innerHTML = s;
+
+    document.getElementById('evo-caption').innerHTML =
+      'La curva de arriba es el balance simulado día a día, desde el inicio (' + (p.start_usdt || 10000).toLocaleString('es-AR') + ' USDT) hasta hoy (' + fmtMoney(p.balance_usdt) + '). ' +
+      'El panel de abajo muestra, acumulado, cuánto ganó o perdió cada estrategia por separado. Las líneas verticales numeradas marcan cuándo entró cada una (detalle abajo).';
+
+    var lg = '';
+    seq.forEach(function(k) {
+      var meta = ALL_STRAT[k] || { name: k, color: '#888' };
+      var arr = tl.perStrategy[k]; var last = arr[arr.length - 1] || 0;
+      var cls = last > 0 ? 'pos' : last < 0 ? 'neg' : 'neu'; var sign = last > 0 ? '+' : '';
+      lg += '<div class="legend-item"><span class="legend-sw" style="background:' + meta.color + '"></span>' + meta.name + ' <span class="' + cls + '">(' + sign + fmt(last, 1) + ')</span></div>';
+    });
+    document.getElementById('evo-legend').innerHTML = lg;
+
+    var ml = '';
+    ms.forEach(function(m, idx) { ml += '<div class="ms-item"><span class="ms-badge">' + (idx + 1) + '</span><span class="ms-date">' + m.date + '</span><span>' + m.label + '</span></div>'; });
+    document.getElementById('evo-milestones').innerHTML = ml;
+  }
+
+  // --- Informe (narrativa + tabla de veredictos data-driven) ---
+  function renderInforme() {
+    if (!snapshot || !snapshot.paper) return;
+    var p = snapshot.paper;
+    var days = p.activity_start_date ? Math.floor((Date.now() - new Date(p.activity_start_date + 'T00:00:00Z').getTime()) / 86400000) : '—';
+    var pnlCls = p.pnl_usdt >= 0 ? 'pos' : 'neg', sign = p.pnl_usdt >= 0 ? '+' : '';
+    var ACTIVE = { ZS: 1, ZSS: 1, XS: 1 };
+    var DESC = {
+      MR: 'Compra cualquier caída de 5m y vende la suba. La más antigua.',
+      MO: 'Momentum: compra rupturas alcistas y las sigue con un trailing fijo.',
+      DT: 'Como MO pero con trailing escalonado según la ganancia.',
+      VB: 'Como DT, con entrada más exigente (más volumen).',
+      SH: 'Short de momentum: apuesta a la baja cuando algo ya viene cayendo.',
+      ZS: 'Estadística: compra lo que está anormalmente barato (z-score) y vende al volver a su media.',
+      ZSS: 'La versión corta de ZS: shortea lo anormalmente caro y recompra en la media.',
+      XS: 'Compra los que más cayeron del ranking del día (reversión relativa).',
+    };
+    var byS = {}; (p.by_strategy || []).forEach(function(x) { byS[x.strategy] = x; });
+    var rows = '';
+    STRAT_SEQ.forEach(function(k) {
+      var x = byS[k]; if (!x) return;
+      var pnl = x.realized_pnl_usdt || 0; var c = pnl > 0 ? 'pos' : pnl < 0 ? 'neg' : 'neu'; var sg = pnl > 0 ? '+' : '';
+      var badge = ACTIVE[k] ? '<span class="badge badge-on">activa</span>' : '<span class="badge badge-off">apagada</span>';
+      rows += '<tr><td style="text-align:left"><span class="legend-sw" style="display:inline-block;background:' + ((ALL_STRAT[k] || {}).color || '#888') + ';margin-right:6px;vertical-align:middle"></span>' + k + ' ' + badge + '</td>' +
+        '<td style="text-align:left" class="tf">' + (DESC[k] || '') + '</td>' +
+        '<td>' + (x.win_rate_pct === null ? '—' : fmt(x.win_rate_pct, 1) + '%') + '</td>' +
+        '<td class="' + c + '">' + sg + fmt(pnl, 1) + '</td></tr>';
+    });
+    var lastMs = (p.strategy_milestones && p.strategy_milestones.length) ? p.strategy_milestones[p.strategy_milestones.length - 1].date : '2026-07-10';
+    var html =
+      '<p class="lead">Trading LAN es un laboratorio de trading que corre en una notebook de casa, en modo <b>simulación (paper)</b>: opera cientos de pares de Binance con dinero de mentira para aprender qué funciona <b>antes</b> de arriesgar un peso real.</p>' +
+      '<div class="callout">A hoy, tras <b>' + days + ' días</b>, el balance simulado es <b>' + fmtMoney(p.balance_usdt) + '</b> — un resultado de <span class="' + pnlCls + '">' + sign + fmtMoney(p.pnl_usdt) + ' (' + sign + fmt(p.pnl_pct, 2) + '%)</span> sobre los ' + (p.start_usdt || 10000).toLocaleString('es-AR') + ' USDT iniciales. Perder en la simulación es barato; el objetivo es aprender.</div>' +
+      '<h3>La lección principal</h3>' +
+      '<p>Probamos ocho estrategias. El patrón quedó claro: las de <b>seguir tendencia / momentum</b> (MO, DT, VB y el short de momentum SH) <b>pierden</b> en este mercado — llegan tarde, compran arriba y las expulsa el ruido. Las de <b>reversión a la media</b>, y sobre todo la estadística (ZS), son las únicas que muestran una ventaja real. Además, buena parte de la pérdida fue por <b>sobreoperar</b>: las comisiones se comieron cerca de un tercio del resultado.</p>' +
+      '<h3>Qué probó cada estrategia</h3>' +
+      '<div style="overflow-x:auto"><table><thead><tr><th style="text-align:left">Estrategia</th><th style="text-align:left">Qué hace</th><th>Aciertos</th><th>PnL (USDT)</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<h3>Dónde estamos hoy</h3>' +
+      '<p>Apagamos las que pierden por diseño y dejamos corriendo solo la familia que funciona: <b>ZS</b> (compra barato estadístico) y, desde el ' + lastMs + ', dos nuevas para seguir aprendiendo — <b>ZSS</b> (la versión corta de ZS) y <b>XS</b> (reversión por ranking relativo). En unos días revisamos los números y nos quedamos con lo que rinda.</p>' +
+      '<h3>Lo importante</h3>' +
+      '<ul><li>Todo es simulado: <b>no hay dinero real</b> ni órdenes reales.</li>' +
+      '<li>Cortar el sobreoperar (comisiones) y limitar cuántas posiciones se abren a la vez pesa tanto como acertar la dirección.</li>' +
+      '<li>Un freno de pérdida diario y un tope de posiciones son tan importantes como la estrategia en sí.</li></ul>' +
+      '<p class="chart-caption">Este informe se genera con los datos en vivo del simulador; se actualiza solo.</p>';
+    document.getElementById('report-body').innerHTML = html;
+  }
+
   // --- Load ---
   function load() {
     fetch('./snapshot.json?t=' + Date.now())
@@ -587,6 +853,8 @@
         renderPositions();
         renderMarket();
         renderSignals();
+        renderEvolution();
+        renderInforme();
         var updParts = [];
         if (data.paper && data.paper.activity_start_date) {
           var startD = new Date(data.paper.activity_start_date + 'T00:00:00');
