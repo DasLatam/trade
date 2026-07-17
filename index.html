@@ -240,6 +240,24 @@
     .badge-on { background: rgba(63,185,80,.15); color: #3fb950; }
     .callout { background: #161b22; border: 1px solid #21262d; border-left: 3px solid #d29922; border-radius: 8px; padding: 14px 16px; margin: 16px 0; line-height: 1.6; }
 
+    /* --- Simulacro --- */
+    .sim-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; margin: 14px 0 18px; }
+    .sim-field { display: flex; flex-direction: column; gap: 5px; }
+    .sim-field label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+    .sim-field input {
+      background: #0d1117; border: 1px solid #21262d; color: #e6edf3; border-radius: 8px;
+      padding: 8px 10px; font-size: 14px; font-family: inherit; width: 150px;
+    }
+    .sim-field input:focus { outline: none; border-color: #1f6feb; }
+    .sim-presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .sim-preset {
+      background: #161b22; border: 1px solid #21262d; color: #8b949e; border-radius: 20px;
+      padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    .sim-preset:hover { color: #e6edf3; background: #1c2128; }
+    tr.sim-quiebre td { background: rgba(248,81,73,.12); }
+    tr.sim-seguro td { background: rgba(63,185,80,.10); }
+
     @media (max-width: 600px) {
       main { padding: 14px; }
       .card-value { font-size: 18px; }
@@ -257,6 +275,7 @@
       <button class="tab active" data-view="panel" onclick="showView('panel')">📊 Panel</button>
       <button class="tab" data-view="evolucion" onclick="showView('evolucion')">📈 Evolución</button>
       <button class="tab" data-view="informe" onclick="showView('informe')">📄 Informe</button>
+      <button class="tab" data-view="simulacro" onclick="showView('simulacro')">🧮 Simulacro</button>
     </nav>
     <span class="updated" id="updated">Cargando...</span>
   </div>
@@ -322,6 +341,31 @@
       <div class="report" id="report-body"><p class="loading">Cargando...</p></div>
     </section>
   </div><!-- /view-informe -->
+
+  <div class="view" id="view-simulacro" hidden>
+    <section>
+      <h2>Simulacro — préstamo de $ 10.000.000</h2>
+      <div class="report">
+        <p class="lead">Escenario hipotético: tomamos un préstamo de <b>$ 10.000.000</b> (pesos argentinos),
+        lo ponemos a trabajar en el sistema de trading y devolvemos <b>$ 1.250.000 por mes durante 12 meses</b>
+        (total $ 15.000.000). ¿Cuándo quiebra? ¿Cuándo queda asegurado el repago? ¿Cuánto queda de ganancia?</p>
+        <div class="callout">Todo es <b>simulado</b>: el laboratorio opera con dinero de fantasía en USDT y acá
+        aplicamos su rendimiento porcentual al capital en pesos (sin modelar el dólar). No es consejo financiero
+        — es exactamente para esto que existe el presupuesto de fantasía: ver el quiebre acá y no en la vida real.</div>
+      </div>
+      <div class="sim-controls">
+        <div class="sim-field"><label>Capital prestado ($)</label><input id="sim-capital" type="number" value="10000000" step="100000" min="0"></div>
+        <div class="sim-field"><label>Cuota mensual ($)</label><input id="sim-cuota" type="number" value="1250000" step="10000" min="0"></div>
+        <div class="sim-field"><label>Meses</label><input id="sim-meses" type="number" value="12" step="1" min="1" max="120"></div>
+        <div class="sim-field"><label>Rendimiento mensual (%)</label><input id="sim-r" type="number" value="0" step="0.1"></div>
+      </div>
+      <div class="sim-presets" id="sim-presets"></div>
+      <div class="grid" id="sim-cards"></div>
+      <div class="chart-wrap" id="sim-chart" style="margin-top:18px"><p class="loading">Cargando...</p></div>
+      <p class="chart-caption" id="sim-caption"></p>
+      <div style="overflow-x:auto;margin-top:18px" id="sim-table-wrap"></div>
+    </section>
+  </div><!-- /view-simulacro -->
 
 </main>
 
@@ -652,7 +696,7 @@
 
   // --- Vistas (tabs) ---
   function showView(name) {
-    ['panel', 'evolucion', 'informe'].forEach(function(v) {
+    ['panel', 'evolucion', 'informe', 'simulacro'].forEach(function(v) {
       var el = document.getElementById('view-' + v);
       if (el) el.hidden = (v !== name);
     });
@@ -662,6 +706,7 @@
     }
     if (name === 'evolucion') renderEvolution();
     if (name === 'informe') renderInforme();
+    if (name === 'simulacro') renderSimulacro();
     window.scrollTo(0, 0);
   }
 
@@ -841,6 +886,174 @@
     document.getElementById('report-body').innerHTML = html;
   }
 
+  // --- Simulacro (préstamo en pesos pagado con el rendimiento del sistema) ---
+  var simUserTouchedR = false;
+
+  function fmtArs(n) {
+    if (n === null || n === undefined || !isFinite(n)) return '—';
+    return '$ ' + fmt(n, 0);
+  }
+
+  // Rendimiento mensual real del sistema, compuesto desde el % total y los días activos.
+  function realMonthlyRates() {
+    if (!snapshot || !snapshot.paper) return null;
+    var p = snapshot.paper;
+    var out = {};
+    if (p.activity_start_date && typeof p.pnl_pct === 'number') {
+      var days = Math.max((Date.now() - new Date(p.activity_start_date + 'T00:00:00Z').getTime()) / 86400000, 1);
+      out.historico = (Math.pow(1 + p.pnl_pct / 100, 30 / days) - 1) * 100;
+    }
+    var ds = p.daily_stats || [];
+    if (ds.length >= 2 && typeof p.balance_usdt === 'number' && p.balance_usdt > 0) {
+      var last7 = ds.slice(-8, -1);   // días cerrados (excluye el día en curso)
+      if (last7.length) {
+        var sum = 0;
+        last7.forEach(function(d) { sum += (d.realized_pnl !== undefined && d.realized_pnl !== null) ? d.realized_pnl : (d.net_pnl || 0); });
+        var daily = sum / last7.length / p.balance_usdt * 100;
+        out.ult7d = (Math.pow(1 + daily / 100, 30) - 1) * 100;
+      }
+    }
+    return out;
+  }
+
+  // Simula mes a mes: rinde, paga la cuota, y detecta quiebre / repago asegurado.
+  function simRun(capital, cuota, meses, rPct) {
+    var rows = [], cap = capital, quiebre = null, seguro = null;
+    for (var mes = 1; mes <= meses; mes++) {
+      var rend = cap * rPct / 100;
+      var capFin = cap + rend - cuota;
+      rows.push({ mes: mes, capIni: cap, rend: rend, capFin: capFin });
+      if (quiebre === null && capFin < 0) { quiebre = mes; cap = capFin; break; }
+      if (seguro === null && capFin >= cuota * (meses - mes)) seguro = mes;
+      cap = capFin;
+    }
+    return { rows: rows, quiebre: quiebre, seguro: seguro, capitalFinal: cap };
+  }
+
+  // Rendimiento mensual mínimo para terminar los N meses con capital >= 0 (bisección).
+  function simBreakEven(capital, cuota, meses) {
+    function fin(r) { var c = capital; for (var i = 0; i < meses; i++) c = c * (1 + r / 100) - cuota; return c; }
+    if (fin(0) >= 0) return 0;
+    var lo = 0, hi = 50;
+    for (var it = 0; it < 80; it++) { var mid = (lo + hi) / 2; if (fin(mid) >= 0) hi = mid; else lo = mid; }
+    return hi;
+  }
+
+  function simCurve(capital, cuota, meses, rPct) {
+    var pts = [capital], c = capital;
+    for (var i = 0; i < meses; i++) { c = c * (1 + rPct / 100) - cuota; pts.push(c); }
+    return pts;
+  }
+
+  function simSetR(v) {
+    document.getElementById('sim-r').value = v.toFixed(2);
+    simUserTouchedR = true;
+    renderSimulacro();
+  }
+
+  function renderSimulacro() {
+    var elR = document.getElementById('sim-r');
+    if (!elR) return;
+    var capital = Number(document.getElementById('sim-capital').value) || 0;
+    var cuota = Number(document.getElementById('sim-cuota').value) || 0;
+    var meses = Math.max(Math.round(Number(document.getElementById('sim-meses').value) || 12), 1);
+    var rates = realMonthlyRates() || {};
+    // La primera vez que hay datos, el rendimiento arranca en el real del sistema (últimos 7 días).
+    if (!simUserTouchedR && (rates.ult7d !== undefined || rates.historico !== undefined)) {
+      elR.value = (rates.ult7d !== undefined ? rates.ult7d : rates.historico).toFixed(2);
+    }
+    var rPct = Number(elR.value) || 0;
+    var equil = simBreakEven(capital, cuota, meses);
+    var cuotaSola = capital > 0 ? cuota / capital * 100 : 0;
+
+    // Presets
+    var pr = '';
+    if (rates.ult7d !== undefined) pr += '<button class="sim-preset" onclick="simSetR(' + rates.ult7d.toFixed(4) + ')">Sistema últimos 7 días (' + (rates.ult7d >= 0 ? '+' : '') + fmt(rates.ult7d, 2) + '%/mes)</button>';
+    if (rates.historico !== undefined) pr += '<button class="sim-preset" onclick="simSetR(' + rates.historico.toFixed(4) + ')">Sistema histórico (' + (rates.historico >= 0 ? '+' : '') + fmt(rates.historico, 2) + '%/mes)</button>';
+    pr += '<button class="sim-preset" onclick="simSetR(0)">Sin rendimiento (0%)</button>';
+    pr += '<button class="sim-preset" onclick="simSetR(' + equil.toFixed(4) + ')">Equilibrio justo (' + fmt(equil, 2) + '%/mes)</button>';
+    document.getElementById('sim-presets').innerHTML = pr;
+
+    var sim = simRun(capital, cuota, meses, rPct);
+
+    // Cards de resumen
+    var totalDevolver = cuota * meses;
+    var finCls = sim.capitalFinal > 0 ? 'pos' : 'neg';
+    var cards =
+      '<div class="card"><div class="card-label">Total a devolver</div><div class="card-value">' + fmtArs(totalDevolver) + '</div><div class="card-cmp">costo del préstamo: ' + fmtArs(totalDevolver - capital) + '</div></div>' +
+      '<div class="card"><div class="card-label">Rendimiento de equilibrio</div><div class="card-value">' + fmt(equil, 2) + '% /mes</div><div class="card-cmp">lo mínimo para terminar los ' + meses + ' meses sin quebrar</div></div>' +
+      '<div class="card"><div class="card-label">Cuota solo con rendimiento</div><div class="card-value">' + fmt(cuotaSola, 2) + '% /mes</div><div class="card-cmp">para pagar la cuota sin comerse el capital</div></div>' +
+      '<div class="card"><div class="card-label">Momento de quiebre</div><div class="card-value ' + (sim.quiebre ? 'neg' : 'pos') + '">' + (sim.quiebre ? 'Mes ' + sim.quiebre : 'No quiebra') + '</div><div class="card-cmp">' + (sim.quiebre ? 'el capital no alcanza para la cuota' : 'paga las ' + meses + ' cuotas') + '</div></div>' +
+      '<div class="card"><div class="card-label">Repago asegurado</div><div class="card-value ' + (sim.seguro ? 'pos' : 'neu') + '">' + (sim.seguro ? 'Mes ' + sim.seguro : '—') + '</div><div class="card-cmp">' + (sim.seguro ? 'lo que queda ya cubre todas las cuotas restantes' : 'nunca queda cubierto de antemano') + '</div></div>' +
+      '<div class="card"><div class="card-label">Resultado al final</div><div class="card-value ' + finCls + '">' + fmtArs(sim.capitalFinal) + '</div><div class="card-cmp">' + (sim.capitalFinal > 0 ? 'ganancia neta con plata que no era tuya' : 'faltaría poner de tu bolsillo') + '</div></div>';
+    document.getElementById('sim-cards').innerHTML = cards;
+
+    // Gráfico: capital mes a mes — escenario elegido vs equilibrio vs 0%
+    var cElegido = simCurve(capital, cuota, meses, rPct);
+    var cEquil = simCurve(capital, cuota, meses, equil);
+    var cCero = simCurve(capital, cuota, meses, 0);
+    var all = cElegido.concat(cEquil).concat(cCero).concat([0]);
+    var vmin = Math.min.apply(null, all), vmax = Math.max.apply(null, all);
+    var vpad = (vmax - vmin) * 0.08 || 1; vmin -= vpad; vmax += vpad;
+
+    var W = 1000, H = 330, padL = 78, padR = 18, padT = 30, padB = 40;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var xf = function(i) { return padL + plotW * i / meses; };
+    var yf = function(v) { return padT + plotH - (v - vmin) / (vmax - vmin) * plotH; };
+
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Capital restante mes a mes según rendimiento">';
+    s += '<text x="' + padL + '" y="16" class="chart-title">Capital restante — pesos argentinos</text>';
+    var tks = niceTicks(vmin, vmax, 5);
+    for (var i = 0; i < tks.length; i++) {
+      var ty = yf(tks[i]);
+      s += '<line class="grid-line" x1="' + padL + '" y1="' + ty.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + ty.toFixed(1) + '"/>';
+      s += '<text class="axis-lbl" x="' + (padL - 8) + '" y="' + (ty + 3).toFixed(1) + '" text-anchor="end">' + Math.round(tks[i] / 1000).toLocaleString('es-AR') + 'k</text>';
+    }
+    if (vmin < 0 && vmax > 0) s += '<line class="zero-line" x1="' + padL + '" y1="' + yf(0).toFixed(1) + '" x2="' + (W - padR) + '" y2="' + yf(0).toFixed(1) + '"/>';
+    for (var mx = 0; mx <= meses; mx++) {
+      s += '<text class="axis-lbl" x="' + xf(mx).toFixed(1) + '" y="' + (H - 14) + '" text-anchor="middle">' + mx + '</text>';
+    }
+    s += '<text class="axis-lbl" x="' + (W / 2) + '" y="' + (H - 1) + '" text-anchor="middle">mes</text>';
+
+    function curvePath(pts) {
+      var d = [];
+      for (var i = 0; i < pts.length; i++) d.push((i === 0 ? 'M' : 'L') + xf(i).toFixed(1) + ' ' + yf(pts[i]).toFixed(1));
+      return d.join(' ');
+    }
+    s += '<path d="' + curvePath(cCero) + '" fill="none" stroke="#6e7681" stroke-width="1.6" stroke-dasharray="4 4"/>';
+    s += '<path d="' + curvePath(cEquil) + '" fill="none" stroke="#d29922" stroke-width="1.6" stroke-dasharray="4 4"/>';
+    s += '<path d="' + curvePath(cElegido) + '" fill="none" stroke="#1f6feb" stroke-width="2.4"/>';
+    if (sim.quiebre) s += '<circle cx="' + xf(sim.quiebre).toFixed(1) + '" cy="' + yf(cElegido[sim.quiebre]).toFixed(1) + '" r="5" fill="#f85149"/>';
+    if (sim.seguro) s += '<circle cx="' + xf(sim.seguro).toFixed(1) + '" cy="' + yf(cElegido[sim.seguro]).toFixed(1) + '" r="5" fill="#3fb950"/>';
+    s += '</svg>';
+    document.getElementById('sim-chart').innerHTML = s;
+
+    document.getElementById('sim-caption').innerHTML =
+      '<span style="color:#1f6feb">━</span> tu escenario (' + (rPct >= 0 ? '+' : '') + fmt(rPct, 2) + '%/mes) · ' +
+      '<span style="color:#d29922">┅</span> equilibrio (' + fmt(equil, 2) + '%/mes) · ' +
+      '<span style="color:#6e7681">┅</span> sin rendimiento (0%) · ' +
+      '<span style="color:#f85149">●</span> quiebre · <span style="color:#3fb950">●</span> repago asegurado';
+
+    // Tabla mes a mes
+    var t = '<table><thead><tr><th style="text-align:left">Mes</th><th>Capital al inicio</th><th>Rendimiento</th><th>Cuota</th><th>Capital al final</th></tr></thead><tbody>';
+    sim.rows.forEach(function(r) {
+      var cls = (sim.quiebre === r.mes) ? ' class="sim-quiebre"' : (sim.seguro === r.mes) ? ' class="sim-seguro"' : '';
+      var rendCls = r.rend > 0 ? 'pos' : r.rend < 0 ? 'neg' : 'neu';
+      var note = (sim.quiebre === r.mes) ? ' ⛔ quiebre' : (sim.seguro === r.mes) ? ' ✅ repago asegurado' : '';
+      t += '<tr' + cls + '><td>' + r.mes + note + '</td><td>' + fmtArs(r.capIni) + '</td>' +
+        '<td class="' + rendCls + '">' + (r.rend >= 0 ? '+' : '') + fmtArs(r.rend) + '</td>' +
+        '<td>−' + fmtArs(cuota).replace('$ ', '$ ') + '</td>' +
+        '<td class="' + (r.capFin >= 0 ? '' : 'neg') + '">' + fmtArs(r.capFin) + '</td></tr>';
+    });
+    t += '</tbody></table>';
+    document.getElementById('sim-table-wrap').innerHTML = t;
+  }
+
+  document.getElementById('sim-capital').addEventListener('input', renderSimulacro);
+  document.getElementById('sim-cuota').addEventListener('input', renderSimulacro);
+  document.getElementById('sim-meses').addEventListener('input', renderSimulacro);
+  document.getElementById('sim-r').addEventListener('input', function() { simUserTouchedR = true; renderSimulacro(); });
+
   // --- Load ---
   function load() {
     fetch('./snapshot.json?t=' + Date.now())
@@ -855,6 +1068,7 @@
         renderSignals();
         renderEvolution();
         renderInforme();
+        renderSimulacro();
         var updParts = [];
         if (data.paper && data.paper.activity_start_date) {
           var startD = new Date(data.paper.activity_start_date + 'T00:00:00');
