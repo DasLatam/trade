@@ -846,7 +846,7 @@
     var p = snapshot.paper;
     var days = p.activity_start_date ? Math.floor((Date.now() - new Date(p.activity_start_date + 'T00:00:00Z').getTime()) / 86400000) : '—';
     var pnlCls = p.pnl_usdt >= 0 ? 'pos' : 'neg', sign = p.pnl_usdt >= 0 ? '+' : '';
-    var ACTIVE = { ZS: 1, ZSS: 1, XS: 1 };
+    var ACTIVE = { XS: 1 };
     var DESC = {
       MR: 'Compra cualquier caída de 5m y vende la suba. La más antigua.',
       MO: 'Momentum: compra rupturas alcistas y las sigue con un trailing fijo.',
@@ -873,11 +873,11 @@
       '<p class="lead">Trading LAN es un laboratorio de trading que corre en una notebook de casa, en modo <b>simulación (paper)</b>: opera cientos de pares de Binance con dinero de mentira para aprender qué funciona <b>antes</b> de arriesgar un peso real.</p>' +
       '<div class="callout">A hoy, tras <b>' + days + ' días</b>, el balance simulado es <b>' + fmtMoney(p.balance_usdt) + '</b> — un resultado de <span class="' + pnlCls + '">' + sign + fmtMoney(p.pnl_usdt) + ' (' + sign + fmt(p.pnl_pct, 2) + '%)</span> sobre los ' + (p.start_usdt || 10000).toLocaleString('es-AR') + ' USDT iniciales. Perder en la simulación es barato; el objetivo es aprender.</div>' +
       '<h3>La lección principal</h3>' +
-      '<p>Probamos ocho estrategias. El patrón quedó claro: las de <b>seguir tendencia / momentum</b> (MO, DT, VB y el short de momentum SH) <b>pierden</b> en este mercado — llegan tarde, compran arriba y las expulsa el ruido. Las de <b>reversión a la media</b>, y sobre todo la estadística (ZS), son las únicas que muestran una ventaja real. Además, buena parte de la pérdida fue por <b>sobreoperar</b>: las comisiones se comieron cerca de un tercio del resultado.</p>' +
+      '<p>Probamos ocho estrategias. En una dirección el patrón es claro: las de <b>seguir tendencia / momentum</b> (MO, DT, VB y el short SH) <b>pierden con claridad</b> en este mercado — llegan tarde y las expulsa el ruido. Las de <b>reversión a la media</b> pierden menos, pero <b>ninguna demostró todavía una ventaja que se sostenga</b>: la única positiva (ZS) ganaba apenas centavos por operación, y la mejor candidata (XS) rindió bien una semana y mal la siguiente. La lección más dura es de <b>costos</b>: la ganancia por operación es tan chica que las comisiones (~0,15% ida y vuelta) se comen el resultado — las fees fueron cerca del <b>40% de la pérdida</b>. Por eso el foco ahora es operar <b>menos</b> y solo cuando el margen supera al costo, no acertar más seguido.</p>' +
       '<h3>Qué probó cada estrategia</h3>' +
       '<div style="overflow-x:auto"><table><thead><tr><th style="text-align:left">Estrategia</th><th style="text-align:left">Qué hace</th><th>Aciertos</th><th>PnL (USDT)</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
       '<h3>Dónde estamos hoy</h3>' +
-      '<p>Apagamos las que pierden por diseño y dejamos corriendo solo la familia que funciona: <b>ZS</b> (compra barato estadístico) y, desde el ' + lastMs + ', dos nuevas para seguir aprendiendo — <b>ZSS</b> (la versión corta de ZS) y <b>XS</b> (reversión por ranking relativo). En unos días revisamos los números y nos quedamos con lo que rinda.</p>' +
+      '<p>Apagamos todo lo que pierde por diseño. Hoy corre <b>una sola</b> estrategia, <b>XS</b> (reversión por ranking relativo), con un <b>freno automático</b> que la pausa apenas su rendimiento reciente se vuelve negativo y la deja volver a probar sola cuando mejora. No declaramos ninguna ganadora: seguimos midiendo con las <b>comisiones reales</b> y buscando un método que aguante distintos tipos de mercado, no una buena semana suelta.</p>' +
       '<h3>Lo importante</h3>' +
       '<ul><li>Todo es simulado: <b>no hay dinero real</b> ni órdenes reales.</li>' +
       '<li>Cortar el sobreoperar (comisiones) y limitar cuántas posiciones se abren a la vez pesa tanto como acertar la dirección.</li>' +
