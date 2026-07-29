@@ -512,7 +512,7 @@
   // --- Posiciones abiertas ---
   function stratLabel(s) {
     var m = { MR: 'Reversión', MO: 'Momentum', DT: 'Trailing din.', VB: 'Entrada estricta',
-      SH: 'Short', ZS: 'Z-score', ZSS: 'Z-score short', XS: 'Cross-sectional' };
+      SH: 'Short', ZS: 'Z-score', ZSS: 'Z-score short', XS: 'Cross-sectional', TB: 'Tendencia BTC' };
     return m[s] || s || '—';
   }
 
@@ -526,11 +526,12 @@
     ZS:  { color: '#3fb950', name: 'ZS — z-score long',           sub: 'compra barato estadístico, vuelve a la media' },
     ZSS: { color: '#e3b341', name: 'ZSS — z-score short',         sub: 'shortea caro estadístico' },
     XS:  { color: '#f778ba', name: 'XS — cross-sectional',        sub: 'compra los más caídos del ranking' },
+    TB:  { color: '#58a6ff', name: 'TB — tendencia BTC',          sub: 'long BTC sobre su media de 150 días, si no cash' },
   };
   // Orden cronológico (para el gráfico) y de relevancia (activas primero, para cards)
-  var STRAT_SEQ = ['MR', 'MO', 'DT', 'VB', 'SH', 'ZS', 'ZSS', 'XS'];
+  var STRAT_SEQ = ['MR', 'MO', 'DT', 'VB', 'SH', 'ZS', 'ZSS', 'XS', 'TB'];
   var STRAT_META = ALL_STRAT;
-  var STRAT_ORDER = ['ZS', 'ZSS', 'XS', 'SH', 'DT', 'MO', 'VB', 'MR'];
+  var STRAT_ORDER = ['TB', 'ZS', 'ZSS', 'XS', 'SH', 'DT', 'MO', 'VB', 'MR'];
 
   function renderStrategies() {
     if (!snapshot || !snapshot.paper) return;
@@ -846,7 +847,7 @@
     var p = snapshot.paper;
     var days = p.activity_start_date ? Math.floor((Date.now() - new Date(p.activity_start_date + 'T00:00:00Z').getTime()) / 86400000) : '—';
     var pnlCls = p.pnl_usdt >= 0 ? 'pos' : 'neg', sign = p.pnl_usdt >= 0 ? '+' : '';
-    var ACTIVE = { XS: 1 };
+    var ACTIVE = { TB: 1 };
     var DESC = {
       MR: 'Compra cualquier caída de 5m y vende la suba. La más antigua.',
       MO: 'Momentum: compra rupturas alcistas y las sigue con un trailing fijo.',
@@ -856,6 +857,7 @@
       ZS: 'Estadística: compra lo que está anormalmente barato (z-score) y vende al volver a su media.',
       ZSS: 'La versión corta de ZS: shortea lo anormalmente caro y recompra en la media.',
       XS: 'Compra los que más cayeron del ranking del día (reversión relativa).',
+      TB: 'Long BTC mientras su cierre diario supere la media de 150 días; si no, todo en USDT. Sin stop: la salida es el cruce de la media.',
     };
     var byS = {}; (p.by_strategy || []).forEach(function(x) { byS[x.strategy] = x; });
     var rows = '';
