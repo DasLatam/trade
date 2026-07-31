@@ -65,6 +65,38 @@
     .neg { color: #f85149; }
     .neu { color: #e6edf3; }
 
+    /* Estado del motor activo — explica por qué el sistema puede pasar meses
+       sin operar (TB hace ~11 entradas al año). Sin esto, "esperando la señal"
+       y "roto" se ven igual desde afuera. */
+    .engine-card {
+      background: #161b22;
+      border: 1px solid #21262d;
+      border-left: 4px solid #58a6ff;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .engine-card.waiting { border-left-color: #d29922; }
+    .engine-card.long    { border-left-color: #3fb950; }
+    .engine-card.broken  { border-left-color: #f85149; }
+    .engine-state {
+      font-size: 20px; font-weight: 700; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+    }
+    .engine-why { color: #c9d1d9; font-size: 14px; line-height: 1.55; }
+    .engine-why strong { color: #e6edf3; }
+    .engine-meta {
+      margin-top: 14px; padding-top: 13px; border-top: 1px solid #21262d;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 12px;
+    }
+    .engine-meta div span { display: block; font-size: 11px; color: #8b949e; margin-bottom: 3px; }
+    .engine-meta div b { font-size: 15px; font-weight: 600; }
+    .engine-dot {
+      width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none;
+    }
+    .dot-ok { background: #3fb950; }
+    .dot-wait { background: #d29922; }
+    .dot-bad { background: #f85149; }
+
     /* Hot opportunities */
     .hot-grid {
       display: grid;
@@ -285,6 +317,11 @@
 
   <div class="view" id="view-panel">
 
+  <section id="engine-section">
+    <h2>Estado del sistema</h2>
+    <div id="engine-wrap"><p class="loading">Cargando estado...</p></div>
+  </section>
+
   <section id="hot-section">
     <h2>🔥 Top 3 Oportunidades</h2>
     <div class="hot-grid" id="hot-grid"><p class="loading">Cargando...</p></div>
@@ -434,6 +471,108 @@
     if (Math.sign(s5) === Math.sign(s15) && s5 !== 0 && s15 !== 0) score *= 1.4;
     if (Math.sign(s5) === Math.sign(s15) && Math.sign(s15) === Math.sign(s60) && s5 !== 0) score *= 1.2;
     return score;
+  }
+
+  // --- Estado del motor activo ---
+  // El sistema hoy corre un solo motor (TB) que hace ~11 entradas al año, así
+  // que lo NORMAL es verlo quieto durante meses. Esta tarjeta existe para que
+  // "esperando la señal" no se confunda con "se rompió": dice en qué estado
+  // está, por qué, desde cuándo, y qué tendría que pasar para que vuelva a
+  // operar. También delata al motor muerto, porque muestra la antigüedad del
+  // último latido.
+  function renderEngine() {
+    var wrap = document.getElementById('engine-wrap');
+    if (!wrap) return;
+    var e = snapshot && snapshot.paper && snapshot.paper.engine;
+    if (!e) { wrap.innerHTML = '<p class="loading">Estado no disponible.</p>'; return; }
+
+    if (!e.strategy) {
+      wrap.innerHTML = '<div class="engine-card broken">' +
+        '<div class="engine-state"><span class="engine-dot dot-bad"></span>Sin motores activos</div>' +
+        '<div class="engine-why">No hay ninguna estrategia habilitada para abrir posiciones nuevas.</div></div>';
+      return;
+    }
+
+    var cls, dot, title, why;
+    if (!e.healthy) {
+      cls = 'broken'; dot = 'dot-bad';
+      title = 'Atención — el motor no está reportando';
+      why = e.message ? esc(e.message)
+        : 'El motor dejó de emitir su latido. Puede haber un problema en el servicio o en los datos.';
+      if (e.heartbeat_age_min != null) {
+        why += ' Último latido hace ' + fmtAge(e.heartbeat_age_min) + '.';
+      }
+    } else if (e.state === 'long') {
+      cls = 'long'; dot = 'dot-ok';
+      title = 'Invertido — posición abierta en ' + esc(e.symbol || '');
+      why = 'El cierre diario de ' + esc(e.symbol || '') + ' está <strong>por encima</strong> de su media de ' +
+            e.ma_days + ' días, así que la estrategia mantiene la posición. Sale recién cuando el precio ' +
+            'vuelva a cruzar la media hacia abajo — no hay stop ni objetivo de ganancia.';
+    } else if (e.state === 'entering') {
+      cls = 'long'; dot = 'dot-ok';
+      title = 'Señal de compra activa — entrando';
+      why = 'El cierre diario de ' + esc(e.symbol || '') + ' superó su media de ' + e.ma_days +
+            ' días. La posición se abre en el próximo ciclo.';
+    } else {
+      cls = 'waiting'; dot = 'dot-wait';
+      title = 'Fuera del mercado, esperando señal — funcionando con normalidad';
+      why = 'La estrategia activa compra ' + esc(sym(e.symbol) || 'BTC') + ' <strong>solo</strong> cuando su cierre diario ' +
+            'supera la media de ' + e.ma_days + ' días. Hoy está <strong>' +
+            (e.dist_pct != null ? pctAbs(e.dist_pct) : '—') + ' por debajo</strong>, así que el capital está ' +
+            '<strong>100% en efectivo, a propósito</strong>. No operar es la decisión de la estrategia, no una falla.';
+      if (e.flip && e.flip.state === 'cash') {
+        why += ' Está en efectivo desde el <strong>' + fmtDate(e.flip.since) + '</strong> (' +
+               e.flip.days_in_state + ' días), y en ese lapso ' + esc(sym(e.symbol) || 'BTC') +
+               ' se movió ' + fmtPct(e.flip.symbol_change_pct) +
+               (e.flip.symbol_change_pct < 0 ? ' — esa caída es exactamente la que el sistema se ahorró.' : '.');
+      }
+    }
+
+    var meta = '';
+    if (e.last_close != null) meta += '<div><span>Último cierre diario</span><b>' + fmtNum(e.last_close) + '</b></div>';
+    if (e.ma != null)         meta += '<div><span>Media ' + e.ma_days + ' días</span><b>' + fmtNum(e.ma) + '</b></div>';
+    if (e.dist_pct != null)   meta += '<div><span>Distancia a la media</span><b>' + fmtPct(e.dist_pct) + '</b></div>';
+    if (e.gap_to_flip_pct != null && e.state === 'cash') {
+      meta += '<div><span>Vuelve a comprar si sube</span><b>' + pctAbs(e.gap_to_flip_pct) + '</b></div>';
+    }
+    if (e.heartbeat_age_min != null) {
+      meta += '<div><span>Último control</span><b>hace ' + fmtAge(e.heartbeat_age_min) + '</b></div>';
+    }
+
+    wrap.innerHTML = '<div class="engine-card ' + cls + '">' +
+      '<div class="engine-state"><span class="engine-dot ' + dot + '"></span>' + title + '</div>' +
+      '<div class="engine-why">' + why + '</div>' +
+      '<div class="engine-why" style="margin-top:10px;color:#8b949e;font-size:13px;">Estrategia activa: <strong>' +
+        esc(e.label || e.strategy) + '</strong></div>' +
+      (meta ? '<div class="engine-meta">' + meta + '</div>' : '') +
+      '</div>';
+  }
+
+  function fmtAge(min) {
+    if (min < 60) return min + ' min';
+    var h = Math.floor(min / 60);
+    if (h < 48) return h + ' h';
+    return Math.floor(h / 24) + ' días';
+  }
+  function fmtDate(iso) {
+    var M = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+    var p = String(iso).split('-');
+    if (p.length < 3) return esc(String(iso));
+    return Number(p[2]) + ' ' + M[Number(p[1]) - 1] + ' ' + p[0];
+  }
+  function fmtNum(v) {
+    return Number(v).toLocaleString('es-AR', { maximumFractionDigits: 2 });
+  }
+  // Porcentaje sin signo ni color: para frases que ya dicen la dirección
+  // ("7,13% por debajo"), donde el "-" de fmtPct sería una doble negación.
+  function pctAbs(n) {
+    if (n === null || n === undefined || !isFinite(n)) return '—';
+    return fmt(Math.abs(n), 2) + '%';
+  }
+  function esc(s) {
+    return String(s === null || s === undefined ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   // --- Hot opportunities ---
@@ -1062,6 +1201,7 @@
       .then(function(r) { return r.json(); })
       .then(function(data) {
         snapshot = data;
+        renderEngine();
         renderHot();
         renderPaper(data.paper);
         renderStrategies();
@@ -1082,7 +1222,7 @@
       })
       .catch(function() {
         document.getElementById('updated').textContent = 'Error al cargar datos';
-        ['hot-grid', 'positions-wrap', 'market-wrap', 'signals-wrap'].forEach(function(id) {
+        ['engine-wrap', 'hot-grid', 'positions-wrap', 'market-wrap', 'signals-wrap'].forEach(function(id) {
           var el = document.getElementById(id);
           if (el) el.innerHTML = '<p class="error-msg">No se pudo cargar snapshot.json</p>';
         });
