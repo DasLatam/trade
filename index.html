@@ -78,6 +78,11 @@
     .engine-card.waiting { border-left-color: #d29922; }
     .engine-card.long    { border-left-color: #3fb950; }
     .engine-card.broken  { border-left-color: #f85149; }
+    .engine-card + .engine-card { margin-top: 12px; }
+    .engine-summary {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 15px; font-weight: 600; color: #c9d1d9; margin-bottom: 12px;
+    }
     .engine-state {
       font-size: 20px; font-weight: 700; margin-bottom: 6px;
       display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
@@ -486,13 +491,32 @@
     var e = snapshot && snapshot.paper && snapshot.paper.engine;
     if (!e) { wrap.innerHTML = '<p class="loading">Estado no disponible.</p>'; return; }
 
-    if (!e.strategy) {
+    var list = e.engines || [];
+    if (!list.length) {
       wrap.innerHTML = '<div class="engine-card broken">' +
         '<div class="engine-state"><span class="engine-dot dot-bad"></span>Sin motores activos</div>' +
         '<div class="engine-why">No hay ninguna estrategia habilitada para abrir posiciones nuevas.</div></div>';
       return;
     }
+    // Con más de un motor conviene decir primero el resumen: si los dos esperan,
+    // el titular es "el sistema está esperando", no dos tarjetas que hay que leer
+    // y comparar para deducirlo.
+    var html = '';
+    if (list.length > 1) {
+      var nLong = list.filter(function(x) { return x.state === 'long'; }).length;
+      var nBad  = list.filter(function(x) { return !x.healthy; }).length;
+      var resumen, rdot;
+      if (nBad) { resumen = nBad + ' de ' + list.length + ' motores con problemas'; rdot = 'dot-bad'; }
+      else if (nLong === 0) { resumen = 'Los ' + list.length + ' motores están esperando señal — sin problemas'; rdot = 'dot-wait'; }
+      else if (nLong === list.length) { resumen = 'Los ' + list.length + ' motores están invertidos'; rdot = 'dot-ok'; }
+      else { resumen = nLong + ' de ' + list.length + ' motores invertidos'; rdot = 'dot-ok'; }
+      html += '<div class="engine-summary"><span class="engine-dot ' + rdot + '"></span>' + resumen + '</div>';
+    }
+    list.forEach(function(en) { html += engineCard(en); });
+    wrap.innerHTML = html;
+  }
 
+  function engineCard(e) {
     var cls, dot, title, why;
     if (!e.healthy) {
       cls = 'broken'; dot = 'dot-bad';
@@ -505,24 +529,33 @@
     } else if (e.state === 'long') {
       cls = 'long'; dot = 'dot-ok';
       title = 'Invertido — posición abierta en ' + esc(e.symbol || '');
-      why = 'El cierre diario de ' + esc(e.symbol || '') + ' está <strong>por encima</strong> de su media de ' +
-            e.ma_days + ' días, así que la estrategia mantiene la posición. Sale recién cuando el precio ' +
-            'vuelva a cruzar la media hacia abajo — no hay stop ni objetivo de ganancia.';
+      why = e.rule === 'canal Donchian'
+        ? 'El precio sigue dentro del canal, así que la estrategia mantiene la posición. Sale recién ' +
+          'cuando el cierre diario pierda el mínimo de los últimos ' + (e.window_days || '?') +
+          ' días — no hay stop ni objetivo de ganancia.'
+        : 'El cierre diario está <strong>por encima</strong> de su media de ' + (e.window_days || '?') +
+          ' días, así que la estrategia mantiene la posición. Sale recién cuando el precio vuelva a ' +
+          'cruzar la media hacia abajo — no hay stop ni objetivo de ganancia.';
     } else if (e.state === 'entering') {
       cls = 'long'; dot = 'dot-ok';
       title = 'Señal de compra activa — entrando';
-      why = 'El cierre diario de ' + esc(e.symbol || '') + ' superó su media de ' + e.ma_days +
-            ' días. La posición se abre en el próximo ciclo.';
+      why = 'Se cumplió la condición de entrada. La posición se abre en el próximo ciclo.';
     } else {
       cls = 'waiting'; dot = 'dot-wait';
       title = 'Fuera del mercado, esperando señal — funcionando con normalidad';
-      why = 'La estrategia activa compra ' + esc(sym(e.symbol) || 'BTC') + ' <strong>solo</strong> cuando su cierre diario ' +
-            'supera la media de ' + e.ma_days + ' días. Hoy está <strong>' +
-            (e.dist_pct != null ? pctAbs(e.dist_pct) : '—') + ' por debajo</strong>, así que el capital está ' +
-            '<strong>100% en efectivo, a propósito</strong>. No operar es la decisión de la estrategia, no una falla.';
+      var activo = esc(sym(e.symbol) || 'BTC');
+      why = e.rule === 'canal Donchian'
+        ? 'Esta estrategia compra ' + activo + ' <strong>solo</strong> cuando el cierre diario supera el ' +
+          '<strong>máximo de los últimos ' + (e.window_days || '?') + ' días</strong>. Todavía no lo rompió, ' +
+          'así que su parte del capital está <strong>en efectivo, a propósito</strong>.'
+        : 'Esta estrategia compra ' + activo + ' <strong>solo</strong> cuando su cierre diario supera la ' +
+          'media de ' + (e.window_days || '?') + ' días. Hoy está <strong>' +
+          (e.dist_pct != null ? pctAbs(e.dist_pct) : '—') + ' por debajo</strong>, así que su parte del ' +
+          'capital está <strong>en efectivo, a propósito</strong>.';
+      why += ' No operar es la decisión de la estrategia, no una falla.';
       if (e.flip && e.flip.state === 'cash') {
         why += ' Está en efectivo desde el <strong>' + fmtDate(e.flip.since) + '</strong> (' +
-               e.flip.days_in_state + ' días), y en ese lapso ' + esc(sym(e.symbol) || 'BTC') +
+               e.flip.days_in_state + ' días), y en ese lapso ' + activo +
                ' se movió ' + fmtPct(e.flip.symbol_change_pct) +
                (e.flip.symbol_change_pct < 0 ? ' — esa caída es exactamente la que el sistema se ahorró.' : '.');
       }
@@ -530,19 +563,19 @@
 
     var meta = '';
     if (e.last_close != null) meta += '<div><span>Último cierre diario</span><b>' + fmtNum(e.last_close) + '</b></div>';
-    if (e.ma != null)         meta += '<div><span>Media ' + e.ma_days + ' días</span><b>' + fmtNum(e.ma) + '</b></div>';
-    if (e.dist_pct != null)   meta += '<div><span>Distancia a la media</span><b>' + fmtPct(e.dist_pct) + '</b></div>';
+    if (e.threshold != null)  meta += '<div><span>' + esc(e.threshold_label || 'Umbral') + '</span><b>' + fmtNum(e.threshold) + '</b></div>';
+    if (e.dist_pct != null)   meta += '<div><span>Distancia al umbral</span><b>' + fmtPct(e.dist_pct) + '</b></div>';
     if (e.gap_to_flip_pct != null && e.state === 'cash') {
-      meta += '<div><span>Vuelve a comprar si sube</span><b>' + pctAbs(e.gap_to_flip_pct) + '</b></div>';
+      meta += '<div><span>Compra si sube</span><b>' + pctAbs(e.gap_to_flip_pct) + '</b></div>';
     }
     if (e.heartbeat_age_min != null) {
       meta += '<div><span>Último control</span><b>hace ' + fmtAge(e.heartbeat_age_min) + '</b></div>';
     }
 
-    wrap.innerHTML = '<div class="engine-card ' + cls + '">' +
+    return '<div class="engine-card ' + cls + '">' +
       '<div class="engine-state"><span class="engine-dot ' + dot + '"></span>' + title + '</div>' +
       '<div class="engine-why">' + why + '</div>' +
-      '<div class="engine-why" style="margin-top:10px;color:#8b949e;font-size:13px;">Estrategia activa: <strong>' +
+      '<div class="engine-why" style="margin-top:10px;color:#8b949e;font-size:13px;">Estrategia: <strong>' +
         esc(e.label || e.strategy) + '</strong></div>' +
       (meta ? '<div class="engine-meta">' + meta + '</div>' : '') +
       '</div>';
