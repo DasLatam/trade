@@ -526,6 +526,31 @@
       if (e.heartbeat_age_min != null) {
         why += ' Último latido hace ' + fmtAge(e.heartbeat_age_min) + '.';
       }
+    } else if (e.rule === 'dual momentum') {
+      // DM no compara un precio contra un umbral: elige entre dos activos, así
+      // que lo que explica su estado es cuántos están en tendencia y cuál lidera.
+      var listado = (e.candidates || []).map(function(c) {
+        return esc(sym(c.symbol)) + ' ' + (c.eligible
+          ? '<span class="pos">en tendencia</span>'
+          : '<span class="neg">bajo su media</span>') +
+          ' (' + fmtPct(c.retPct) + ' en 150 días)';
+      }).join(' · ');
+      if (e.state === 'long') {
+        cls = 'long'; dot = 'dot-ok';
+        title = 'Invertido — posición abierta en ' + esc(e.holding_symbol || e.winner || '');
+        why = 'Esta estrategia elige entre BTC y ETH: primero descarta los que están bajo su ' +
+              'propia media de 150 días, y entre los que quedan se queda con el de mayor impulso. ' +
+              'Rota sola si cambia el líder, y se va a efectivo si ninguno tiene tendencia. ' +
+              'Hoy: ' + listado + '.';
+      } else {
+        cls = 'waiting'; dot = 'dot-wait';
+        title = 'Fuera del mercado, esperando señal — funcionando con normalidad';
+        why = 'Esta estrategia elige entre BTC y ETH, pero <strong>solo</strong> si están sobre su ' +
+              'propia media de 150 días. Ahora mismo <strong>' +
+              (e.in_trend_count === 0 ? 'ninguno de los dos' : e.in_trend_count + ' de ' + e.total_count) +
+              '</strong> cumple esa condición, así que su parte del capital está ' +
+              '<strong>en efectivo, a propósito</strong>. Hoy: ' + listado + '.';
+      }
     } else if (e.state === 'long') {
       cls = 'long'; dot = 'dot-ok';
       title = 'Invertido — posición abierta en ' + esc(e.symbol || '');
