@@ -79,6 +79,25 @@
     .engine-card.long    { border-left-color: #3fb950; }
     .engine-card.broken  { border-left-color: #f85149; }
     .engine-card + .engine-card { margin-top: 12px; }
+    .section-note {
+      color: #8b949e; font-size: 13px; line-height: 1.5;
+      margin: -6px 0 14px; max-width: 760px;
+    }
+    .section-note strong { color: #c9d1d9; }
+    /* Estado de cada estrategia en la comparativa. Sin esto, una estrategia
+       apagada hace tres semanas se lee igual que una vigente. */
+    .strat-badge {
+      display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .04em;
+      padding: 2px 7px; border-radius: 999px; margin-left: 8px; vertical-align: middle;
+      text-transform: uppercase;
+    }
+    .badge-on  { background: #12331c; color: #3fb950; border: 1px solid #1f6f36; }
+    .badge-lab { background: #2b2410; color: #d29922; border: 1px solid #6b5312; }
+    .badge-off { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+    .strat-why {
+      margin-top: 10px; padding-top: 9px; border-top: 1px solid #21262d;
+      font-size: 12px; color: #8b949e; line-height: 1.5;
+    }
     .engine-summary {
       display: flex; align-items: center; gap: 9px;
       font-size: 15px; font-weight: 600; color: #c9d1d9; margin-bottom: 12px;
@@ -328,7 +347,10 @@
   </section>
 
   <section id="hot-section">
-    <h2>🔥 Top 3 Oportunidades</h2>
+    <h2>📊 Mayores movimientos del mercado</h2>
+    <p class="section-note">Informativo: son los pares que más se movieron entre los 429 que se
+      monitorean, <strong>no señales de compra</strong>. El sistema hoy solo opera BTC y ETH, así que
+      estos pares quedan fuera de su universo y no se operan por diseño.</p>
     <div class="hot-grid" id="hot-grid"><p class="loading">Cargando...</p></div>
   </section>
 
@@ -730,6 +752,24 @@
   var STRAT_META = ALL_STRAT;
   var STRAT_ORDER = ['TB', 'ZS', 'ZSS', 'XS', 'SH', 'DT', 'MO', 'VB', 'MR'];
 
+  // Por qué cada estrategia dejó de operar. Sin esto la tabla muestra ocho
+  // estrategias con métricas y ninguna pista de que todas están apagadas — y una
+  // como ZS, con PnL positivo en verde, se lee como si estuviera vigente y
+  // ganando. Las fechas salen de la última operación real de cada una.
+  var STRAT_STATUS = {
+    MR:  { off: '2026-07-03', why: 'Acertaba 37% cuando necesitaba 48% para no perder.' },
+    MO:  { off: '2026-07-10', why: 'Acertaba 25%: el trailing la sacaba en cada corrección normal.' },
+    DT:  { off: '2026-07-09', why: 'La peor de todas: 24% de aciertos y −0,60 USDT por operación.' },
+    VB:  { off: '2026-07-01', why: 'Cortada a las 7 operaciones: 1 ganada, 6 perdidas.' },
+    SH:  { off: '2026-07-10', why: 'Shorts de momentum: 33% de aciertos y mucha varianza.' },
+    ZS:  { off: '2026-07-13', why: 'El 64% de aciertos engaña: ganaba 0,55 por cada 1 que perdía ' +
+                                   '(payoff 0,55, profit factor 0,90). Los +5,38 USDT son 0,02 por ' +
+                                   'operación en 258 — ruido, no ganancia.' },
+    ZSS: { off: '2026-07-20', why: 'Su ventaja se evaporó al acumular operaciones (de +0,27 a ~0).' },
+    XS:  { off: '2026-07-28', why: 'El backtest de 4,5 años la mató junto a toda la familia de ' +
+                                   'reversión (−97,9% anual sin sesgo de supervivencia).' },
+  };
+
   function renderStrategies() {
     if (!snapshot || !snapshot.paper) return;
     var list = (snapshot.paper.by_strategy || []).slice().sort(function(a, b) {
@@ -745,8 +785,30 @@
       var pnl = s.realized_pnl_usdt || 0;
       var pnlCls = pnl > 0 ? 'pos' : pnl < 0 ? 'neg' : 'neu';
       var pnlSign = pnl > 0 ? '+' : '';
+      // Activa / laboratorio / apagada. `active` viene del .env vía el snapshot,
+      // así que la etiqueta refleja el estado real del motor, no una lista fija.
+      var active = (snapshot.paper.engine && snapshot.paper.engine.active) || [];
+      var lab = (snapshot.paper.engine && snapshot.paper.engine.lab) || [];
+      var st = STRAT_STATUS[s.strategy] || {};
+      var badge, why;
+      if (lab.indexOf(s.strategy) >= 0) {
+        badge = '<span class="strat-badge badge-lab">laboratorio</span>';
+        // Se mantiene el motivo por el que se había cortado: es el dato que
+        // evita volver a leer su PnL positivo como si fuera una ganancia real.
+        why = 'Reactivada con capital mínimo para generar operaciones y datos frescos. ' +
+              'Su resultado esperado es ~0: se mide, no se espera que gane.' +
+              (st.why ? ' ' + st.why : '');
+      } else if (active.indexOf(s.strategy) >= 0) {
+        badge = '<span class="strat-badge badge-on">activa</span>';
+        why = '';
+      } else {
+        badge = '<span class="strat-badge badge-off">apagada' +
+                (st.off ? ' ' + fmtDate(st.off) : '') + '</span>';
+        why = st.why || 'Fuera de servicio.';
+      }
+
       html += '<div class="strategy-card">';
-      html += '<div class="strategy-name">' + meta.name + '</div>';
+      html += '<div class="strategy-name">' + meta.name + badge + '</div>';
       html += '<div class="strategy-sub">' + meta.sub + '</div>';
       html += '<div class="strategy-row"><span class="k">PnL realizado</span><span class="' + pnlCls + '">' + pnlSign + fmtMoney(pnl) + '</span></div>';
       html += '<div class="strategy-row"><span class="k">Win rate</span><span>' +
@@ -756,6 +818,7 @@
         (s.avg_pnl_per_exit_usdt === null ? '—' : fmtMoney(s.avg_pnl_per_exit_usdt, 4)) + '</span></div>';
       html += '<div class="strategy-row"><span class="k">Posiciones abiertas</span><span>' +
         s.open_positions + ' (' + fmtMoney(s.open_value_usdt) + ')</span></div>';
+      if (why) html += '<div class="strat-why">' + why + '</div>';
       html += '</div>';
     });
     document.getElementById('strategy-grid').innerHTML = html;
