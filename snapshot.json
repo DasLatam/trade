@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-08-28T08:30:11.519Z",
+  "generated_at": "2026-08-28T08:35:10.458Z",
   "note": "Datos simulados — sin operaciones reales.",
   "paper": {
-    "balance_usdt": 9095.44,
-    "pnl_usdt": -904.56,
-    "pnl_pct": -9.0456,
+    "balance_usdt": 9094.62,
+    "pnl_usdt": -905.38,
+    "pnl_pct": -9.0538,
     "fees_usdt": 607.042,
     "trades": 5757,
     "open_positions": 2,
@@ -12,18 +12,18 @@
       {
         "symbol": "BTCUSDT",
         "strategy": "TB",
-        "value_usdt": 2491.25,
-        "price": 79798.61,
+        "value_usdt": 2490.64,
+        "price": 79779.04,
         "avg_entry": 69408.49,
-        "pnl_pct": 14.97
+        "pnl_pct": 14.94
       },
       {
         "symbol": "ETHUSDT",
         "strategy": "DM",
-        "value_usdt": 961.28,
-        "price": 2497.8,
+        "value_usdt": 961.07,
+        "price": 2497.26,
         "avg_entry": 2252.27,
-        "pnl_pct": 10.9
+        "pnl_pct": 10.88
       }
     ],
     "by_strategy": [
@@ -133,7 +133,7 @@
         "realized_pnl_usdt": 0,
         "avg_pnl_per_exit_usdt": null,
         "open_positions": 1,
-        "open_value_usdt": 2491.25
+        "open_value_usdt": 2490.64
       },
       {
         "strategy": "DM",
@@ -145,7 +145,7 @@
         "realized_pnl_usdt": 0,
         "avg_pnl_per_exit_usdt": null,
         "open_positions": 1,
-        "open_value_usdt": 961.28
+        "open_value_usdt": 961.07
       }
     ],
     "start_usdt": 10000,
@@ -1734,7 +1734,7 @@
           "symbol": "BTCUSDT",
           "healthy": true,
           "heartbeat_at": "2026-08-28T08:26:30.453Z",
-          "heartbeat_age_min": 4,
+          "heartbeat_age_min": 9,
           "message": "TB BTCUSDT: cierre diario 80249.58 vs MA150 69444.84 (+15.56%) → EN TENDENCIA | posición abierta",
           "rule": "media móvil",
           "state": "long",
@@ -1744,7 +1744,12 @@
           "window_days": 150,
           "dist_pct": 15.56,
           "gap_to_flip_pct": -13.46,
-          "flip": null
+          "flip": {
+            "since": "2026-08-19",
+            "days_in_state": 8,
+            "state": "long",
+            "symbol_change_pct": 15.74
+          }
         },
         {
           "strategy": "TD",
@@ -1752,7 +1757,7 @@
           "symbol": "BTCUSDT",
           "healthy": true,
           "heartbeat_at": "2026-08-28T08:26:30.514Z",
-          "heartbeat_age_min": 4,
+          "heartbeat_age_min": 9,
           "message": "TD BTCUSDT: cierre diario 80249.58 → en cash | compra sobre 82210.07 (máx 200d)",
           "rule": "canal Donchian",
           "state": "cash",
@@ -1770,7 +1775,7 @@
           "symbol": null,
           "healthy": true,
           "heartbeat_at": "2026-08-28T08:26:30.630Z",
-          "heartbeat_age_min": 4,
+          "heartbeat_age_min": 9,
           "message": "DM: BTC en tendencia (ret 17.5%), ETH en tendencia (ret 19.3%) → líder ETHUSDT | posición abierta en ETH",
           "rule": "dual momentum",
           "state": "long",
@@ -1801,99 +1806,99 @@
   "market": [
     {
       "symbol": "0GUSDT",
-      "price": 0.1598,
-      "change_5m_pct": 0.1253,
-      "change_15m_pct": 0.1253,
-      "change_60m_pct": -0.0625,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1597,
+      "change_5m_pct": -0.0626,
+      "change_15m_pct": 0.0627,
+      "change_60m_pct": -0.1875,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "1000CATUSDT",
-      "price": 0.002062,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.2431,
-      "change_60m_pct": -0.5786,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002068,
+      "change_5m_pct": 0.291,
+      "change_15m_pct": 0.5348,
+      "change_60m_pct": -0.2412,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "1000CHEEMSUSDT",
       "price": 0.000548,
-      "change_5m_pct": -0.3636,
-      "change_15m_pct": -0.1821,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.3636,
       "change_60m_pct": -0.1821,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "1000SATSUSDT",
-      "price": 0.00001127,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0888,
-      "change_60m_pct": 0.3562,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00001129,
+      "change_5m_pct": 0.1775,
+      "change_15m_pct": 0.1775,
+      "change_60m_pct": 0.6239,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "1INCHUSDT",
-      "price": 0.0899,
-      "change_5m_pct": -0.1111,
-      "change_15m_pct": -0.1111,
-      "change_60m_pct": -0.3326,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0901,
+      "change_5m_pct": 0.2225,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "1MBABYDOGEUSDT",
-      "price": 0.0003749,
-      "change_5m_pct": 0.1068,
-      "change_15m_pct": 0.0534,
-      "change_60m_pct": 0.1068,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0003741,
+      "change_5m_pct": -0.2134,
+      "change_15m_pct": -0.2134,
+      "change_60m_pct": 0.1338,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "2ZUSDT",
       "price": 0.05698,
-      "change_5m_pct": -0.0877,
-      "change_15m_pct": 0.0351,
-      "change_60m_pct": -0.0175,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1052,
+      "change_60m_pct": 0.0351,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AAVEUSDT",
-      "price": 126.15,
-      "change_5m_pct": 0.0238,
-      "change_15m_pct": 0.1588,
-      "change_60m_pct": 0.0952,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 125.98,
+      "change_5m_pct": -0.1348,
+      "change_15m_pct": -0.0238,
+      "change_60m_pct": 0.1272,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ACEUSDT",
-      "price": 0.2085,
-      "change_5m_pct": -0.6196,
-      "change_15m_pct": 1.312,
-      "change_60m_pct": 0.4335,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2081,
+      "change_5m_pct": -0.1918,
+      "change_15m_pct": 0.1444,
+      "change_60m_pct": 0.5314,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ACHUSDT",
       "price": 0.00498,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.2012,
+      "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ACMUSDT",
-      "price": 0.291,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.29,
+      "change_5m_pct": -0.3436,
+      "change_15m_pct": -0.3436,
+      "change_60m_pct": -0.3436,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ACTUSDT",
-      "price": 0.01123,
-      "change_5m_pct": 0.0891,
-      "change_15m_pct": 0.1784,
-      "change_60m_pct": -0.089,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01124,
+      "change_5m_pct": 0.089,
+      "change_15m_pct": 0.2676,
+      "change_60m_pct": 0.089,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ACXUSDT",
@@ -1901,23 +1906,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ADAUSDT",
-      "price": 0.2101,
-      "change_5m_pct": -0.0476,
-      "change_15m_pct": 0.143,
-      "change_60m_pct": 0.1907,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2097,
+      "change_5m_pct": -0.1904,
+      "change_15m_pct": -0.2379,
+      "change_60m_pct": 0.1911,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ADXUSDT",
-      "price": 0.0629,
-      "change_5m_pct": 0.1592,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.1592,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0628,
+      "change_5m_pct": -0.159,
+      "change_15m_pct": -0.159,
+      "change_60m_pct": 0.1595,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AEURUSDT",
@@ -1925,47 +1930,47 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AEVOUSDT",
-      "price": 0.02266,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0442,
-      "change_60m_pct": 0.3099,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02267,
+      "change_5m_pct": 0.0441,
+      "change_15m_pct": 0.0441,
+      "change_60m_pct": 0.4431,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AGLDUSDT",
-      "price": 0.1671,
-      "change_5m_pct": 0.0599,
-      "change_15m_pct": 0.1198,
-      "change_60m_pct": 0.24,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.167,
+      "change_5m_pct": -0.0598,
+      "change_15m_pct": 0.18,
+      "change_60m_pct": 0.1199,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AIGENSYNUSDT",
-      "price": 0.01989,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1007,
-      "change_60m_pct": 0.2015,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01988,
+      "change_5m_pct": -0.0503,
+      "change_15m_pct": -0.1005,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AIUSDT",
       "price": 0.0185,
-      "change_5m_pct": 0.5435,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.5435,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.5435,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AIXBTUSDT",
       "price": 0.02082,
-      "change_5m_pct": 0.0481,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.0481,
-      "change_60m_pct": 0.0481,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.289,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALCXUSDT",
@@ -1973,63 +1978,63 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALGOUSDT",
       "price": 0.089,
-      "change_5m_pct": -0.2242,
-      "change_15m_pct": -0.1122,
-      "change_60m_pct": -0.2242,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.2242,
+      "change_60m_pct": -0.1122,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALICEUSDT",
-      "price": 0.1426,
+      "price": 0.1425,
       "change_5m_pct": -0.0701,
-      "change_15m_pct": 0.0702,
-      "change_60m_pct": 0.2108,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.1402,
+      "change_60m_pct": 0.2815,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALLOUSDT",
-      "price": 0.253,
-      "change_5m_pct": -0.1579,
-      "change_15m_pct": -0.1972,
-      "change_60m_pct": 0.0791,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2528,
+      "change_5m_pct": -0.0791,
+      "change_15m_pct": -0.2761,
+      "change_60m_pct": 0.1982,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALPINEUSDT",
       "price": 0.35,
       "change_5m_pct": 0,
-      "change_15m_pct": -0.2849,
+      "change_15m_pct": 0,
       "change_60m_pct": -0.2849,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ALTUSDT",
       "price": 0.00636,
       "change_5m_pct": 0,
-      "change_15m_pct": 0,
+      "change_15m_pct": -0.157,
       "change_60m_pct": 0.4739,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AMPUSDT",
-      "price": 0.000442,
-      "change_5m_pct": -0.2257,
-      "change_15m_pct": -0.2257,
-      "change_60m_pct": 0.9132,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000443,
+      "change_5m_pct": 0.2262,
+      "change_15m_pct": 0,
+      "change_60m_pct": 1.1416,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ANIMEUSDT",
       "price": 0.00266,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.3774,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 1.1407,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ANKRUSDT",
@@ -2037,39 +2042,39 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "APEUSDT",
       "price": 0.1395,
-      "change_5m_pct": -0.0716,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.0716,
       "change_60m_pct": -0.1432,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "API3USDT",
-      "price": 0.2361,
-      "change_5m_pct": -0.1269,
-      "change_15m_pct": 0.1272,
-      "change_60m_pct": 0.5965,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2355,
+      "change_5m_pct": -0.2541,
+      "change_15m_pct": -0.3807,
+      "change_60m_pct": 0.5122,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "APTUSDT",
       "price": 0.562,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": -0.1776,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARBUSDT",
-      "price": 0.0902,
-      "change_5m_pct": -0.1107,
-      "change_15m_pct": -0.1107,
-      "change_60m_pct": -0.1107,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0901,
+      "change_5m_pct": -0.1109,
+      "change_15m_pct": -0.2215,
+      "change_60m_pct": -0.1109,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARDRUSDT",
@@ -2077,263 +2082,263 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARKMUSDT",
       "price": 0.1131,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.444,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.5333,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARKUSDT",
-      "price": 0.1107,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.181,
-      "change_60m_pct": 0.4537,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1105,
+      "change_5m_pct": -0.1807,
+      "change_15m_pct": -0.1807,
+      "change_60m_pct": 0.4545,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARPAUSDT",
-      "price": 0.00956,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1047,
-      "change_60m_pct": 0.1047,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00955,
+      "change_5m_pct": -0.1046,
+      "change_15m_pct": -0.1046,
+      "change_60m_pct": 0.1048,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ARUSDT",
-      "price": 2.141,
-      "change_5m_pct": -0.233,
-      "change_15m_pct": 0.0467,
-      "change_60m_pct": -0.2795,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.138,
+      "change_5m_pct": -0.1401,
+      "change_15m_pct": -0.1401,
+      "change_60m_pct": -0.2799,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ASRUSDT",
       "price": 0.891,
-      "change_5m_pct": -0.1121,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.1121,
-      "change_60m_pct": -0.1121,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1124,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ASTERUSDT",
-      "price": 0.697,
-      "change_5m_pct": -0.2861,
-      "change_15m_pct": -0.4286,
-      "change_60m_pct": -0.4286,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.698,
+      "change_5m_pct": 0.1435,
+      "change_15m_pct": -0.1431,
+      "change_60m_pct": -0.1431,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ASTRUSDT",
-      "price": 0.005556,
-      "change_5m_pct": 0.054,
-      "change_15m_pct": 0.072,
-      "change_60m_pct": -0.036,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.005548,
+      "change_5m_pct": -0.144,
+      "change_15m_pct": -0.072,
+      "change_60m_pct": -0.126,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ATMUSDT",
-      "price": 1.352,
-      "change_5m_pct": -0.1477,
-      "change_15m_pct": -0.295,
-      "change_60m_pct": -0.0739,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.351,
+      "change_5m_pct": -0.074,
+      "change_15m_pct": -0.1478,
+      "change_60m_pct": -0.1478,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ATOMUSDT",
-      "price": 1.498,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0668,
-      "change_60m_pct": -0.3989,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.497,
+      "change_5m_pct": -0.0668,
+      "change_15m_pct": -0.2,
+      "change_60m_pct": -0.2665,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ATUSDT",
       "price": 0.1359,
-      "change_5m_pct": -0.2203,
-      "change_15m_pct": -0.5852,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.147,
       "change_60m_pct": -0.4396,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AUCTIONUSDT",
-      "price": 3.192,
-      "change_5m_pct": -0.0313,
-      "change_15m_pct": 0.1255,
-      "change_60m_pct": 0.3143,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 3.187,
+      "change_5m_pct": -0.1566,
+      "change_15m_pct": -0.3751,
+      "change_60m_pct": 0.3148,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AUDIOUSDT",
       "price": 0.01319,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.0759,
-      "change_60m_pct": -0.1514,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.0758,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AUSDT",
-      "price": 0.0767,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0771,
+      "change_5m_pct": 0.5215,
+      "change_15m_pct": 0.5215,
+      "change_60m_pct": 0.5215,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AVAUSDT",
-      "price": 0.2128,
-      "change_5m_pct": -0.0939,
-      "change_15m_pct": -0.4212,
-      "change_60m_pct": 2.2094,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2124,
+      "change_5m_pct": -0.188,
+      "change_15m_pct": -0.141,
+      "change_60m_pct": 2.1154,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AVAXUSDT",
-      "price": 7.43,
-      "change_5m_pct": -0.0807,
-      "change_15m_pct": 0.0943,
-      "change_60m_pct": -0.2015,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 7.431,
+      "change_5m_pct": 0.0135,
+      "change_15m_pct": -0.0672,
+      "change_60m_pct": 0.1752,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AVNTUSDT",
-      "price": 0.1004,
-      "change_5m_pct": -0.0995,
-      "change_15m_pct": 0.4,
-      "change_60m_pct": -0.0995,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1003,
+      "change_5m_pct": -0.0996,
+      "change_15m_pct": -0.3972,
+      "change_60m_pct": 0.0998,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AWEUSDT",
       "price": 0.06273,
-      "change_5m_pct": -0.0637,
-      "change_15m_pct": 0.0319,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0637,
       "change_60m_pct": 0.0159,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AXLUSDT",
-      "price": 0.041,
-      "change_5m_pct": 0.2445,
-      "change_15m_pct": 0.2445,
-      "change_60m_pct": 0.2445,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0409,
+      "change_5m_pct": -0.2439,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "AXSUSDT",
-      "price": 0.926,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1081,
+      "price": 0.925,
+      "change_5m_pct": -0.108,
+      "change_15m_pct": -0.108,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BABYUSDT",
-      "price": 0.01276,
-      "change_5m_pct": 0.2357,
-      "change_15m_pct": 0.3145,
-      "change_60m_pct": -0.468,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01284,
+      "change_5m_pct": 0.627,
+      "change_15m_pct": 0.7849,
+      "change_60m_pct": 0.2342,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BANANAS31USDT",
-      "price": 0.008858,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0451,
-      "change_60m_pct": -0.4384,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.008871,
+      "change_5m_pct": 0.1468,
+      "change_15m_pct": 0.1468,
+      "change_60m_pct": -0.1014,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BANANAUSDT",
-      "price": 3.914,
-      "change_5m_pct": -0.0766,
-      "change_15m_pct": 0.0511,
-      "change_60m_pct": 0.3075,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 3.919,
+      "change_5m_pct": 0.1277,
+      "change_15m_pct": 0.1789,
+      "change_60m_pct": 0.4872,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BANDUSDT",
       "price": 0.172,
       "change_5m_pct": 0,
       "change_15m_pct": -0.232,
-      "change_60m_pct": 0.2331,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1747,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BANKUSDT",
-      "price": 0.0353,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.2825,
-      "change_60m_pct": -0.2825,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0354,
+      "change_5m_pct": 0.2833,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.2833,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BARDUSDT",
       "price": 0.1203,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.25,
+      "change_15m_pct": 0.1665,
       "change_60m_pct": 0.6695,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BARUSDT",
-      "price": 0.284,
-      "change_5m_pct": 0.3534,
-      "change_15m_pct": 0,
+      "price": 0.283,
+      "change_5m_pct": -0.3521,
+      "change_15m_pct": -0.3521,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BATUSDT",
       "price": 0.0686,
-      "change_5m_pct": 0.146,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.146,
       "change_60m_pct": 0.2924,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BBUSDT",
-      "price": 0.0097,
-      "change_5m_pct": 0.1032,
-      "change_15m_pct": 0.1032,
-      "change_60m_pct": 0.5181,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00969,
+      "change_5m_pct": -0.1031,
+      "change_15m_pct": -0.206,
+      "change_60m_pct": 0.3106,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BCHUSDT",
-      "price": 263.5,
-      "change_5m_pct": -0.1516,
-      "change_15m_pct": 0.114,
-      "change_60m_pct": -0.1137,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 263.4,
+      "change_5m_pct": -0.038,
+      "change_15m_pct": -0.1138,
+      "change_60m_pct": -0.038,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BEAMXUSDT",
-      "price": 0.001669,
-      "change_5m_pct": -0.2391,
-      "change_15m_pct": -0.0599,
-      "change_60m_pct": 0.4816,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00166,
+      "change_5m_pct": -0.5392,
+      "change_15m_pct": -0.7177,
+      "change_60m_pct": 0.1811,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BELUSDT",
       "price": 0.1173,
       "change_5m_pct": 0,
-      "change_15m_pct": -0.0852,
-      "change_60m_pct": -0.0852,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BERAUSDT",
       "price": 0.1708,
-      "change_5m_pct": -0.117,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.0585,
-      "change_60m_pct": 0.3525,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.4115,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BFUSDUSDT",
@@ -2341,111 +2346,111 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.01,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BICOUSDT",
-      "price": 0.02572,
-      "change_5m_pct": 0.9419,
-      "change_15m_pct": 2.023,
-      "change_60m_pct": -4.0656,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0258,
+      "change_5m_pct": 0.311,
+      "change_15m_pct": 0.2331,
+      "change_60m_pct": -2.8614,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BIGTIMEUSDT",
       "price": 0.00632,
       "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.3175,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.158,
+      "change_60m_pct": 0.6369,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BIOUSDT",
-      "price": 0.02855,
-      "change_5m_pct": 0.035,
-      "change_15m_pct": -0.2097,
-      "change_60m_pct": -0.2097,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02854,
+      "change_5m_pct": -0.035,
+      "change_15m_pct": -0.14,
+      "change_60m_pct": -0.3492,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BLURUSDT",
-      "price": 0.01616,
-      "change_5m_pct": -0.1853,
-      "change_15m_pct": 0.4351,
-      "change_60m_pct": 1.3802,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01613,
+      "change_5m_pct": -0.1856,
+      "change_15m_pct": -0.062,
+      "change_60m_pct": 1.192,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BMTUSDT",
-      "price": 0.02432,
-      "change_5m_pct": 0.3714,
-      "change_15m_pct": -0.1642,
-      "change_60m_pct": -1.5385,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02415,
+      "change_5m_pct": -0.699,
+      "change_15m_pct": -0.7806,
+      "change_60m_pct": -1.9886,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BNBUSDT",
-      "price": 708.86,
-      "change_5m_pct": -0.0409,
-      "change_15m_pct": 0.0847,
-      "change_60m_pct": -0.3738,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 709.05,
+      "change_5m_pct": 0.0268,
+      "change_15m_pct": 0.0141,
+      "change_60m_pct": -0.1155,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BNSOLUSDT",
-      "price": 120.1,
-      "change_5m_pct": -0.0832,
-      "change_15m_pct": -0.0832,
-      "change_60m_pct": -0.332,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 120.2,
+      "change_5m_pct": 0.0833,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BNTUSDT",
-      "price": 0.3239,
-      "change_5m_pct": -0.2464,
-      "change_15m_pct": -0.3691,
-      "change_60m_pct": 0.0618,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3236,
+      "change_5m_pct": -0.0926,
+      "change_15m_pct": -1.2813,
+      "change_60m_pct": -0.0309,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BOMEUSDT",
-      "price": 0.0010042,
-      "change_5m_pct": 0.1996,
-      "change_15m_pct": 0.41,
-      "change_60m_pct": 0.7828,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0010038,
+      "change_5m_pct": -0.0398,
+      "change_15m_pct": 0.2797,
+      "change_60m_pct": 0.8338,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BONKUSDT",
-      "price": 0.00000308,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00000307,
+      "change_5m_pct": -0.3247,
+      "change_15m_pct": -0.6472,
+      "change_60m_pct": -0.3247,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BREVUSDT",
       "price": 0.0717,
-      "change_5m_pct": -0.1393,
-      "change_15m_pct": -0.2782,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1393,
       "change_60m_pct": -0.4167,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BROCCOLI714USDT",
-      "price": 0.01783,
-      "change_5m_pct": 0.1685,
-      "change_15m_pct": 0.564,
-      "change_60m_pct": 0.4507,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0179,
+      "change_5m_pct": 0.3926,
+      "change_15m_pct": 0.9019,
+      "change_60m_pct": 1.0728,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BTCUSDT",
-      "price": 79798.61,
-      "change_5m_pct": -0.0168,
-      "change_15m_pct": 0.0672,
-      "change_60m_pct": -0.0099,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 79779.04,
+      "change_5m_pct": -0.0245,
+      "change_15m_pct": -0.0614,
+      "change_60m_pct": 0.0718,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "BTTCUSDT",
@@ -2453,127 +2458,127 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "C98USDT",
-      "price": 0.01554,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0643,
-      "change_60m_pct": -0.0643,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01553,
+      "change_5m_pct": -0.0644,
+      "change_15m_pct": -0.0644,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CAKEUSDT",
-      "price": 1.746,
-      "change_5m_pct": -0.0572,
-      "change_15m_pct": 0.1721,
-      "change_60m_pct": -0.0572,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.747,
+      "change_5m_pct": 0.0573,
+      "change_15m_pct": 0.0573,
+      "change_60m_pct": 0.1146,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CATIUSDT",
-      "price": 0.05255,
-      "change_5m_pct": -0.2468,
-      "change_15m_pct": -0.2846,
-      "change_60m_pct": -0.0571,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.05257,
+      "change_5m_pct": 0.0381,
+      "change_15m_pct": -0.1899,
+      "change_60m_pct": 0.1333,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CELOUSDT",
-      "price": 0.07553,
-      "change_5m_pct": -0.1982,
-      "change_15m_pct": -0.0132,
-      "change_60m_pct": 0.2389,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.07549,
+      "change_5m_pct": -0.053,
+      "change_15m_pct": -0.2247,
+      "change_60m_pct": 0.2124,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CELRUSDT",
-      "price": 0.00248,
-      "change_5m_pct": -0.0806,
-      "change_15m_pct": -0.2012,
-      "change_60m_pct": 0.0807,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002467,
+      "change_5m_pct": -0.5242,
+      "change_15m_pct": -0.4439,
+      "change_60m_pct": 0.3253,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CETUSUSDT",
-      "price": 0.02432,
-      "change_5m_pct": 0.0411,
-      "change_15m_pct": 0.33,
-      "change_60m_pct": 0.206,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02429,
+      "change_5m_pct": -0.1234,
+      "change_15m_pct": 0.0412,
+      "change_60m_pct": 0.3304,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CFGUSDT",
-      "price": 0.1273,
-      "change_5m_pct": -0.3132,
-      "change_15m_pct": -1.2413,
-      "change_60m_pct": -2.0769,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.128,
+      "change_5m_pct": 0.5499,
+      "change_15m_pct": -0.2338,
+      "change_60m_pct": -1.3107,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CFXUSDT",
-      "price": 0.04684,
-      "change_5m_pct": -0.0213,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.0427,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04691,
+      "change_5m_pct": 0.1494,
+      "change_15m_pct": 0.0427,
+      "change_60m_pct": 0.2565,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CGPTUSDT",
-      "price": 0.02076,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0964,
-      "change_60m_pct": 0.4354,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02072,
+      "change_5m_pct": -0.1927,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.2904,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CHIPUSDT",
-      "price": 0.04049,
-      "change_5m_pct": 1.6315,
-      "change_15m_pct": 1.5041,
-      "change_60m_pct": 0.7214,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0403,
+      "change_5m_pct": -0.4693,
+      "change_15m_pct": 0.9519,
+      "change_60m_pct": -0.0744,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CHRUSDT",
-      "price": 0.01511,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.332,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0151,
+      "change_5m_pct": -0.0662,
+      "change_15m_pct": -0.0662,
+      "change_60m_pct": 0.3322,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CHZUSDT",
-      "price": 0.01391,
-      "change_5m_pct": -0.1436,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.1436,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01392,
+      "change_5m_pct": 0.0719,
+      "change_15m_pct": -0.2151,
+      "change_60m_pct": 0.0719,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CITYUSDT",
-      "price": 0.37,
-      "change_5m_pct": 0.271,
-      "change_15m_pct": 0.271,
-      "change_60m_pct": 0.5435,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.369,
+      "change_5m_pct": -0.2703,
+      "change_15m_pct": -0.2703,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CKBUSDT",
-      "price": 0.001,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.2004,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.001001,
+      "change_5m_pct": 0.1,
+      "change_15m_pct": 0.1,
+      "change_60m_pct": 0.3006,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "COMPUSDT",
-      "price": 19.21,
-      "change_5m_pct": -0.2596,
-      "change_15m_pct": -0.2596,
-      "change_60m_pct": -0.1559,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 19.23,
+      "change_5m_pct": 0.1041,
+      "change_15m_pct": -0.1558,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "COOKIEUSDT",
@@ -2581,7 +2586,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.8333,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "COSUSDT",
@@ -2589,55 +2594,55 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "COTIUSDT",
-      "price": 0.01296,
-      "change_5m_pct": -0.1541,
-      "change_15m_pct": 0.3873,
-      "change_60m_pct": 0.7776,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01282,
+      "change_5m_pct": -1.0802,
+      "change_15m_pct": -0.774,
+      "change_60m_pct": -0.774,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "COWUSDT",
-      "price": 0.1216,
-      "change_5m_pct": -0.3279,
-      "change_15m_pct": 0.4129,
-      "change_60m_pct": 1.249,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1211,
+      "change_5m_pct": -0.4112,
+      "change_15m_pct": -0.493,
+      "change_60m_pct": 0.7488,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CRVUSDT",
-      "price": 0.3181,
-      "change_5m_pct": 0.0629,
-      "change_15m_pct": 0.0944,
-      "change_60m_pct": 0.3154,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3178,
+      "change_5m_pct": -0.0943,
+      "change_15m_pct": -0.1884,
+      "change_60m_pct": 0.284,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CTKUSDT",
-      "price": 0.121,
-      "change_5m_pct": 0.2486,
-      "change_15m_pct": 0.3317,
-      "change_60m_pct": -0.6568,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1209,
+      "change_5m_pct": -0.0826,
+      "change_15m_pct": 0.6661,
+      "change_60m_pct": -0.7389,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CTSIUSDT",
-      "price": 0.02606,
-      "change_5m_pct": -0.1533,
-      "change_15m_pct": -0.2297,
-      "change_60m_pct": 0.2308,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02602,
+      "change_5m_pct": -0.1535,
+      "change_15m_pct": -0.2301,
+      "change_60m_pct": 0.1154,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CUSDT",
-      "price": 0.0631,
-      "change_5m_pct": 0.1587,
-      "change_15m_pct": 0.318,
-      "change_60m_pct": -0.1582,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.063,
+      "change_5m_pct": -0.1585,
+      "change_15m_pct": 0.3185,
+      "change_60m_pct": -0.3165,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CVCUSDT",
@@ -2645,103 +2650,103 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.401,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CVXUSDT",
-      "price": 2.416,
-      "change_5m_pct": 0.1243,
-      "change_15m_pct": -0.1653,
-      "change_60m_pct": -0.0414,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.412,
+      "change_5m_pct": -0.1656,
+      "change_15m_pct": -0.3306,
+      "change_60m_pct": 0.0415,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "CYBERUSDT",
-      "price": 0.313,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.3205,
-      "change_60m_pct": 0.6431,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.312,
+      "change_5m_pct": -0.3195,
+      "change_15m_pct": -0.3195,
+      "change_60m_pct": 0.3215,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DASHUSDT",
-      "price": 38.83,
-      "change_5m_pct": -0.1543,
-      "change_15m_pct": 0.7002,
-      "change_60m_pct": 0.4397,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 38.8,
+      "change_5m_pct": -0.0773,
+      "change_15m_pct": -0.2571,
+      "change_60m_pct": 0.4661,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DCRUSDT",
-      "price": 13.79,
-      "change_5m_pct": -0.2171,
-      "change_15m_pct": 0.0726,
-      "change_60m_pct": -0.2171,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 13.77,
+      "change_5m_pct": -0.145,
+      "change_15m_pct": -0.0726,
+      "change_60m_pct": -0.2174,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DEXEUSDT",
       "price": 1.897,
-      "change_5m_pct": -0.2629,
-      "change_15m_pct": -0.3153,
-      "change_60m_pct": -0.6806,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.2104,
+      "change_60m_pct": -0.7845,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DGBUSDT",
-      "price": 0.00486,
-      "change_5m_pct": -0.4098,
-      "change_15m_pct": 0.4132,
-      "change_60m_pct": 2.5316,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00484,
+      "change_5m_pct": -0.4115,
+      "change_15m_pct": 0.207,
+      "change_60m_pct": 1.0438,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DIAUSDT",
-      "price": 0.1437,
-      "change_5m_pct": 0.2092,
-      "change_15m_pct": 0.3492,
-      "change_60m_pct": 0.2791,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1436,
+      "change_5m_pct": -0.0696,
+      "change_15m_pct": 0.1395,
+      "change_60m_pct": 0.3494,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DODOUSDT",
-      "price": 0.02003,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.1993,
-      "change_60m_pct": -1.1352,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01997,
+      "change_5m_pct": -0.2996,
+      "change_15m_pct": -0.2996,
+      "change_60m_pct": -1.334,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DOGEUSDT",
-      "price": 0.08765,
-      "change_5m_pct": -0.0798,
-      "change_15m_pct": 0.0799,
-      "change_60m_pct": -0.0684,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.08769,
+      "change_5m_pct": 0.0456,
+      "change_15m_pct": -0.0911,
+      "change_60m_pct": 0.0913,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DOGSUSDT",
-      "price": 0.00004021,
-      "change_5m_pct": 0.2493,
-      "change_15m_pct": 0.4999,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00004042,
+      "change_5m_pct": 0.5223,
+      "change_15m_pct": 1.05,
+      "change_60m_pct": 0.6474,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DOLOUSDT",
-      "price": 0.02537,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.0394,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02541,
+      "change_5m_pct": 0.1577,
+      "change_15m_pct": 0.1577,
+      "change_60m_pct": 0.2367,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DOTUSDT",
-      "price": 0.876,
-      "change_5m_pct": 0.1143,
-      "change_15m_pct": 0.5741,
-      "change_60m_pct": 0.2288,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.874,
+      "change_5m_pct": -0.2283,
+      "change_15m_pct": -0.1143,
+      "change_60m_pct": 0.1145,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DUSDT",
@@ -2749,375 +2754,375 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DUSKUSDT",
       "price": 0.0721,
-      "change_5m_pct": 0.1389,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.1389,
       "change_60m_pct": -0.4144,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DYDXUSDT",
-      "price": 0.11413,
-      "change_5m_pct": -0.1749,
-      "change_15m_pct": -0.1487,
-      "change_60m_pct": 0.0614,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.114,
+      "change_5m_pct": -0.1139,
+      "change_15m_pct": -0.4801,
+      "change_60m_pct": 0.0439,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "DYMUSDT",
-      "price": 0.01547,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.1935,
-      "change_60m_pct": -0.1291,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01548,
+      "change_5m_pct": 0.0646,
+      "change_15m_pct": 0.0646,
+      "change_60m_pct": 0.0646,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EDENUSDT",
-      "price": 0.06813,
-      "change_5m_pct": 0.2059,
-      "change_15m_pct": -0.5547,
-      "change_60m_pct": 0.3831,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.06903,
+      "change_5m_pct": 1.321,
+      "change_15m_pct": 2.2061,
+      "change_60m_pct": 2.388,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EDUUSDT",
-      "price": 0.0454,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.8889,
-      "change_60m_pct": 0.8889,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0453,
+      "change_5m_pct": -0.2203,
+      "change_15m_pct": 0.2212,
+      "change_60m_pct": 0.8909,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EGLDUSDT",
-      "price": 3.426,
-      "change_5m_pct": -0.2039,
-      "change_15m_pct": 0.1169,
-      "change_60m_pct": 0.2047,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 3.422,
+      "change_5m_pct": -0.1168,
+      "change_15m_pct": -0.0584,
+      "change_60m_pct": 0.2931,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EIGENUSDT",
-      "price": 0.2004,
-      "change_5m_pct": -0.1495,
-      "change_15m_pct": 0.0499,
-      "change_60m_pct": 0.1499,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2003,
+      "change_5m_pct": -0.0499,
+      "change_15m_pct": -0.249,
+      "change_60m_pct": 0.2001,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ENAUSDT",
-      "price": 0.1694,
-      "change_5m_pct": 0.1774,
-      "change_15m_pct": -0.4115,
-      "change_60m_pct": 2.1713,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1702,
+      "change_5m_pct": 0.4723,
+      "change_15m_pct": 0.5316,
+      "change_60m_pct": 2.4684,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ENJUSDT",
-      "price": 0.02597,
-      "change_5m_pct": -0.1538,
-      "change_15m_pct": -0.0385,
-      "change_60m_pct": -0.1922,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02594,
+      "change_5m_pct": -0.1155,
+      "change_15m_pct": -0.2691,
+      "change_60m_pct": -0.2691,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ENSOUSDT",
-      "price": 0.815,
-      "change_5m_pct": 0.1229,
-      "change_15m_pct": 0.1229,
+      "price": 0.816,
+      "change_5m_pct": 0.1227,
+      "change_15m_pct": 0.2457,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ENSUSDT",
-      "price": 5.8,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 5.79,
+      "change_5m_pct": -0.1724,
+      "change_15m_pct": -0.1724,
+      "change_60m_pct": -0.1724,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EPICUSDT",
-      "price": 0.3412,
-      "change_5m_pct": -0.1171,
-      "change_15m_pct": -0.0293,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.341,
+      "change_5m_pct": -0.0586,
+      "change_15m_pct": -0.1756,
+      "change_60m_pct": -0.2341,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ERAUSDT",
       "price": 0.0564,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": -0.177,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1776,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ESPUSDT",
-      "price": 0.0843,
-      "change_5m_pct": -0.0593,
-      "change_15m_pct": -0.2957,
-      "change_60m_pct": 0.4289,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.08436,
+      "change_5m_pct": 0.0712,
+      "change_15m_pct": -0.0474,
+      "change_60m_pct": 0.8006,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ETCUSDT",
-      "price": 7.72,
-      "change_5m_pct": -0.2584,
-      "change_15m_pct": -0.1294,
-      "change_60m_pct": -0.1294,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 7.73,
+      "change_5m_pct": 0.1295,
+      "change_15m_pct": -0.1292,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ETHFIUSDT",
-      "price": 0.5579,
-      "change_5m_pct": 0.2696,
-      "change_15m_pct": 0.2696,
-      "change_60m_pct": 0.5044,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.5606,
+      "change_5m_pct": 0.484,
+      "change_15m_pct": 0.538,
+      "change_60m_pct": 0.8273,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ETHUSDT",
-      "price": 2497.8,
-      "change_5m_pct": -0.0716,
-      "change_15m_pct": 0.0248,
-      "change_60m_pct": -0.046,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2497.26,
+      "change_5m_pct": -0.0216,
+      "change_15m_pct": -0.1507,
+      "change_60m_pct": 0.0044,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EULUSDT",
-      "price": 1.415,
-      "change_5m_pct": -0.0706,
-      "change_15m_pct": -0.4222,
-      "change_60m_pct": 1.5065,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.422,
+      "change_5m_pct": 0.4947,
+      "change_15m_pct": 0.4237,
+      "change_60m_pct": 1.5714,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EURIUSDT",
-      "price": 1.1644,
-      "change_5m_pct": -0.0172,
-      "change_15m_pct": -0.0172,
+      "price": 1.1646,
+      "change_5m_pct": 0.0172,
+      "change_15m_pct": 0.0086,
       "change_60m_pct": 0.0172,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "EURUSDT",
-      "price": 1.1642,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0172,
-      "change_60m_pct": 0.0172,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.1643,
+      "change_5m_pct": 0.0086,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.0086,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FDUSDUSDT",
-      "price": 0.9993,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.01,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.9994,
+      "change_5m_pct": 0.01,
+      "change_15m_pct": 0.01,
+      "change_60m_pct": 0.02,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FETUSDT",
-      "price": 0.1623,
-      "change_5m_pct": 0.0617,
-      "change_15m_pct": 0.2471,
-      "change_60m_pct": 0.4954,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1624,
+      "change_5m_pct": 0.0616,
+      "change_15m_pct": -0.0615,
+      "change_60m_pct": 0.6196,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FFUSDT",
-      "price": 0.08951,
-      "change_5m_pct": 0.4827,
-      "change_15m_pct": 0.6635,
-      "change_60m_pct": 0.6296,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.08966,
+      "change_5m_pct": 0.1676,
+      "change_15m_pct": 1.0823,
+      "change_60m_pct": 1.5517,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FIDAUSDT",
-      "price": 0.01969,
-      "change_5m_pct": 0.1017,
-      "change_15m_pct": 0.3568,
-      "change_60m_pct": 0.3057,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01962,
+      "change_5m_pct": -0.3555,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FILUSDT",
-      "price": 0.7004,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0286,
-      "change_60m_pct": 0.0286,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.7003,
+      "change_5m_pct": -0.0143,
+      "change_15m_pct": -0.0286,
+      "change_60m_pct": 0.0858,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FLOKIUSDT",
       "price": 0.00002631,
-      "change_5m_pct": 0.0761,
-      "change_15m_pct": 0.1142,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.038,
+      "change_60m_pct": 0.038,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FLOWUSDT",
-      "price": 0.02884,
-      "change_5m_pct": -0.1039,
-      "change_15m_pct": -0.0347,
-      "change_60m_pct": 0.0347,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02883,
+      "change_5m_pct": -0.0347,
+      "change_15m_pct": -0.1386,
+      "change_60m_pct": 0.1042,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FLUXUSDT",
       "price": 0.0473,
-      "change_5m_pct": 0.2119,
+      "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.6383,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FOGOUSDT",
-      "price": 0.00914,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.2183,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00913,
+      "change_5m_pct": -0.1094,
+      "change_15m_pct": -0.1094,
+      "change_60m_pct": -0.3275,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FORMUSDT",
-      "price": 0.2369,
-      "change_5m_pct": -0.0422,
+      "price": 0.237,
+      "change_5m_pct": 0.0422,
       "change_15m_pct": -0.0422,
-      "change_60m_pct": 0.4665,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.4663,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FRAXUSDT",
-      "price": 0.3074,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.1303,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3076,
+      "change_5m_pct": 0.0651,
+      "change_15m_pct": 0.0651,
+      "change_60m_pct": 0.1954,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FTTUSDT",
-      "price": 0.2333,
-      "change_5m_pct": 0.2148,
-      "change_15m_pct": 0.3009,
-      "change_60m_pct": 0.2148,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2351,
+      "change_5m_pct": 0.7715,
+      "change_15m_pct": 0.556,
+      "change_60m_pct": 0.9446,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "FUSDT",
-      "price": 0.003239,
-      "change_5m_pct": -0.0617,
-      "change_15m_pct": -0.2157,
-      "change_60m_pct": -0.461,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00324,
+      "change_5m_pct": 0.0309,
+      "change_15m_pct": -0.0617,
+      "change_60m_pct": -0.3077,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GALAUSDT",
       "price": 0.001849,
-      "change_5m_pct": -0.108,
-      "change_15m_pct": 0.3256,
-      "change_60m_pct": 0.6532,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.3772,
+      "change_60m_pct": 0.8729,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GASUSDT",
-      "price": 1.287,
-      "change_5m_pct": 0.1556,
-      "change_15m_pct": 0.39,
-      "change_60m_pct": 0.3118,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.291,
+      "change_5m_pct": 0.3108,
+      "change_15m_pct": 0.7806,
+      "change_60m_pct": 0.5452,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GENIUSUSDT",
-      "price": 0.2784,
-      "change_5m_pct": 0.0719,
-      "change_15m_pct": -0.4292,
-      "change_60m_pct": -1.9718,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2793,
+      "change_5m_pct": 0.3233,
+      "change_15m_pct": 0.3954,
+      "change_60m_pct": -1.7587,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GIGGLEUSDT",
       "price": 37.02,
-      "change_5m_pct": -0.2156,
-      "change_15m_pct": 0.298,
-      "change_60m_pct": -0.5373,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1079,
+      "change_60m_pct": -0.081,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GLMRUSDT",
-      "price": 0.007338,
-      "change_5m_pct": -0.3801,
-      "change_15m_pct": -0.5556,
-      "change_60m_pct": 0.866,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.007322,
+      "change_5m_pct": -0.218,
+      "change_15m_pct": -1.0674,
+      "change_60m_pct": 0.9653,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GLMUSDT",
       "price": 0.1118,
-      "change_5m_pct": 0.2691,
-      "change_15m_pct": 0.0895,
-      "change_60m_pct": 0.2691,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.2691,
+      "change_60m_pct": 0.5396,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GMTUSDT",
-      "price": 0.00706,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1418,
+      "price": 0.00705,
+      "change_5m_pct": -0.1416,
+      "change_15m_pct": -0.1416,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GMXUSDT",
-      "price": 7.82,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.128,
-      "change_60m_pct": 0.5141,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 7.83,
+      "change_5m_pct": 0.1279,
+      "change_15m_pct": 0.1279,
+      "change_60m_pct": 0.7722,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GNOUSDT",
-      "price": 120.8,
-      "change_5m_pct": -0.157,
-      "change_15m_pct": -0.1735,
-      "change_60m_pct": -0.2971,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 120.97,
+      "change_5m_pct": 0.1407,
+      "change_15m_pct": 0.1407,
+      "change_60m_pct": -0.0908,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GNSUSDT",
-      "price": 0.532,
-      "change_5m_pct": -0.1876,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.1883,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.533,
+      "change_5m_pct": 0.188,
+      "change_15m_pct": 0.188,
+      "change_60m_pct": 0.188,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GPSUSDT",
-      "price": 0.00958,
-      "change_5m_pct": -0.1043,
-      "change_15m_pct": -0.3122,
-      "change_60m_pct": -0.1043,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00957,
+      "change_5m_pct": -0.1044,
+      "change_15m_pct": -0.6231,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GRTUSDT",
       "price": 0.01723,
-      "change_5m_pct": -0.1159,
-      "change_15m_pct": 0.0581,
-      "change_60m_pct": 0.1744,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1159,
+      "change_60m_pct": 0.3494,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GTCUSDT",
       "price": 0.08732,
-      "change_5m_pct": 0.1606,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.0344,
+      "change_60m_pct": 0.0458,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GUNUSDT",
@@ -3125,47 +3130,47 @@
       "change_5m_pct": 0,
       "change_15m_pct": -0.3135,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "GUSDT",
-      "price": 0.00392,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.2558,
-      "change_60m_pct": 0.7712,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00391,
+      "change_5m_pct": -0.2551,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.5141,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HAEDALUSDT",
       "price": 0.01915,
-      "change_5m_pct": -0.1043,
-      "change_15m_pct": 0.1045,
-      "change_60m_pct": 0.1045,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1043,
+      "change_60m_pct": 0.2093,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HBARUSDT",
-      "price": 0.07821,
-      "change_5m_pct": 0.0512,
-      "change_15m_pct": 0.1537,
-      "change_60m_pct": -0.0511,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.07822,
+      "change_5m_pct": 0.0128,
+      "change_15m_pct": 0.0384,
+      "change_60m_pct": 0.0384,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HEIUSDT",
-      "price": 0.1643,
-      "change_5m_pct": -2.0858,
-      "change_15m_pct": -0.3034,
-      "change_60m_pct": 4.0532,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1665,
+      "change_5m_pct": 1.339,
+      "change_15m_pct": 1.2774,
+      "change_60m_pct": 3.7383,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HEMIUSDT",
-      "price": 0.01137,
-      "change_5m_pct": 0.4417,
-      "change_15m_pct": 1.0667,
-      "change_60m_pct": -7.9352,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01034,
+      "change_5m_pct": -9.0589,
+      "change_15m_pct": -9.2186,
+      "change_60m_pct": -9.6943,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HFTUSDT",
@@ -3173,7 +3178,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HIGHUSDT",
@@ -3181,87 +3186,87 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HIVEUSDT",
       "price": 0.0432,
-      "change_5m_pct": -0.2309,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.2309,
       "change_60m_pct": 0.232,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HMSTRUSDT",
-      "price": 0.0001789,
-      "change_5m_pct": -0.1674,
-      "change_15m_pct": -0.1117,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0001792,
+      "change_5m_pct": 0.1677,
+      "change_15m_pct": 0.1677,
+      "change_60m_pct": 0.0558,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HOLOUSDT",
       "price": 0.0657,
-      "change_5m_pct": -0.152,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.3053,
-      "change_60m_pct": 0.3053,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.4587,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HOMEUSDT",
-      "price": 0.00618,
-      "change_5m_pct": -0.1616,
-      "change_15m_pct": 0.1621,
-      "change_60m_pct": 0.3247,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00616,
+      "change_5m_pct": -0.3236,
+      "change_15m_pct": -0.3236,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HOTUSDT",
-      "price": 0.00039,
-      "change_5m_pct": -0.5102,
-      "change_15m_pct": -1.5152,
-      "change_60m_pct": 0.5155,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000389,
+      "change_5m_pct": -0.2564,
+      "change_15m_pct": -1.0178,
+      "change_60m_pct": 0.2577,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HUMAUSDT",
-      "price": 0.02762,
-      "change_5m_pct": 0.145,
-      "change_15m_pct": -0.1085,
-      "change_60m_pct": 0.2177,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02758,
+      "change_5m_pct": -0.1448,
+      "change_15m_pct": -0.1448,
+      "change_60m_pct": 0.3274,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "HYPERUSDT",
       "price": 0.0652,
-      "change_5m_pct": -0.1531,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.1536,
-      "change_60m_pct": 0.3077,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.4622,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ICPUSDT",
-      "price": 2.399,
-      "change_5m_pct": -0.1665,
-      "change_15m_pct": -0.0833,
-      "change_60m_pct": -0.2495,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.396,
+      "change_5m_pct": -0.1251,
+      "change_15m_pct": -0.3742,
+      "change_60m_pct": -0.4156,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ICXUSDT",
-      "price": 0.0131,
-      "change_5m_pct": 0.7692,
-      "change_15m_pct": 0.3831,
-      "change_60m_pct": -7.158,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01312,
+      "change_5m_pct": 0.1527,
+      "change_15m_pct": 1.548,
+      "change_60m_pct": -6.1516,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IDUSDT",
-      "price": 0.0319,
-      "change_5m_pct": -0.3125,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0318,
+      "change_5m_pct": -0.3135,
+      "change_15m_pct": -0.3135,
+      "change_60m_pct": -0.3135,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ILVUSDT",
@@ -3269,135 +3274,135 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.3175,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IMXUSDT",
-      "price": 0.1288,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1555,
-      "change_60m_pct": 0.625,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1289,
+      "change_5m_pct": 0.0776,
+      "change_15m_pct": 0.1554,
+      "change_60m_pct": 0.7031,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "INITUSDT",
-      "price": 0.05443,
-      "change_5m_pct": 0.1472,
-      "change_15m_pct": -0.0551,
-      "change_60m_pct": -0.7295,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.05434,
+      "change_5m_pct": -0.1653,
+      "change_15m_pct": -0.0919,
+      "change_60m_pct": -0.6581,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "INJUSDT",
-      "price": 5.317,
-      "change_5m_pct": -0.1502,
-      "change_15m_pct": -0.169,
-      "change_60m_pct": -0.1877,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 5.323,
+      "change_5m_pct": 0.1128,
+      "change_15m_pct": -0.0938,
+      "change_60m_pct": -0.0188,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IOSTUSDT",
       "price": 0.00059,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.3401,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1698,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IOTAUSDT",
-      "price": 0.0414,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.2421,
-      "change_60m_pct": 0.4854,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0415,
+      "change_5m_pct": 0.2415,
+      "change_15m_pct": 0.2415,
+      "change_60m_pct": 0.9732,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IOTXUSDT",
-      "price": 0.002901,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1035,
-      "change_60m_pct": 0.4849,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002898,
+      "change_5m_pct": -0.1034,
+      "change_15m_pct": 0.0691,
+      "change_60m_pct": 0.3463,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IOUSDT",
-      "price": 0.1371,
-      "change_5m_pct": 0.073,
-      "change_15m_pct": 0.4396,
-      "change_60m_pct": 1.1808,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1368,
+      "change_5m_pct": -0.2188,
+      "change_15m_pct": -0.073,
+      "change_60m_pct": 1.034,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "IQUSDT",
-      "price": 0.000679,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.5926,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000678,
+      "change_5m_pct": -0.1473,
+      "change_15m_pct": -0.1473,
+      "change_60m_pct": 0.2959,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JASMYUSDT",
-      "price": 0.00487,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.8147,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00488,
+      "change_5m_pct": 0.2053,
+      "change_15m_pct": 0.2053,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JOEUSDT",
-      "price": 0.0323,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.6231,
-      "change_60m_pct": 1.2539,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0325,
+      "change_5m_pct": 0.6192,
+      "change_15m_pct": 1.5625,
+      "change_60m_pct": 1.8809,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JSTUSDT",
       "price": 0.09767,
-      "change_5m_pct": -0.0307,
-      "change_15m_pct": 0.041,
-      "change_60m_pct": 0.3184,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0102,
+      "change_60m_pct": 0.3493,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JTOUSDT",
-      "price": 0.479,
-      "change_5m_pct": -0.0417,
-      "change_15m_pct": -0.0626,
-      "change_60m_pct": -0.2914,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.4791,
+      "change_5m_pct": 0.0209,
+      "change_15m_pct": -0.2498,
+      "change_60m_pct": -0.3536,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JUPUSDT",
       "price": 0.2344,
-      "change_5m_pct": -0.0426,
-      "change_15m_pct": 0.2995,
-      "change_60m_pct": 0.2138,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1278,
+      "change_60m_pct": 0.4715,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "JUVUSDT",
       "price": 0.326,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.3077,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KAIAUSDT",
       "price": 0.0321,
-      "change_5m_pct": -0.3106,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.3106,
+      "change_60m_pct": -0.3106,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KAITOUSDT",
-      "price": 0.3162,
-      "change_5m_pct": -0.0948,
-      "change_15m_pct": -0.0632,
-      "change_60m_pct": -0.6285,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3157,
+      "change_5m_pct": -0.1581,
+      "change_15m_pct": -0.2528,
+      "change_60m_pct": -0.6608,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KATUSDT",
@@ -3405,47 +3410,47 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.2179,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KAVAUSDT",
-      "price": 0.04656,
-      "change_5m_pct": 0.0645,
-      "change_15m_pct": 0.1075,
-      "change_60m_pct": 0.0645,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04663,
+      "change_5m_pct": 0.1503,
+      "change_15m_pct": 0.0429,
+      "change_60m_pct": -0.342,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KERNELUSDT",
-      "price": 0.0381,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.5222,
-      "change_60m_pct": -0.5222,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.038,
+      "change_5m_pct": -0.2625,
+      "change_15m_pct": -0.2625,
+      "change_60m_pct": -0.2625,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KGSTUSDT",
       "price": 0.0114,
-      "change_5m_pct": -0.0263,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0263,
+      "change_60m_pct": -0.0088,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KITEUSDT",
-      "price": 0.1278,
-      "change_5m_pct": -0.0782,
-      "change_15m_pct": -0.5447,
-      "change_60m_pct": -0.9302,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1287,
+      "change_5m_pct": 0.7042,
+      "change_15m_pct": 0.5469,
+      "change_60m_pct": -0.1552,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KMNOUSDT",
-      "price": 0.02736,
-      "change_5m_pct": -0.2552,
-      "change_15m_pct": 1.0713,
-      "change_60m_pct": 1.2209,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02733,
+      "change_5m_pct": -0.1096,
+      "change_15m_pct": -0.7265,
+      "change_60m_pct": 0.8115,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KNCUSDT",
@@ -3453,7 +3458,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.2636,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "KSMUSDT",
@@ -3461,103 +3466,103 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.2841,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LAUSDT",
-      "price": 0.0555,
-      "change_5m_pct": -0.3591,
-      "change_15m_pct": -0.5376,
-      "change_60m_pct": -0.5376,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0556,
+      "change_5m_pct": 0.1802,
+      "change_15m_pct": -0.1795,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LAYERUSDT",
-      "price": 0.069,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.1447,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0689,
+      "change_5m_pct": -0.1449,
+      "change_15m_pct": -0.2894,
+      "change_60m_pct": -0.2894,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LAZIOUSDT",
       "price": 0.404,
-      "change_5m_pct": -0.2469,
-      "change_15m_pct": 0.2481,
-      "change_60m_pct": 0.2481,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.4975,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LDOUSDT",
-      "price": 0.3623,
-      "change_5m_pct": -0.1103,
-      "change_15m_pct": -0.1928,
-      "change_60m_pct": 0.0276,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.362,
+      "change_5m_pct": -0.0828,
+      "change_15m_pct": -0.3029,
+      "change_60m_pct": -0.248,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LINEAUSDT",
-      "price": 0.002467,
-      "change_5m_pct": 0.0406,
-      "change_15m_pct": 0.1218,
-      "change_60m_pct": 0.0406,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002464,
+      "change_5m_pct": -0.1216,
+      "change_15m_pct": -0.0406,
+      "change_60m_pct": -0.0811,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LINKUSDT",
-      "price": 11.716,
-      "change_5m_pct": -0.0768,
-      "change_15m_pct": 0.0854,
-      "change_60m_pct": -0.2044,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 11.713,
+      "change_5m_pct": -0.0256,
+      "change_15m_pct": -0.1194,
+      "change_60m_pct": -0.0171,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LISTAUSDT",
       "price": 0.0693,
-      "change_5m_pct": 0.1445,
-      "change_15m_pct": 0.1445,
+      "change_5m_pct": 0,
+      "change_15m_pct": 0,
       "change_60m_pct": 0.1445,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LPTUSDT",
       "price": 1.401,
-      "change_5m_pct": -0.0713,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.1426,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1426,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LQTYUSDT",
       "price": 0.2235,
-      "change_5m_pct": -0.0894,
-      "change_15m_pct": -0.134,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0894,
       "change_60m_pct": -0.2232,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LSKUSDT",
-      "price": 0.0963,
-      "change_5m_pct": -0.3106,
-      "change_15m_pct": 0.5219,
-      "change_60m_pct": 0.7322,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0968,
+      "change_5m_pct": 0.5192,
+      "change_15m_pct": 0.8333,
+      "change_60m_pct": 1.3613,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LTCUSDT",
-      "price": 49.12,
-      "change_5m_pct": -0.2437,
-      "change_15m_pct": -0.1423,
-      "change_60m_pct": -0.3247,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 49.11,
+      "change_5m_pct": -0.0204,
+      "change_15m_pct": -0.264,
+      "change_60m_pct": -0.2843,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LUMIAUSDT",
       "price": 0.0851,
-      "change_5m_pct": -0.1174,
-      "change_15m_pct": 0,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.2345,
       "change_60m_pct": -0.1174,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LUNAUSDT",
@@ -3565,47 +3570,47 @@
       "change_5m_pct": 0,
       "change_15m_pct": -0.2174,
       "change_60m_pct": -0.4338,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "LUNCUSDT",
-      "price": 0.00005362,
-      "change_5m_pct": -0.1304,
-      "change_15m_pct": -0.149,
-      "change_60m_pct": -0.3716,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00005361,
+      "change_5m_pct": -0.0186,
+      "change_15m_pct": -0.1118,
+      "change_60m_pct": -0.2976,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MAGICUSDT",
-      "price": 0.0459,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.2183,
-      "change_60m_pct": -0.4338,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0458,
+      "change_5m_pct": -0.2179,
+      "change_15m_pct": 0,
+      "change_60m_pct": -0.6508,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MANAUSDT",
-      "price": 0.0745,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.134,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0742,
+      "change_5m_pct": -0.4027,
+      "change_15m_pct": -0.4027,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MANTAUSDT",
       "price": 0.05927,
-      "change_5m_pct": -0.0674,
-      "change_15m_pct": -0.3028,
-      "change_60m_pct": -0.1684,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.118,
+      "change_60m_pct": -0.1348,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MANTRAUSDT",
-      "price": 0.00466,
-      "change_5m_pct": 1.0846,
-      "change_15m_pct": -2.3061,
-      "change_60m_pct": 1.7467,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00467,
+      "change_5m_pct": 0.2146,
+      "change_15m_pct": -1.4768,
+      "change_60m_pct": 3.0905,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MASKUSDT",
@@ -3613,23 +3618,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": -0.232,
       "change_60m_pct": 0.2331,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MAVUSDT",
       "price": 0.01086,
-      "change_5m_pct": 0.0922,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.0922,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1845,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MBLUSDT",
-      "price": 0.000657,
-      "change_5m_pct": 0.3053,
-      "change_15m_pct": -0.152,
-      "change_60m_pct": 0.1524,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000656,
+      "change_5m_pct": -0.1522,
+      "change_15m_pct": -0.1522,
+      "change_60m_pct": 0.3058,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MBOXUSDT",
@@ -3637,23 +3642,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MEGAUSDT",
-      "price": 0.03839,
-      "change_5m_pct": 0.0782,
-      "change_15m_pct": 0.235,
-      "change_60m_pct": 0.0261,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.03832,
+      "change_5m_pct": -0.1823,
+      "change_15m_pct": -0.1563,
+      "change_60m_pct": -0.0261,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MEMEUSDT",
-      "price": 0.000546,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1835,
-      "change_60m_pct": 0.1835,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000545,
+      "change_5m_pct": -0.1832,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.3683,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "METISUSDT",
@@ -3661,135 +3666,135 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "METUSDT",
-      "price": 0.2125,
-      "change_5m_pct": 0.0471,
-      "change_15m_pct": 0.3779,
-      "change_60m_pct": 0.3779,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2124,
+      "change_5m_pct": -0.0471,
+      "change_15m_pct": -0.0471,
+      "change_60m_pct": 0.5206,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MEUSDT",
-      "price": 0.06369,
-      "change_5m_pct": -0.2974,
-      "change_15m_pct": -0.7325,
-      "change_60m_pct": -0.8716,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.06366,
+      "change_5m_pct": -0.0471,
+      "change_15m_pct": -0.7793,
+      "change_60m_pct": -0.9029,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MINAUSDT",
-      "price": 0.0614,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.3268,
-      "change_60m_pct": -0.4862,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0616,
+      "change_5m_pct": 0.3257,
+      "change_15m_pct": 0.3257,
+      "change_60m_pct": 0.1626,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MIRAUSDT",
-      "price": 0.04229,
-      "change_5m_pct": -0.1417,
-      "change_15m_pct": -0.0236,
-      "change_60m_pct": 0.071,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0423,
+      "change_5m_pct": 0.0236,
+      "change_15m_pct": -0.1416,
+      "change_60m_pct": 0.1183,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MITOUSDT",
-      "price": 0.02621,
-      "change_5m_pct": -0.0762,
-      "change_15m_pct": 0.1146,
-      "change_60m_pct": 0.4985,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02615,
+      "change_5m_pct": -0.2289,
+      "change_15m_pct": -0.343,
+      "change_60m_pct": 0.1916,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MMTUSDT",
-      "price": 0.1646,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.6728,
-      "change_60m_pct": -0.6639,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1647,
+      "change_5m_pct": 0.0608,
+      "change_15m_pct": 0.1825,
+      "change_60m_pct": -0.4834,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MORPHOUSDT",
-      "price": 2.498,
-      "change_5m_pct": 0.0801,
-      "change_15m_pct": 0.3616,
-      "change_60m_pct": 0.4827,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.518,
+      "change_5m_pct": 0.8006,
+      "change_15m_pct": 1.1651,
+      "change_60m_pct": 1.4504,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MOVEUSDT",
       "price": 0.0092,
-      "change_5m_pct": -2.1277,
+      "change_5m_pct": 0,
       "change_15m_pct": -2.1277,
       "change_60m_pct": -1.0753,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MOVRUSDT",
-      "price": 1,
-      "change_5m_pct": 1.4199,
-      "change_15m_pct": 2.459,
-      "change_60m_pct": -0.3984,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.978,
+      "change_5m_pct": -2.2,
+      "change_15m_pct": 0.4107,
+      "change_60m_pct": -2.3952,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MTLUSDT",
       "price": 0.233,
-      "change_5m_pct": 0.431,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.431,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.431,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "MUBARAKUSDT",
-      "price": 0.02125,
-      "change_5m_pct": 0.2358,
-      "change_15m_pct": 0.9022,
-      "change_60m_pct": 0.0471,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02127,
+      "change_5m_pct": 0.0941,
+      "change_15m_pct": 0.5198,
+      "change_60m_pct": 0.3775,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NEARUSDT",
-      "price": 1.871,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.107,
-      "change_60m_pct": 0.0535,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.869,
+      "change_5m_pct": -0.1069,
+      "change_15m_pct": -0.1069,
+      "change_60m_pct": -0.0535,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NEIROUSDT",
-      "price": 0.00008681,
-      "change_5m_pct": 0.0346,
-      "change_15m_pct": 0.0115,
-      "change_60m_pct": 0.0346,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00008698,
+      "change_5m_pct": 0.1958,
+      "change_15m_pct": 0.1382,
+      "change_60m_pct": 0.242,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NEOUSDT",
-      "price": 2.166,
-      "change_5m_pct": 0.0924,
-      "change_15m_pct": 0.1387,
-      "change_60m_pct": -0.1383,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.164,
+      "change_5m_pct": -0.0923,
+      "change_15m_pct": -0.0462,
+      "change_60m_pct": 0.1388,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NEWTUSDT",
-      "price": 0.04154,
-      "change_5m_pct": -0.0241,
-      "change_15m_pct": 0.193,
-      "change_60m_pct": 0.6542,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04151,
+      "change_5m_pct": -0.0722,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.6059,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NEXOUSDT",
-      "price": 0.849,
-      "change_5m_pct": -0.4689,
-      "change_15m_pct": 0.2361,
-      "change_60m_pct": -0.9335,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.848,
+      "change_5m_pct": -0.1178,
+      "change_15m_pct": 0.1181,
+      "change_60m_pct": -0.4695,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NFPUSDT",
@@ -3797,23 +3802,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NIGHTUSDT",
-      "price": 0.01979,
-      "change_5m_pct": 0.0506,
-      "change_15m_pct": 0.2025,
-      "change_60m_pct": -0.0505,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01981,
+      "change_5m_pct": 0.1011,
+      "change_15m_pct": 0.2023,
+      "change_60m_pct": 0.1517,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NILUSDT",
-      "price": 0.04371,
-      "change_5m_pct": 0.0229,
-      "change_15m_pct": -0.2055,
-      "change_60m_pct": -0.3647,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04358,
+      "change_5m_pct": -0.2974,
+      "change_15m_pct": -0.1604,
+      "change_60m_pct": -0.887,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NMRUSDT",
@@ -3821,191 +3826,191 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.1129,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NOMUSDT",
-      "price": 0.00166,
-      "change_5m_pct": 0.6061,
-      "change_15m_pct": 1.8405,
-      "change_60m_pct": 2.4691,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00165,
+      "change_5m_pct": -0.6024,
+      "change_15m_pct": 0,
+      "change_60m_pct": 1.8519,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NOTUSDT",
       "price": 0.000418,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": -0.2387,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "NXPCUSDT",
       "price": 0.208,
-      "change_5m_pct": -0.0481,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.0481,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": -0.0481,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OGNUSDT",
-      "price": 0.01844,
-      "change_5m_pct": -0.0542,
-      "change_15m_pct": -0.0542,
-      "change_60m_pct": 0.1086,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01845,
+      "change_5m_pct": 0.0542,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.1629,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OGUSDT",
-      "price": 2.857,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.035,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.858,
+      "change_5m_pct": 0.035,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.2807,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ONDOUSDT",
-      "price": 0.3686,
-      "change_5m_pct": -0.1084,
-      "change_15m_pct": -0.0271,
-      "change_60m_pct": -0.0542,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3684,
+      "change_5m_pct": -0.0543,
+      "change_15m_pct": -0.2167,
+      "change_60m_pct": 0.1359,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ONEUSDT",
-      "price": 0.000778,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.7653,
-      "change_60m_pct": -1.269,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000776,
+      "change_5m_pct": -0.2571,
+      "change_15m_pct": -0.6402,
+      "change_60m_pct": -1.5228,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ONGUSDT",
-      "price": 0.11346,
-      "change_5m_pct": 0.6029,
-      "change_15m_pct": 2.4007,
-      "change_60m_pct": -0.1144,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.11326,
+      "change_5m_pct": -0.1763,
+      "change_15m_pct": 0.9807,
+      "change_60m_pct": -0.5794,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ONTUSDT",
-      "price": 0.05584,
-      "change_5m_pct": 0.2874,
-      "change_15m_pct": 0.776,
-      "change_60m_pct": 1.2144,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.05589,
+      "change_5m_pct": 0.0895,
+      "change_15m_pct": 0.5397,
+      "change_60m_pct": 1.489,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OPENUSDT",
-      "price": 0.1583,
-      "change_5m_pct": -0.0631,
+      "price": 0.1584,
+      "change_5m_pct": 0.0632,
       "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.0632,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OPGUSDT",
       "price": 0.0974,
-      "change_5m_pct": -0.1026,
-      "change_15m_pct": -0.5107,
-      "change_60m_pct": -0.409,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.2049,
+      "change_60m_pct": -1.1168,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OPNUSDT",
-      "price": 0.0531,
-      "change_5m_pct": 0.1887,
-      "change_15m_pct": 0.3781,
-      "change_60m_pct": 0.1887,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.053,
+      "change_5m_pct": -0.1883,
+      "change_15m_pct": 0.189,
+      "change_60m_pct": 0.189,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OPUSDT",
-      "price": 0.0931,
-      "change_5m_pct": 0.1075,
-      "change_15m_pct": 0.2153,
-      "change_60m_pct": 0.3233,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0929,
+      "change_5m_pct": -0.2148,
+      "change_15m_pct": -0.2148,
+      "change_60m_pct": 0.2157,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ORCAUSDT",
       "price": 1.261,
       "change_5m_pct": 0,
       "change_15m_pct": 0.2385,
-      "change_60m_pct": 0.3182,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.3981,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ORDIUSDT",
-      "price": 4.095,
-      "change_5m_pct": -0.0244,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.1957,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 4.096,
+      "change_5m_pct": 0.0244,
+      "change_15m_pct": 0.0978,
+      "change_60m_pct": 0.2693,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "OSMOUSDT",
-      "price": 0.0358,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.2801,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0357,
+      "change_5m_pct": -0.2793,
+      "change_15m_pct": -0.5571,
+      "change_60m_pct": 0.2809,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PARTIUSDT",
       "price": 0.0248,
       "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.4016,
+      "change_60m_pct": 0.813,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PAXGUSDT",
-      "price": 4602.49,
-      "change_5m_pct": -0.0239,
-      "change_15m_pct": -0.0545,
-      "change_60m_pct": 0.0752,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 4602.14,
+      "change_5m_pct": -0.0076,
+      "change_15m_pct": -0.0024,
+      "change_60m_pct": -0.0404,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PENDLEUSDT",
-      "price": 1.739,
-      "change_5m_pct": -0.0575,
-      "change_15m_pct": 0.1151,
-      "change_60m_pct": 0.1151,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.744,
+      "change_5m_pct": 0.2875,
+      "change_15m_pct": 0.1723,
+      "change_60m_pct": 0.403,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PENGUUSDT",
-      "price": 0.009462,
-      "change_5m_pct": 0.2012,
-      "change_15m_pct": 0.4885,
-      "change_60m_pct": 0.5847,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.009436,
+      "change_5m_pct": -0.2748,
+      "change_15m_pct": -0.0212,
+      "change_60m_pct": 0.4471,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PEOPLEUSDT",
-      "price": 0.00819,
-      "change_5m_pct": 0.4908,
-      "change_15m_pct": 0.4908,
-      "change_60m_pct": 0.6143,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00818,
+      "change_5m_pct": -0.1221,
+      "change_15m_pct": 0.2451,
+      "change_60m_pct": 0.4914,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PEPEUSDT",
       "price": 0.00000379,
-      "change_5m_pct": -0.2632,
+      "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PHAUSDT",
-      "price": 0.0251,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.4,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.025,
+      "change_5m_pct": -0.3984,
+      "change_15m_pct": -0.3984,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PIVXUSDT",
@@ -4013,39 +4018,39 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PIXELUSDT",
-      "price": 0.00504,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.198,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00505,
+      "change_5m_pct": 0.1984,
+      "change_15m_pct": 0.1984,
+      "change_60m_pct": 0.3976,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PLUMEUSDT",
-      "price": 0.01388,
-      "change_5m_pct": -0.072,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.072,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01389,
+      "change_5m_pct": 0.072,
+      "change_15m_pct": 0.4338,
+      "change_60m_pct": 0.2165,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PNUTUSDT",
-      "price": 0.0513,
-      "change_5m_pct": 0.3914,
-      "change_15m_pct": 0.5882,
-      "change_60m_pct": 0.7859,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0518,
+      "change_5m_pct": 0.9747,
+      "change_15m_pct": 1.5686,
+      "change_60m_pct": 1.9685,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "POLUSDT",
-      "price": 0.10736,
-      "change_5m_pct": -0.2601,
-      "change_15m_pct": -0.1488,
-      "change_60m_pct": 0.3083,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.10732,
+      "change_5m_pct": -0.0373,
+      "change_15m_pct": -0.3343,
+      "change_60m_pct": 0.2241,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "POLYXUSDT",
@@ -4053,7 +4058,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.289,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PONDUSDT",
@@ -4061,71 +4066,71 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PORTALUSDT",
       "price": 0.01636,
-      "change_5m_pct": -0.183,
-      "change_15m_pct": -1.6827,
-      "change_60m_pct": -2.908,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.3047,
+      "change_60m_pct": -2.3866,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PORTOUSDT",
       "price": 0.456,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.2198,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "POWRUSDT",
       "price": 0.0457,
-      "change_5m_pct": -0.2183,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.2183,
-      "change_60m_pct": -0.2183,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.2193,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PROMUSDT",
-      "price": 4.856,
-      "change_5m_pct": -0.185,
-      "change_15m_pct": -0.0412,
-      "change_60m_pct": 0.2477,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 4.77,
+      "change_5m_pct": -1.771,
+      "change_15m_pct": -1.771,
+      "change_60m_pct": -2.0534,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PROVEUSDT",
-      "price": 0.1694,
+      "price": 0.1693,
       "change_5m_pct": -0.059,
-      "change_15m_pct": 0.296,
-      "change_60m_pct": 0.4149,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.059,
+      "change_60m_pct": 0.4152,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PSGUSDT",
-      "price": 0.497,
-      "change_5m_pct": -0.4008,
-      "change_15m_pct": -0.6,
-      "change_60m_pct": -0.2008,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.499,
+      "change_5m_pct": 0.4024,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PUMPUSDT",
-      "price": 0.004669,
-      "change_5m_pct": -0.0428,
-      "change_15m_pct": -0.299,
-      "change_60m_pct": -0.235,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.004664,
+      "change_5m_pct": -0.1071,
+      "change_15m_pct": -0.2353,
+      "change_60m_pct": -0.1285,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PUNDIXUSDT",
       "price": 0.0912,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.2198,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PYRUSDT",
@@ -4133,287 +4138,287 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "PYTHUSDT",
-      "price": 0.04862,
-      "change_5m_pct": -0.2462,
-      "change_15m_pct": 0.0206,
-      "change_60m_pct": -0.328,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04864,
+      "change_5m_pct": 0.0411,
+      "change_15m_pct": -0.6333,
+      "change_60m_pct": -0.2461,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "QIUSDT",
-      "price": 0.001355,
-      "change_5m_pct": 0.1478,
-      "change_15m_pct": 0.2961,
-      "change_60m_pct": 0.3704,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.001351,
+      "change_5m_pct": -0.2952,
+      "change_15m_pct": -0.2216,
+      "change_60m_pct": 0.3715,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "QKCUSDT",
-      "price": 0.002144,
-      "change_5m_pct": 0.0467,
-      "change_15m_pct": 0.2338,
-      "change_60m_pct": 0.8467,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002143,
+      "change_5m_pct": -0.0466,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.7996,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "QNTUSDT",
-      "price": 62.58,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.1277,
-      "change_60m_pct": 0.2082,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 62.57,
+      "change_5m_pct": -0.016,
+      "change_15m_pct": -0.0639,
+      "change_60m_pct": 0.2724,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "QTUMUSDT",
-      "price": 0.831,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.4837,
-      "change_60m_pct": 0.4837,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.83,
+      "change_5m_pct": -0.1203,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.3628,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "QUICKUSDT",
-      "price": 0.00935,
-      "change_5m_pct": 0.4296,
-      "change_15m_pct": 1.0811,
-      "change_60m_pct": 0.5376,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00924,
+      "change_5m_pct": -1.1765,
+      "change_15m_pct": -0.7519,
+      "change_60m_pct": -0.6452,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RADUSDT",
-      "price": 0.236,
-      "change_5m_pct": 0.4255,
-      "change_15m_pct": 0.4255,
-      "change_60m_pct": 0.4255,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.235,
+      "change_5m_pct": -0.4237,
+      "change_15m_pct": 0,
+      "change_60m_pct": -0.4237,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RAREUSDT",
-      "price": 0.01305,
-      "change_5m_pct": -0.153,
-      "change_15m_pct": -0.0766,
-      "change_60m_pct": 0.2304,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01304,
+      "change_5m_pct": -0.0766,
+      "change_15m_pct": -0.2295,
+      "change_60m_pct": 0.1536,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RAYUSDT",
-      "price": 0.8048,
-      "change_5m_pct": -0.0248,
-      "change_15m_pct": -0.0248,
-      "change_60m_pct": -0.0373,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.805,
+      "change_5m_pct": 0.0249,
+      "change_15m_pct": 0.0622,
+      "change_60m_pct": 0.0995,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "REDUSDT",
-      "price": 0.1083,
-      "change_5m_pct": -0.0923,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.368,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.108,
+      "change_5m_pct": -0.277,
+      "change_15m_pct": -0.369,
+      "change_60m_pct": -0.644,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RENDERUSDT",
-      "price": 1.492,
-      "change_5m_pct": 0.0671,
-      "change_15m_pct": 0.1342,
-      "change_60m_pct": -0.1339,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.49,
+      "change_5m_pct": -0.134,
+      "change_15m_pct": -0.134,
+      "change_60m_pct": -0.0671,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "REQUSDT",
       "price": 0.0569,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.708,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.3527,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RESOLVUSDT",
       "price": 0.01814,
       "change_5m_pct": 0,
-      "change_15m_pct": -0.0551,
+      "change_15m_pct": 0,
       "change_60m_pct": -0.3297,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "REZUSDT",
-      "price": 0.003003,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0666,
-      "change_60m_pct": 0.4012,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.003002,
+      "change_5m_pct": -0.0333,
+      "change_15m_pct": 0.0333,
+      "change_60m_pct": 0.2672,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RIFUSDT",
-      "price": 0.0803,
-      "change_5m_pct": -0.2484,
-      "change_15m_pct": 0,
-      "change_60m_pct": 1.0063,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0801,
+      "change_5m_pct": -0.2491,
+      "change_15m_pct": -0.3731,
+      "change_60m_pct": 0.3759,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RLCUSDT",
-      "price": 0.3173,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1262,
-      "change_60m_pct": 0.4114,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3175,
+      "change_5m_pct": 0.063,
+      "change_15m_pct": 0.0946,
+      "change_60m_pct": 0.5065,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RLUSDUSDT",
       "price": 1.0003,
-      "change_5m_pct": -0.02,
-      "change_15m_pct": -0.03,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.02,
       "change_60m_pct": -0.02,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ROBOUSDT",
-      "price": 0.01319,
-      "change_5m_pct": 0.457,
-      "change_15m_pct": 1.5396,
-      "change_60m_pct": 1.6179,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01308,
+      "change_5m_pct": -0.834,
+      "change_15m_pct": 0.4608,
+      "change_60m_pct": 0.8481,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RONINUSDT",
       "price": 0.0563,
       "change_5m_pct": 0,
       "change_15m_pct": 0.1779,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.1779,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ROSEUSDT",
-      "price": 0.00601,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1667,
-      "change_60m_pct": 0.3339,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.006,
+      "change_5m_pct": -0.1664,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.1669,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RPLUSDT",
-      "price": 1.676,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1793,
-      "change_60m_pct": 0.5399,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.675,
+      "change_5m_pct": -0.0597,
+      "change_15m_pct": -0.0597,
+      "change_60m_pct": 0.4197,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RSRUSDT",
-      "price": 0.001441,
-      "change_5m_pct": -0.1386,
-      "change_15m_pct": 0.0694,
-      "change_60m_pct": -0.1386,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00144,
+      "change_5m_pct": -0.0694,
+      "change_15m_pct": 0,
+      "change_60m_pct": -0.1387,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RUNEUSDT",
-      "price": 0.509,
-      "change_5m_pct": 0.1969,
-      "change_15m_pct": 0.7921,
-      "change_60m_pct": 0.5929,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.505,
+      "change_5m_pct": -0.7859,
+      "change_15m_pct": -0.7859,
+      "change_60m_pct": -0.3945,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "RVNUSDT",
-      "price": 0.00322,
-      "change_5m_pct": 0.3115,
-      "change_15m_pct": -0.3096,
-      "change_60m_pct": -1.8293,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00318,
+      "change_5m_pct": -1.2422,
+      "change_15m_pct": -1.2422,
+      "change_60m_pct": -2.454,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SAGAUSDT",
       "price": 0.01508,
-      "change_5m_pct": -0.1325,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0663,
+      "change_60m_pct": 0.1328,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SAHARAUSDT",
-      "price": 0.00839,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.119,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00838,
+      "change_5m_pct": -0.1192,
+      "change_15m_pct": -0.2381,
+      "change_60m_pct": -0.2381,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SANDUSDT",
-      "price": 0.04038,
-      "change_5m_pct": -0.1484,
-      "change_15m_pct": 0.0992,
-      "change_60m_pct": 0.2981,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0404,
+      "change_5m_pct": 0.0495,
+      "change_15m_pct": -0.0989,
+      "change_60m_pct": 0.4975,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SANTOSUSDT",
-      "price": 0.536,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1869,
-      "change_60m_pct": 0.1869,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.534,
+      "change_5m_pct": -0.3731,
+      "change_15m_pct": -0.3731,
+      "change_60m_pct": -0.1869,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SAPIENUSDT",
       "price": 0.0798,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.2513,
-      "change_60m_pct": 0.3774,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.1255,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SCRTUSDT",
       "price": 0.0121,
-      "change_5m_pct": -0.8197,
-      "change_15m_pct": -1.626,
-      "change_60m_pct": -2.4194,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.8197,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SCRUSDT",
-      "price": 0.02313,
-      "change_5m_pct": -0.0864,
-      "change_15m_pct": -0.1726,
-      "change_60m_pct": -0.2587,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02332,
+      "change_5m_pct": 0.8214,
+      "change_15m_pct": 0.604,
+      "change_60m_pct": 0.604,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SCUSDT",
       "price": 0.000637,
-      "change_5m_pct": -0.1567,
-      "change_15m_pct": -0.1567,
-      "change_60m_pct": 0.315,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.4688,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SEIUSDT",
-      "price": 0.04729,
-      "change_5m_pct": -0.0845,
-      "change_15m_pct": 0.0212,
-      "change_60m_pct": -0.0634,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0473,
+      "change_5m_pct": 0.0211,
+      "change_15m_pct": -0.1478,
+      "change_60m_pct": 0.0211,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SENTUSDT",
-      "price": 0.01258,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1592,
-      "change_60m_pct": 0.5596,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01257,
+      "change_5m_pct": -0.0795,
+      "change_15m_pct": 0.0796,
+      "change_60m_pct": 0.4796,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SFPUSDT",
       "price": 0.2639,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.1898,
-      "change_60m_pct": 0.1138,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": 0.1518,
+      "change_60m_pct": 0.1518,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SHELLUSDT",
@@ -4421,295 +4426,295 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SHIBUSDT",
-      "price": 0.00000531,
-      "change_5m_pct": -0.188,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00000532,
+      "change_5m_pct": 0.1883,
+      "change_15m_pct": 0.1883,
+      "change_60m_pct": 0.1883,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SIGNUSDT",
-      "price": 0.008,
-      "change_5m_pct": 0.2506,
+      "price": 0.00799,
+      "change_5m_pct": -0.125,
       "change_15m_pct": 0,
-      "change_60m_pct": -0.1248,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": -0.125,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SKLUSDT",
       "price": 0.00382,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.2625,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SKYUSDT",
-      "price": 0.06772,
-      "change_5m_pct": -0.0148,
-      "change_15m_pct": -0.1769,
-      "change_60m_pct": -0.1327,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.06775,
+      "change_5m_pct": 0.0443,
+      "change_15m_pct": -0.059,
+      "change_60m_pct": 0.0295,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SLPUSDT",
-      "price": 0.000635,
-      "change_5m_pct": 0.1577,
-      "change_15m_pct": 0.1577,
-      "change_60m_pct": 0.1577,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000634,
+      "change_5m_pct": -0.1575,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.3165,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SNXUSDT",
-      "price": 0.2199,
-      "change_5m_pct": 0.1366,
-      "change_15m_pct": 0.8253,
-      "change_60m_pct": 1.2897,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2194,
+      "change_5m_pct": -0.2274,
+      "change_15m_pct": 0.2742,
+      "change_60m_pct": 0.6884,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SOLUSDT",
-      "price": 106.55,
-      "change_5m_pct": -0.0938,
-      "change_15m_pct": 0.0282,
-      "change_60m_pct": -0.2808,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 106.58,
+      "change_5m_pct": 0.0282,
+      "change_15m_pct": -0.0281,
+      "change_60m_pct": -0.0844,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SOLVUSDT",
       "price": 0.00286,
       "change_5m_pct": 0,
       "change_15m_pct": 0.3509,
-      "change_60m_pct": 0.7042,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.3509,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SOMIUSDT",
-      "price": 0.1131,
-      "change_5m_pct": -0.3524,
-      "change_15m_pct": 0.0885,
-      "change_60m_pct": 0.8021,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1129,
+      "change_5m_pct": -0.1768,
+      "change_15m_pct": -0.0885,
+      "change_60m_pct": 0.1775,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SOPHUSDT",
       "price": 0.00382,
-      "change_5m_pct": 0.5263,
+      "change_5m_pct": 0,
       "change_15m_pct": 0.2625,
       "change_60m_pct": 0.7916,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SPELLUSDT",
       "price": 0.0000842,
       "change_5m_pct": 0,
-      "change_15m_pct": 0,
+      "change_15m_pct": -0.1186,
       "change_60m_pct": -0.1186,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SPKUSDT",
-      "price": 0.018914,
-      "change_5m_pct": 0.0529,
-      "change_15m_pct": -0.1952,
-      "change_60m_pct": -0.6357,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.018921,
+      "change_5m_pct": 0.037,
+      "change_15m_pct": -0.2425,
+      "change_60m_pct": -0.4734,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SSVUSDT",
-      "price": 2.631,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.038,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.626,
+      "change_5m_pct": -0.19,
+      "change_15m_pct": -0.1521,
+      "change_60m_pct": -0.3037,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STEEMUSDT",
       "price": 0.04422,
       "change_5m_pct": 0,
-      "change_15m_pct": 0.0452,
-      "change_60m_pct": 0.5,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.0452,
+      "change_60m_pct": 0.7289,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STGUSDT",
-      "price": 0.1675,
-      "change_5m_pct": 0.2394,
-      "change_15m_pct": 0.1794,
-      "change_60m_pct": 0.6006,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1671,
+      "change_5m_pct": -0.2388,
+      "change_15m_pct": -0.1195,
+      "change_60m_pct": 0.3001,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STORJUSDT",
       "price": 0.0395,
-      "change_5m_pct": 0.5089,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.5038,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.2525,
+      "change_60m_pct": -0.2525,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STOUSDT",
-      "price": 0.0429,
-      "change_5m_pct": -0.2326,
+      "price": 0.043,
+      "change_5m_pct": 0.2331,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.9412,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 1.1765,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STRAXUSDT",
-      "price": 0.0097,
-      "change_5m_pct": 0.2066,
-      "change_15m_pct": 0.4141,
-      "change_60m_pct": -1.7224,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00967,
+      "change_5m_pct": -0.3093,
+      "change_15m_pct": 0,
+      "change_60m_pct": -0.4119,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STRKUSDT",
-      "price": 0.02585,
-      "change_5m_pct": 0.0387,
-      "change_15m_pct": 0.0774,
-      "change_60m_pct": 0.3104,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02582,
+      "change_5m_pct": -0.1161,
+      "change_15m_pct": -0.1547,
+      "change_60m_pct": 0.194,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "STXUSDT",
-      "price": 0.2664,
-      "change_5m_pct": 0.1127,
-      "change_15m_pct": 0.339,
-      "change_60m_pct": 2.501,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2651,
+      "change_5m_pct": -0.488,
+      "change_15m_pct": -0.4506,
+      "change_60m_pct": 2.04,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SUIUSDT",
-      "price": 0.7637,
-      "change_5m_pct": -0.0262,
-      "change_15m_pct": 0.2099,
-      "change_60m_pct": 0.2363,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.764,
+      "change_5m_pct": 0.0393,
+      "change_15m_pct": 0.0655,
+      "change_60m_pct": 0.4867,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SUNUSDT",
       "price": 0.01682,
       "change_5m_pct": 0,
-      "change_15m_pct": -0.0594,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.0595,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SUPERUSDT",
-      "price": 0.115,
-      "change_5m_pct": 0.1742,
-      "change_15m_pct": 0.087,
-      "change_60m_pct": -0.0869,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1147,
+      "change_5m_pct": -0.2609,
+      "change_15m_pct": -0.0871,
+      "change_60m_pct": -0.434,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SUSDT",
-      "price": 0.02966,
-      "change_5m_pct": -0.0337,
-      "change_15m_pct": 0.135,
-      "change_60m_pct": 0.2705,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02962,
+      "change_5m_pct": -0.1349,
+      "change_15m_pct": 0.1014,
+      "change_60m_pct": 0.1691,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SUSHIUSDT",
-      "price": 0.1912,
-      "change_5m_pct": -0.0523,
-      "change_15m_pct": 0.2622,
-      "change_60m_pct": -0.3128,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1917,
+      "change_5m_pct": 0.2615,
+      "change_15m_pct": 0.314,
+      "change_60m_pct": 0.5771,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SXTUSDT",
-      "price": 0.00854,
-      "change_5m_pct": -0.2336,
-      "change_15m_pct": -0.3501,
-      "change_60m_pct": 0.3525,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00855,
+      "change_5m_pct": 0.1171,
+      "change_15m_pct": 0.1171,
+      "change_60m_pct": 0.47,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SYNUSDT",
-      "price": 0.10977,
-      "change_5m_pct": 0.0365,
-      "change_15m_pct": -0.0819,
-      "change_60m_pct": 0.2008,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.10964,
+      "change_5m_pct": -0.1184,
+      "change_15m_pct": -0.2003,
+      "change_60m_pct": 0.1461,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "SYRUPUSDT",
-      "price": 0.188,
-      "change_5m_pct": -0.1063,
-      "change_15m_pct": 0.1065,
-      "change_60m_pct": -1.0526,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1882,
+      "change_5m_pct": 0.1064,
+      "change_15m_pct": 0.213,
+      "change_60m_pct": -0.5285,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TAOUSDT",
-      "price": 245.6,
-      "change_5m_pct": -0.2032,
-      "change_15m_pct": -0.0814,
-      "change_60m_pct": -0.2032,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 245.4,
+      "change_5m_pct": -0.0814,
+      "change_15m_pct": -0.2844,
+      "change_60m_pct": 0.0408,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TFUELUSDT",
-      "price": 0.00918,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1091,
-      "change_60m_pct": 1.2128,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00915,
+      "change_5m_pct": -0.3268,
+      "change_15m_pct": -0.4353,
+      "change_60m_pct": 0.5495,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "THETAUSDT",
-      "price": 0.1759,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1138,
-      "change_60m_pct": 0.0569,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1758,
+      "change_5m_pct": -0.0569,
+      "change_15m_pct": -0.0569,
+      "change_60m_pct": 0.1139,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "THEUSDT",
       "price": 0.0701,
       "change_5m_pct": 0,
-      "change_15m_pct": -0.2845,
-      "change_60m_pct": -0.1425,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.1425,
+      "change_60m_pct": 0.1429,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TIAUSDT",
-      "price": 0.3541,
-      "change_5m_pct": -0.1692,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.0282,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3544,
+      "change_5m_pct": 0.0847,
+      "change_15m_pct": -0.0282,
+      "change_60m_pct": 0.3114,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TKOUSDT",
-      "price": 0.0521,
-      "change_5m_pct": 0.3854,
-      "change_15m_pct": 0.1923,
-      "change_60m_pct": -0.1916,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0522,
+      "change_5m_pct": 0.1919,
+      "change_15m_pct": 0.1919,
+      "change_60m_pct": 0.578,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TLMUSDT",
-      "price": 0.001463,
-      "change_5m_pct": -0.0683,
-      "change_15m_pct": 0.0684,
-      "change_60m_pct": 0.827,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.001462,
+      "change_5m_pct": -0.0684,
+      "change_15m_pct": -0.2048,
+      "change_60m_pct": 0.7581,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TNSRUSDT",
-      "price": 0.0341,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.2941,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0342,
+      "change_5m_pct": 0.2933,
+      "change_15m_pct": 0.2933,
+      "change_60m_pct": 0.885,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TONUSDT",
@@ -4717,71 +4722,71 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TOWNSUSDT",
       "price": 0.00244,
-      "change_5m_pct": -0.4082,
-      "change_15m_pct": 0,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.4082,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TRBUSDT",
-      "price": 17.54,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.2286,
-      "change_60m_pct": 0.4007,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 17.48,
+      "change_5m_pct": -0.3421,
+      "change_15m_pct": -0.3421,
+      "change_60m_pct": 0.2869,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TREEUSDT",
-      "price": 0.0377,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.2646,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0378,
+      "change_5m_pct": 0.2653,
+      "change_15m_pct": 0.2653,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TRUMPUSDT",
-      "price": 2.835,
-      "change_5m_pct": 0.0353,
-      "change_15m_pct": 0.1059,
-      "change_60m_pct": 2.1622,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2.848,
+      "change_5m_pct": 0.4586,
+      "change_15m_pct": 0.636,
+      "change_60m_pct": 2.5567,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TRXUSDT",
-      "price": 0.3396,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0589,
-      "change_60m_pct": -0.0294,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3394,
+      "change_5m_pct": -0.0589,
+      "change_15m_pct": -0.1471,
+      "change_60m_pct": -0.0883,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TSTUSDT",
-      "price": 0.01658,
-      "change_5m_pct": 0.5458,
-      "change_15m_pct": 0.913,
-      "change_60m_pct": 0.3025,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01654,
+      "change_5m_pct": -0.2413,
+      "change_15m_pct": 0.8537,
+      "change_60m_pct": -0.1811,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TURBOUSDT",
-      "price": 0.000984,
-      "change_5m_pct": 0.1017,
-      "change_15m_pct": 0.2037,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.000982,
+      "change_5m_pct": -0.2033,
+      "change_15m_pct": -0.2033,
+      "change_60m_pct": -0.1017,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TURTLEUSDT",
       "price": 0.0423,
-      "change_5m_pct": 0.237,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.7042,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.237,
+      "change_60m_pct": 0.237,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TUSDT",
@@ -4789,63 +4794,63 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TUSDUSDT",
       "price": 0.9982,
-      "change_5m_pct": -0.01,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.01,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TUTUSDT",
-      "price": 0.04558,
-      "change_5m_pct": -0.4369,
-      "change_15m_pct": 0.0878,
-      "change_60m_pct": -1.5551,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.04526,
+      "change_5m_pct": -0.7021,
+      "change_15m_pct": 0.1549,
+      "change_60m_pct": -2.2251,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "TWTUSDT",
-      "price": 0.4613,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1085,
-      "change_60m_pct": -0.2595,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.4605,
+      "change_5m_pct": -0.1734,
+      "change_15m_pct": -0.1734,
+      "change_60m_pct": -0.3031,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "UMAUSDT",
       "price": 0.37,
-      "change_5m_pct": -0.2695,
+      "change_5m_pct": 0,
       "change_15m_pct": -0.2695,
       "change_60m_pct": 0.271,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "UNIUSDT",
-      "price": 4.631,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0647,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 4.632,
+      "change_5m_pct": 0.0216,
+      "change_15m_pct": -0.2369,
+      "change_60m_pct": 0.173,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USD1USDT",
-      "price": 0.99986,
-      "change_5m_pct": 0.002,
-      "change_15m_pct": 0.004,
-      "change_60m_pct": 0.012,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.99985,
+      "change_5m_pct": -0.001,
+      "change_15m_pct": 0.005,
+      "change_60m_pct": 0.01,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USDCUSDT",
       "price": 0.99993,
-      "change_5m_pct": -0.001,
-      "change_15m_pct": 0.002,
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.003,
       "change_60m_pct": 0.005,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USDEUSDT",
@@ -4853,7 +4858,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": -0.01,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USDPUSDT",
@@ -4861,7 +4866,7 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.02,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USDSUSDT",
@@ -4869,39 +4874,39 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": -0.01,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USTCUSDT",
       "price": 0.00537,
-      "change_5m_pct": -0.1859,
-      "change_15m_pct": 0,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.1859,
       "change_60m_pct": -0.1859,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "USUALUSDT",
-      "price": 0.0113,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.0884,
-      "change_60m_pct": 0.6233,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.01129,
+      "change_5m_pct": -0.0885,
+      "change_15m_pct": -0.1768,
+      "change_60m_pct": 0.3556,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "UUSDT",
-      "price": 0.9995,
-      "change_5m_pct": 0,
+      "price": 0.9996,
+      "change_5m_pct": 0.01,
       "change_15m_pct": 0,
-      "change_60m_pct": -0.01,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.01,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VANAUSDT",
-      "price": 0.93,
-      "change_5m_pct": -0.1074,
-      "change_15m_pct": -0.2146,
-      "change_60m_pct": -0.2146,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.932,
+      "change_5m_pct": 0.2151,
+      "change_15m_pct": 0,
+      "change_60m_pct": 0.2151,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VANRYUSDT",
@@ -4909,23 +4914,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VELODROMEUSDT",
-      "price": 0.0228,
-      "change_5m_pct": -0.2188,
-      "change_15m_pct": -0.5236,
-      "change_60m_pct": 0.2198,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.02278,
+      "change_5m_pct": -0.0877,
+      "change_15m_pct": -0.4371,
+      "change_60m_pct": 0.2641,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VETUSDT",
-      "price": 0.006842,
-      "change_5m_pct": -1.0414,
-      "change_15m_pct": -0.6534,
-      "change_60m_pct": -1.2983,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.006873,
+      "change_5m_pct": 0.4531,
+      "change_15m_pct": -0.4346,
+      "change_60m_pct": -1.0652,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VICUSDT",
@@ -4933,23 +4938,23 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VIRTUALUSDT",
       "price": 0.7168,
-      "change_5m_pct": -0.0836,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0.2237,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.0836,
+      "change_60m_pct": 0.35,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "VTHOUSDT",
-      "price": 0.000395,
-      "change_5m_pct": -0.5038,
+      "price": 0.000394,
+      "change_5m_pct": -0.2532,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.2538,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WALUSDT",
@@ -4957,151 +4962,151 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WAXPUSDT",
       "price": 0.00422,
       "change_5m_pct": 0,
       "change_15m_pct": 0,
-      "change_60m_pct": 0.4762,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_60m_pct": 0.716,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WBETHUSDT",
-      "price": 2757.5,
-      "change_5m_pct": -0.0381,
-      "change_15m_pct": 0.0145,
-      "change_60m_pct": -0.0054,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 2756.67,
+      "change_5m_pct": -0.0301,
+      "change_15m_pct": -0.155,
+      "change_60m_pct": -0.033,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WBTCUSDT",
-      "price": 79726.39,
-      "change_5m_pct": -0.0264,
-      "change_15m_pct": 0.042,
-      "change_60m_pct": -0.0152,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 79727.25,
+      "change_5m_pct": 0.0011,
+      "change_15m_pct": 0.0431,
+      "change_60m_pct": 0.0315,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WCTUSDT",
-      "price": 0.03789,
-      "change_5m_pct": -0.1055,
-      "change_15m_pct": -0.0264,
-      "change_60m_pct": -0.3419,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.03788,
+      "change_5m_pct": -0.0264,
+      "change_15m_pct": -0.1845,
+      "change_60m_pct": -0.2107,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WIFUSDT",
-      "price": 0.2154,
-      "change_5m_pct": 0.0929,
-      "change_15m_pct": 0.4196,
-      "change_60m_pct": 0.5133,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.2155,
+      "change_5m_pct": 0.0464,
+      "change_15m_pct": 0.2792,
+      "change_60m_pct": 0.7009,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WINUSDT",
       "price": 0.000034,
-      "change_5m_pct": 0.0589,
-      "change_15m_pct": 0.3246,
-      "change_60m_pct": 0.4431,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.2063,
+      "change_60m_pct": 0.3542,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WLDUSDT",
-      "price": 0.4014,
-      "change_5m_pct": 0.0249,
-      "change_15m_pct": 0.1747,
-      "change_60m_pct": 0.0748,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.3999,
+      "change_5m_pct": -0.3737,
+      "change_15m_pct": -0.2743,
+      "change_60m_pct": -0.1997,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WLFIUSDT",
       "price": 0.0598,
-      "change_5m_pct": -0.3333,
-      "change_15m_pct": -1.157,
+      "change_5m_pct": 0,
+      "change_15m_pct": 0,
       "change_60m_pct": -1.4827,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WOOUSDT",
       "price": 0.01146,
-      "change_5m_pct": -0.0872,
-      "change_15m_pct": -0.1742,
-      "change_60m_pct": -0.1742,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": 0.0873,
+      "change_60m_pct": -0.0872,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "WUSDT",
-      "price": 0.0094,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.1063,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00939,
+      "change_5m_pct": -0.1064,
+      "change_15m_pct": -0.2125,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XAIUSDT",
-      "price": 0.00743,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.2685,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00742,
+      "change_5m_pct": -0.1346,
+      "change_15m_pct": -0.1346,
+      "change_60m_pct": -0.2688,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XAUTUSDT",
-      "price": 4597.72,
-      "change_5m_pct": -0.0241,
-      "change_15m_pct": -0.0717,
-      "change_60m_pct": 0.0278,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 4597.25,
+      "change_5m_pct": -0.0102,
+      "change_15m_pct": -0.0272,
+      "change_60m_pct": -0.0609,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XECUSDT",
-      "price": 0.000007,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.4267,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00000701,
+      "change_5m_pct": 0.1429,
+      "change_15m_pct": 0.2861,
+      "change_60m_pct": -0.1425,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XLMUSDT",
-      "price": 0.1839,
-      "change_5m_pct": -0.1086,
-      "change_15m_pct": -0.0543,
-      "change_60m_pct": -0.4331,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.1838,
+      "change_5m_pct": -0.0544,
+      "change_15m_pct": -0.2713,
+      "change_60m_pct": -0.3254,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XNOUSDT",
-      "price": 0.402,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.399,
+      "change_5m_pct": -0.7463,
+      "change_15m_pct": -0.7463,
+      "change_60m_pct": -0.7463,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XPLUSDT",
-      "price": 0.08599,
-      "change_5m_pct": 0.5026,
-      "change_15m_pct": 0.3267,
-      "change_60m_pct": -0.0116,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.08573,
+      "change_5m_pct": -0.3024,
+      "change_15m_pct": 0.0117,
+      "change_60m_pct": -0.3371,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XRPUSDT",
-      "price": 1.4247,
-      "change_5m_pct": 0.0211,
-      "change_15m_pct": 0.2181,
-      "change_60m_pct": 0.1969,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.4263,
+      "change_5m_pct": 0.1123,
+      "change_15m_pct": 0.1756,
+      "change_60m_pct": 0.38,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XTZUSDT",
       "price": 0.2252,
-      "change_5m_pct": -0.3099,
-      "change_15m_pct": -0.2215,
-      "change_60m_pct": -0.2657,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.3099,
+      "change_60m_pct": -0.354,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XUSDUSDT",
@@ -5109,87 +5114,87 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0,
       "change_60m_pct": 0.01,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XVGUSDT",
-      "price": 0.002478,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.1617,
-      "change_60m_pct": -0.8403,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002479,
+      "change_5m_pct": 0.0404,
+      "change_15m_pct": -0.0403,
+      "change_60m_pct": -0.7209,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "XVSUSDT",
       "price": 3.16,
       "change_5m_pct": 0,
-      "change_15m_pct": 0,
+      "change_15m_pct": -0.3155,
       "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "YBUSDT",
-      "price": 0.0925,
-      "change_5m_pct": 0.3254,
-      "change_15m_pct": 0.6529,
-      "change_60m_pct": 0.9825,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0928,
+      "change_5m_pct": 0.3243,
+      "change_15m_pct": 0.4329,
+      "change_60m_pct": 1.1996,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "YFIUSDT",
       "price": 2324,
-      "change_5m_pct": -0.086,
-      "change_15m_pct": 0,
+      "change_5m_pct": 0,
+      "change_15m_pct": -0.043,
       "change_60m_pct": 0.4322,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "YGGUSDT",
-      "price": 0.02252,
+      "price": 0.02251,
       "change_5m_pct": -0.0444,
-      "change_15m_pct": -0.133,
-      "change_60m_pct": 0.1334,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "change_15m_pct": -0.3541,
+      "change_60m_pct": 0.2226,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZAMAUSDT",
-      "price": 0.05464,
-      "change_5m_pct": 0.1283,
-      "change_15m_pct": 0.7375,
-      "change_60m_pct": 1.2977,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.05456,
+      "change_5m_pct": -0.1464,
+      "change_15m_pct": 0.0367,
+      "change_60m_pct": 1.2621,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZBTUSDT",
-      "price": 0.0802,
-      "change_5m_pct": -0.6196,
-      "change_15m_pct": -0.2488,
-      "change_60m_pct": -0.8653,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.08,
+      "change_5m_pct": -0.2494,
+      "change_15m_pct": -0.6211,
+      "change_60m_pct": -0.6211,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZECUSDT",
-      "price": 791.24,
-      "change_5m_pct": -0.2056,
-      "change_15m_pct": -0.0783,
-      "change_60m_pct": 0.0607,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 790.44,
+      "change_5m_pct": -0.1011,
+      "change_15m_pct": -0.358,
+      "change_60m_pct": 0.0278,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZENUSDT",
-      "price": 5.166,
-      "change_5m_pct": -0.2317,
-      "change_15m_pct": -0.1739,
-      "change_60m_pct": -0.4049,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 5.161,
+      "change_5m_pct": -0.0968,
+      "change_15m_pct": -0.4437,
+      "change_60m_pct": -0.2898,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZILUSDT",
-      "price": 0.002608,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0.0384,
-      "change_60m_pct": -0.2295,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.002609,
+      "change_5m_pct": 0.0383,
+      "change_15m_pct": -0.0383,
+      "change_60m_pct": -0.1913,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZKCUSDT",
@@ -5197,310 +5202,310 @@
       "change_5m_pct": 0,
       "change_15m_pct": 0.2513,
       "change_60m_pct": 0.2513,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZKPUSDT",
-      "price": 0.0431,
-      "change_5m_pct": -0.2315,
-      "change_15m_pct": -0.2315,
-      "change_60m_pct": 0.9368,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.043,
+      "change_5m_pct": -0.232,
+      "change_15m_pct": -0.463,
+      "change_60m_pct": 0.7026,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZKUSDT",
-      "price": 0.00843,
-      "change_5m_pct": 0.2378,
-      "change_15m_pct": 0.3571,
-      "change_60m_pct": 0,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.00842,
+      "change_5m_pct": -0.1186,
+      "change_15m_pct": 0.1189,
+      "change_60m_pct": 0.1189,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZROUSDT",
-      "price": 1.156,
-      "change_5m_pct": 0,
-      "change_15m_pct": -0.1727,
-      "change_60m_pct": -1.1966,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 1.151,
+      "change_5m_pct": -0.4325,
+      "change_15m_pct": -0.8613,
+      "change_60m_pct": -1.4555,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     },
     {
       "symbol": "ZRXUSDT",
-      "price": 0.0973,
-      "change_5m_pct": 0,
-      "change_15m_pct": 0,
-      "change_60m_pct": -0.2051,
-      "updated_at": "2026-08-28T08:29:38.405Z"
+      "price": 0.0974,
+      "change_5m_pct": 0.1028,
+      "change_15m_pct": 0.1028,
+      "change_60m_pct": 0,
+      "updated_at": "2026-08-28T08:34:38.201Z"
     }
   ],
   "signals": [
     {
-      "ts": "2026-08-28T08:30:08.716Z",
-      "symbol": "TRUMPUSDT",
+      "ts": "2026-08-28T08:35:09.619Z",
+      "symbol": "TUTUSDT",
       "timeframe": "60m",
-      "direction": "up",
-      "price": 2.835,
-      "change_pct": 2.1622,
+      "direction": "down",
+      "price": 0.04526,
+      "change_pct": -2.2251,
       "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:29:59.571Z",
-      "symbol": "TSTUSDT",
-      "timeframe": "15m",
+      "ts": "2026-08-28T08:35:09.574Z",
+      "symbol": "STXUSDT",
+      "timeframe": "60m",
       "direction": "up",
-      "price": 0.01658,
-      "change_pct": 0.913,
-      "threshold_pct": 0.75
+      "price": 0.2651,
+      "change_pct": 2.04,
+      "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:29:59.389Z",
-      "symbol": "ONEUSDT",
-      "timeframe": "15m",
+      "ts": "2026-08-28T08:35:09.541Z",
+      "symbol": "RVNUSDT",
+      "timeframe": "60m",
       "direction": "down",
-      "price": 0.000778,
-      "change_pct": -0.7653,
-      "threshold_pct": 0.75
+      "price": 0.00318,
+      "change_pct": -2.454,
+      "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:29:59.320Z",
+      "ts": "2026-08-28T08:35:09.504Z",
+      "symbol": "PROMUSDT",
+      "timeframe": "60m",
+      "direction": "down",
+      "price": 4.77,
+      "change_pct": -2.0534,
+      "threshold_pct": 2
+    },
+    {
+      "ts": "2026-08-28T08:35:09.466Z",
+      "symbol": "PORTALUSDT",
+      "timeframe": "60m",
+      "direction": "down",
+      "price": 0.01636,
+      "change_pct": -2.3866,
+      "threshold_pct": 2
+    },
+    {
+      "ts": "2026-08-28T08:35:09.426Z",
       "symbol": "MOVRUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 1,
-      "change_pct": 2.459,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:29:59.267Z",
-      "symbol": "MANTRAUSDT",
-      "timeframe": "15m",
-      "direction": "down",
-      "price": 0.00466,
-      "change_pct": -2.3061,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:29:07.825Z",
-      "symbol": "NOMUSDT",
-      "timeframe": "60m",
-      "direction": "up",
-      "price": 0.00166,
-      "change_pct": 3.1056,
-      "threshold_pct": 2
-    },
-    {
-      "ts": "2026-08-28T08:29:07.722Z",
-      "symbol": "HEIUSDT",
-      "timeframe": "60m",
-      "direction": "up",
-      "price": 0.1633,
-      "change_pct": 3.2238,
-      "threshold_pct": 2
-    },
-    {
-      "ts": "2026-08-28T08:29:07.667Z",
-      "symbol": "GENIUSUSDT",
       "timeframe": "60m",
       "direction": "down",
-      "price": 0.2782,
-      "change_pct": -2.0767,
+      "price": 0.978,
+      "change_pct": -2.3952,
       "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:29:07.610Z",
-      "symbol": "DGBUSDT",
+      "ts": "2026-08-28T08:35:09.298Z",
+      "symbol": "EDENUSDT",
       "timeframe": "60m",
       "direction": "up",
-      "price": 0.00486,
-      "change_pct": 2.3158,
+      "price": 0.06903,
+      "change_pct": 2.388,
       "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:28:59.443Z",
-      "symbol": "RADUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.236,
-      "change_pct": 0.8547,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:28:59.335Z",
-      "symbol": "OPGUSDT",
-      "timeframe": "15m",
-      "direction": "down",
-      "price": 0.0972,
-      "change_pct": -0.8163,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:28:59.229Z",
-      "symbol": "NOMUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.00166,
-      "change_pct": 1.2195,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:28:59.133Z",
-      "symbol": "MEUSDT",
-      "timeframe": "15m",
-      "direction": "down",
-      "price": 0.06372,
-      "change_pct": -0.7631,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:28:58.969Z",
-      "symbol": "CHIPUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.04034,
-      "change_pct": 0.9257,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:28:07.562Z",
-      "symbol": "STRAXUSDT",
+      "ts": "2026-08-28T08:35:09.261Z",
+      "symbol": "BICOUSDT",
       "timeframe": "60m",
       "direction": "down",
-      "price": 0.00967,
-      "change_pct": -2.3232,
+      "price": 0.0258,
+      "change_pct": -2.8614,
       "threshold_pct": 2
     },
     {
-      "ts": "2026-08-28T08:26:59.567Z",
-      "symbol": "SNXUSDT",
+      "ts": "2026-08-28T08:34:59.995Z",
+      "symbol": "ZROUSDT",
       "timeframe": "15m",
-      "direction": "up",
-      "price": 0.22,
-      "change_pct": 0.7787,
+      "direction": "down",
+      "price": 1.151,
+      "change_pct": -0.8613,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:26:59.380Z",
-      "symbol": "MUBARAKUSDT",
+      "ts": "2026-08-28T08:34:59.885Z",
+      "symbol": "RUNEUSDT",
       "timeframe": "15m",
-      "direction": "up",
-      "price": 0.02126,
-      "change_pct": 0.7583,
+      "direction": "down",
+      "price": 0.505,
+      "change_pct": -0.7859,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:26:07.722Z",
-      "symbol": "COTIUSDT",
-      "timeframe": "60m",
-      "direction": "up",
-      "price": 0.01302,
-      "change_pct": 2.2781,
-      "threshold_pct": 2
-    },
-    {
-      "ts": "2026-08-28T08:26:07.641Z",
-      "symbol": "AVAUSDT",
-      "timeframe": "60m",
-      "direction": "up",
-      "price": 0.2127,
-      "change_pct": 2.2105,
-      "threshold_pct": 2
-    },
-    {
-      "ts": "2026-08-28T08:25:59.541Z",
-      "symbol": "SCRTUSDT",
+      "ts": "2026-08-28T08:34:59.759Z",
+      "symbol": "MORPHOUSDT",
       "timeframe": "15m",
       "direction": "up",
-      "price": 0.0123,
-      "change_pct": 0.8197,
+      "price": 2.518,
+      "change_pct": 1.1651,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:25:59.487Z",
+      "ts": "2026-08-28T08:34:59.637Z",
+      "symbol": "HOTUSDT",
+      "timeframe": "15m",
+      "direction": "down",
+      "price": 0.000389,
+      "change_pct": -1.0178,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:34:59.518Z",
+      "symbol": "EDENUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.06903,
+      "change_pct": 2.2061,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:34:59.476Z",
+      "symbol": "DOGSUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.00004042,
+      "change_pct": 1.05,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:34:59.335Z",
+      "symbol": "BABYUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.01284,
+      "change_pct": 0.7849,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:33:59.753Z",
+      "symbol": "TRUMPUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 2.857,
+      "change_pct": 1.0255,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:33:59.704Z",
+      "symbol": "RVNUSDT",
+      "timeframe": "15m",
+      "direction": "down",
+      "price": 0.00318,
+      "change_pct": -1.2422,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:33:59.649Z",
       "symbol": "QUICKUSDT",
       "timeframe": "15m",
-      "direction": "up",
-      "price": 0.00935,
-      "change_pct": 0.863,
+      "direction": "down",
+      "price": 0.00924,
+      "change_pct": -0.7519,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:25:59.430Z",
-      "symbol": "PNUTUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.0518,
-      "change_pct": 1.5686,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:25:59.102Z",
-      "symbol": "BBUSDT",
+      "ts": "2026-08-28T08:33:59.591Z",
+      "symbol": "PROMUSDT",
       "timeframe": "15m",
       "direction": "down",
-      "price": 0.00969,
-      "change_pct": -0.8188,
+      "price": 4.788,
+      "change_pct": -1.522,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:24:59.532Z",
-      "symbol": "ROBOUSDT",
+      "ts": "2026-08-28T08:33:59.397Z",
+      "symbol": "GLMRUSDT",
+      "timeframe": "15m",
+      "direction": "down",
+      "price": 0.007322,
+      "change_pct": -1.0674,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:33:59.358Z",
+      "symbol": "GASUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 1.292,
+      "change_pct": 0.8587,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:33:59.236Z",
+      "symbol": "BICOUSDT",
+      "timeframe": "15m",
+      "direction": "down",
+      "price": 0.02566,
+      "change_pct": -0.8501,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:32:59.506Z",
+      "symbol": "SOPHUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.00382,
+      "change_pct": 0.7916,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:32:59.205Z",
+      "symbol": "COOKIEUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.012,
+      "change_pct": 0.8403,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:31:59.795Z",
+      "symbol": "SCRUSDT",
+      "timeframe": "15m",
+      "direction": "up",
+      "price": 0.02337,
+      "change_pct": 0.9067,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:31:59.570Z",
+      "symbol": "ICXUSDT",
       "timeframe": "15m",
       "direction": "up",
       "price": 0.01313,
-      "change_pct": 0.9224,
+      "change_pct": 1.7829,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:24:59.397Z",
-      "symbol": "MOVEUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.0094,
-      "change_pct": 1.0753,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:24:59.330Z",
-      "symbol": "MMTUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.1646,
-      "change_pct": 0.8578,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:24:59.272Z",
-      "symbol": "LSKUSDT",
-      "timeframe": "15m",
-      "direction": "up",
-      "price": 0.0966,
-      "change_pct": 0.9404,
-      "threshold_pct": 0.75
-    },
-    {
-      "ts": "2026-08-28T08:24:59.059Z",
-      "symbol": "CFGUSDT",
+      "ts": "2026-08-28T08:31:59.509Z",
+      "symbol": "HEMIUSDT",
       "timeframe": "15m",
       "direction": "down",
-      "price": 0.1277,
-      "change_pct": -0.931,
+      "price": 0.01035,
+      "change_pct": -8.2447,
       "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:24:07.422Z",
-      "symbol": "SCRTUSDT",
-      "timeframe": "60m",
+      "ts": "2026-08-28T08:31:59.465Z",
+      "symbol": "GPSUSDT",
+      "timeframe": "15m",
       "direction": "down",
-      "price": 0.0122,
-      "change_pct": -2.4,
-      "threshold_pct": 2
+      "price": 0.00956,
+      "change_pct": -0.8299,
+      "threshold_pct": 0.75
     },
     {
-      "ts": "2026-08-28T08:23:59.254Z",
-      "symbol": "ZAMAUSDT",
+      "ts": "2026-08-28T08:31:59.425Z",
+      "symbol": "FFUSDT",
       "timeframe": "15m",
       "direction": "up",
-      "price": 0.05459,
-      "change_pct": 0.9244,
+      "price": 0.08937,
+      "change_pct": 0.9146,
+      "threshold_pct": 0.75
+    },
+    {
+      "ts": "2026-08-28T08:31:59.323Z",
+      "symbol": "BNTUSDT",
+      "timeframe": "15m",
+      "direction": "down",
+      "price": 0.3232,
+      "change_pct": -1.041,
       "threshold_pct": 0.75
     }
   ]
